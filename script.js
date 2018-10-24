@@ -104,6 +104,19 @@ async function pullChatroomsBasedOnEmailFromUsers(email){
     });
 
 }
+var messagesArray=[];
+async function getMessages(i){
+    await pathLoop('chatroom/').then(()=>{
+        general(strungArray[i]+'/messages/');
+        console.log('messages', globalData);
+    });
+    return new Promise((resolve)=>{
+        resolve(globalData);
+        messagesArray = globalData;
+    });
+}
+
+
 var groupsOfUsersArray=[];
 async function getUsers(i){
     // globalData=[], strungArray=[];
