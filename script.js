@@ -111,8 +111,8 @@ async function getMessages(i){
         console.log('messages', globalData);
     });
     return new Promise((resolve)=>{
-        resolve(globalData);
         messagesArray = globalData;
+        resolve(messagesArray);
     });
 }
 
@@ -127,7 +127,8 @@ async function getUsers(i){
 
     });
     return new Promise((resolve)=>{
-        resolve(globalData);
+        groupsOfUsersArray=globalData;
+        resolve(groupsOfUsersArray);
     })
 }
 
@@ -201,6 +202,14 @@ async function getChats(email) {
 //     });
 
 // }
+
+function addId(path){
+    let ref = db.ref(path+'/id').push({
+        id: 'id',
+    });
+}
+
+
 //================================================
 
 function makeChatRoom(title, topText){
