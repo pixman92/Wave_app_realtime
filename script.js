@@ -11,6 +11,11 @@
 // - getUsers(num)
 
 
+// Getting fields from chatroom
+// - pathLoop(path)
+// - general(strungArray[i]+'field')
+// 
+
 
 var db = firebase.database();
 
@@ -48,15 +53,23 @@ function general2(path, type){
 }
 
 
-var globalData=[];
-function general(path){
-    globalData=[];
-    let ref = db.ref(path).on('value', ((snapshot)=>{
+var globalData=[], meVals=[];
+async function 
+general(path){
+    globalData=[], meVals=[];
+    let ref = await db.ref(path).once('value').then( ((snapshot)=>{
         snapshot.forEach((el)=>{
-            console.log('data', el.val());        
+            console.log('data', el);
+            meVals.push(el.val());      
             globalData.push(el.val());
         });
     }));
+
+    return new Promise((resolve)=>{
+        resolve(meVals);
+        console.log('meVals', meVals);
+    });
+
 }
 
 //================================================
@@ -84,26 +97,26 @@ function general(path){
 //     });
 
 // }
-var foundPos;
-async function pullChatroomsBasedOnEmailFromUsers(email){
-    //trying to PULL all chatrooms said email (user) is participating in
-    //stored in IDS in an array
-    // NOT WORKING
-    await pathLoop('users/');
+// var foundPos;
+// async function pullChatroomsBasedOnEmailFromUsers(email){
+//     //trying to PULL all chatrooms said email (user) is participating in
+//     //stored in IDS in an array
+//     // NOT WORKING
+//     await pathLoop('users/');
 
-    for (let i = 0; i < arrayOfVal.length; i++) {
-        if(arrayOfVal[i].email == email){
-            savedUID = i;
-        }
-    }
+//     for (let i = 0; i < arrayOfVal.length; i++) {
+//         if(arrayOfVal[i].email == email){
+//             savedUID = i;
+//         }
+//     }
 
-    return new Promise((resolve)=>{
-        resolve(arrayOfVal[savedUID]);
-        console.log('found', arrayOfVal[savedUID].email + " at Pos: " + savedUID);
-        foundPos=savedUID;
-    });
+//     return new Promise((resolve)=>{
+//         resolve(arrayOfVal[savedUID]);
+//         console.log('found', arrayOfVal[savedUID].email + " at Pos: " + savedUID);
+//         foundPos=savedUID;
+//     });
 
-}
+// }
 var messagesArray=[];
 async function getMessages(i){
     await pathLoop('chatroom/').then(()=>{
@@ -131,6 +144,30 @@ async function getUsers(i){
         resolve(groupsOfUsersArray);
     })
 }
+
+var iDArray=[], tmp;
+// ref.path.pieces_
+async function getID(i){
+    // globalData=[], strungArray=[];
+    await pathLoop('chatroom/').then(()=>{
+    console.log('strungArray1', strungArray);
+    // console.log('tmp', tmp);
+    pathLoop(strungArray[i]+'/id/');
+            // general(strungArray[i]);
+    console.log('strungArray2', strungArray);
+
+    if(arrayOfVal[0]==undefined){
+        console.log('no id for this chatroom found!');
+    }
+
+    });
+    return new Promise((resolve)=>{
+        iDArray=globalData;
+        resolve(iDArray);
+    })
+}
+
+
 
 
 //================================================
@@ -161,26 +198,26 @@ function getEmailPosFromChatroom(email){
 
 //================================================
 
-var chats = [];
-async function getChats(email) {
-    // hopefully to get all chats in their string form
-    await pullChatroomsBasedOnEmail(email);
+// var chats = [];
+// async function getChats(email) {
+//     // hopefully to get all chats in their string form
+//     await pullChatroomsBasedOnEmail(email);
 
-    let nextPath = await pathLoop('users/'+arrayForPath[foundPos].pieces_[1])
-    .then(()=>{
-        db.ref('/chatrooms').once('value').then((snapshot)=>{
-            snapshot.forEach((el)=>{
-                var tmp = el;
-                chats.push(tmp.val());
-            });
-        });
+//     let nextPath = await pathLoop('users/'+arrayForPath[foundPos].pieces_[1])
+//     .then(()=>{
+//         db.ref('/chatrooms').once('value').then((snapshot)=>{
+//             snapshot.forEach((el)=>{
+//                 var tmp = el;
+//                 chats.push(tmp.val());
+//             });
+//         });
         
-    }); 
+//     }); 
 
-    return new Promise((resolve)=>{
-        resolve(chats);
-    });
-}
+//     return new Promise((resolve)=>{
+//         resolve(chats);
+//     });
+// }
 
 
 
@@ -203,25 +240,56 @@ async function getChats(email) {
 
 // }
 
-function addId(path){
-    let ref = db.ref(path+'/id').push({
-        id: 'id',
+async function addId(i){
+    await pathLoop('chatroom/');
+        let ref = db.ref(strungArray[i]).push({
+            id: 'id',
+        });
+
+    return new Promise((resolve)=>{
+        resolve(strungArray[i]);
     });
 }
 
 
 //================================================
 
-function makeChatRoom(title, topText){
+var newDate = new Date();
+var currentChat=-1;
+async function makeChatRoom(title, topText){
     // making chat room 
     // to have users & messages working at a later time
+  
+    // console.log('newDate', newDate);
     let refMe = db.ref("/chatroom/").
     push({
         title: title,
         users: {},
         messages: {}, 
-        topText: topText
-    })
+        topText: topText,
+        dateCreated: newDate.toString(),
+    });
+    await pathLoop('chatroom/').then(()=>{
+        for (let i = 0; i <= strungArray.length; i++) {
+            console.log('i', i);
+            // console.log('strung date', strung[i]);
+            // console.log('strungArray', strungArray);
+            meArray = arrayOfVal[i];
+            if(meArray.dateCreated == newDate){
+                console.log('correct! found at:', i);
+                currentChat=i;
+            }else{
+                console.log('failed', );
+            }
+        }
+
+    });
+
+
+    return new Promise((resolve)=>{
+        resolve(currentChat);
+    });
+
 }
 
 //================================================
@@ -241,10 +309,13 @@ function addMessages(UID, text){
 }
 
 
-function users(UID, email){
+async function addUsers(index, email){
     //add email to chatroom
-    let refMe = db.ref(UID+'/users/').push({
-        email,
+    await pathLoop('chatroom').then(()=>{
+        let refMe = db.ref(strungArray[index]+'/users/').push({
+            email,
+        });
+
     });
 }
 
