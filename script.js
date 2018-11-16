@@ -24,7 +24,7 @@ async function getChatRoomIndex(chatroom) {
 
 var chatChildTextObj={};
 var num = 0;
-async function addChatChildren(chatChildText) {
+async function addChatChildren(chatChildText, user) {
     await pathLoop('/chatrooms');
 
     var newDate = (new Date()).toString();
@@ -32,12 +32,14 @@ async function addChatChildren(chatChildText) {
     db.ref(strungArray[indexSaved]+"/chatMessages").push({
         chatMessage: chatChildText,
         newDate: newDate,
+        user: user,
     });
 
 }
 
 var arrayOfMessages=[];
 async function pullAllChatChildren(){
+    arrayOfMessages=[];
     await pathLoop('/chatrooms');
     await pathLoop(strungArray[indexSaved]);
     await pathLoop(strungArray[1]);
@@ -51,6 +53,44 @@ async function pullAllChatChildren(){
 
 }
 
-async function addUsers(){
+var textBox = "";
+async function getBox(){
     await pathLoop('/chatrooms');
+    await pathLoop(strungArray[indexSaved]);
+    await pathLoop(strungArray[0]);
+    
+   
+
+}
+
+async function addUser(userEmail) {
+    await pathLoop('/chatrooms');
+    // await pathLoop(strungArray[indexSaved]);
+    db.ref(strungArray[indexSaved]+'/users').push({
+        user: userEmail
+    });
+}
+
+
+async function users(mode, user){
+    if(mode=="remove"){
+        await pathLoop('/chatrooms');
+        await pathLoop(strungArray[indexSaved]);
+        await pathLoop(strungArray[2]);
+
+        for (var i = 0; i < strungArray.length; i++) {
+            await general(strungArray[i]);
+            if(user==meVals[0]){
+                console.log('yes deleted');
+                db.ref(strungArray[i]).remove();
+            }
+        }
+    }
+    if(mode=="add"){
+
+    }
+}
+
+function listedUsers(){
+
 }

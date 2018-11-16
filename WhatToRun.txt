@@ -1,0 +1,6 @@
+What to return
+
+
+getChatRoomIndex(<UID of node>)
+pullAllChatChildren() - to get those messages
+printToDiv() - to push them out
