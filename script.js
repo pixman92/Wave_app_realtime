@@ -27,9 +27,27 @@ var num = 0;
 async function addChatChildren(chatChildText) {
     await pathLoop('/chatrooms');
 
-    db.ref(strungArray[indexSaved]).push({
-        num: chatChildText,
-    })
+    var newDate = (new Date()).toString();
+
+    db.ref(strungArray[indexSaved]+"/chatMessages").push({
+        chatMessage: chatChildText,
+        newDate: newDate,
+    });
+
+}
+
+var arrayOfMessages=[];
+async function pullAllChatChildren(){
+    await pathLoop('/chatrooms');
+    await pathLoop(strungArray[indexSaved]);
+    await pathLoop(strungArray[1]);
+    
+    for (var i = 0; i < strungArray.length; i++) {
+        await general(strungArray[i]);
+        arrayOfMessages.push(meVals[0])
+    }
+
+    console.log('arrayOfMessages', arrayOfMessages);
 
 }
 
