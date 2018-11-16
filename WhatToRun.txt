@@ -1,6 +1,11 @@
-What to return
+What to RUN
+(REMEMBER!!! - select a chatroom 1st!!!)
 
 
 getChatRoomIndex(<UID of node>)
 pullAllChatChildren() - to get those messages
 printToDiv() - to push them out
+
+
+addUser(<email>) - adding user to chat room
+users(<mode>, <email>) - remove or add users to a chatroom

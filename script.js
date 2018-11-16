@@ -87,7 +87,7 @@ async function users(mode, user){
         }
     }
     if(mode=="add"){
-
+        await addUser(user);
     }
 }
 
