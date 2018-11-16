@@ -1,0 +1,30 @@
+3 Sets of Data
+- profile (a  single user)
+- chatroom (text box, chatChildren, newMessageBox)
+
+
+
+Chat Room A
+- hey (tim)
+- how are you? (sam)
+- fine (tim)
+
+
+Chat room B
+- Hello
+- I am well
+- how are you?
+
+
+
+
+UX:
+- I have a list of chatrooms
+- I choose one
+- I send a message
+- I recieve a message
+- I type in the textbox
+- it updates
+
+
+

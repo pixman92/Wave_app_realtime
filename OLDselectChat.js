@@ -4,7 +4,7 @@
 // general(strungArray[0-n])- returns user arrays
 
         
-        var input = 'users';
+var input = 'users';
 
 // getUsers(i)
 var getUsersArray=[], tmp, tmp2;
