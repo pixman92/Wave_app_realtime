@@ -1,0 +1,29 @@
+Game Plan:
+
+- structure: chatroom
+                UID
+                    box/chatmessages/users
+                        messages   
+                            string and date
+                        users
+                            li - emails
+
+//===============================================
+- blank page
+- headerbox
+- latest 10 chats
+- new chat box
+- send button
+
+also
+- back button
+- browse all chatrooms, in sidebar
+
+
+
+//===========================================
+
+pathLoop('chatrooms/') // spits out all paths, to all chatrooms
+pathLoop(strungArray[posOfChatroom])    //spits out 'elements of chatroom'
+
+

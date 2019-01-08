@@ -1,4 +1,4 @@
-    // FFP Order:
+// FFP Order:
 
 // - setup();
 // - pullChatroomsBasedOnEmail(email)
@@ -54,8 +54,7 @@ function general2(path, type){
 
 
 var globalData=[], meVals=[];
-async function 
-general(path){
+async function general(path){
     globalData=[], meVals=[];
     let ref = await db.ref(path).once('value').then( ((snapshot)=>{
         snapshot.forEach((el)=>{
