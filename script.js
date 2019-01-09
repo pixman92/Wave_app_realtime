@@ -42,7 +42,7 @@ async function makeChatRoom(email){
 //================================================
 
 var currentChatroom = "";
-function getUID(UID){
+async function getUID(UID){
     currentChatroom = 'chatrooms/'+UID+'/';
     console.log('currentChatroom', currentChatroom);
     return new Promise((resolve)=>{
@@ -122,7 +122,8 @@ async function getChatRoomBasedOnEmail(){
 
 var bigArray = [];
 async function makeHugeArrayOfAllUIDs(){
-    db.ref('chatrooms/').once('value')
+    bigArray=[];
+    await db.ref('chatrooms/').once('value')
     .then((snapshot)=>{
         snapshot.forEach((el)=>{
             me = el;
@@ -138,11 +139,21 @@ async function makeHugeArrayOfAllUIDs(){
 
 
 //================================================
+var arrayOfEmails=[];
+async function getAllEmails(email){
+    // function that takes a current chatroom...stores to a tmp array, then loops through that array path 
+    // said path is as follows:
+    // chatrooms/<UID>/usersEmails/<UID>/users/
+    // resulting in: <email>
 
-async function getAllEmails(){
-    await pathLoop(currentChatroom+'usersEmails');  
-    await pathLoop(strungArray[0]);
-    console.log('email', arrayOfVal);
+
+    await pathLoop(currentChatroom+'usersEmails');
+    var arrayOfEmails = strungArray;
+    for (var i = 0; i < arrayOfEmails.length; i++) {
+        await pathLoop(arrayOfEmails[i]);
+        
+    }
+
 }
 
 
