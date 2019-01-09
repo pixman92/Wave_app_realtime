@@ -17,8 +17,11 @@
 var db = firebase.database();
 
 
-function setup(){
+async function setup(){
     //sets up dummy data
+    await makeHugeArrayOfAllUIDs();
+    await getUID(bigArray[1]);
+
     
 }
 
@@ -42,6 +45,9 @@ var currentChatroom = "";
 function getUID(UID){
     currentChatroom = 'chatrooms/'+UID+'/';
     console.log('currentChatroom', currentChatroom);
+    return new Promise((resolve)=>{
+        resolve(currentChatroom);
+    })
 }
 
 
@@ -115,7 +121,7 @@ async function getChatRoomBasedOnEmail(){
 }
 
 var bigArray = [];
-function makeHugeArrayOfAllUIDs(){
+async function makeHugeArrayOfAllUIDs(){
     db.ref('chatrooms/').once('value')
     .then((snapshot)=>{
         snapshot.forEach((el)=>{
@@ -124,8 +130,19 @@ function makeHugeArrayOfAllUIDs(){
             bigArray.push(me.ref.path.pieces_[1]);
         })});
 
-    return bigArray;
+    return new Promise((resolve)=>{
+            resolve(bigArray);
+            // console.log('', );
+        });
 }
 
+
+//================================================
+
+async function getAllEmails(){
+    await pathLoop(currentChatroom+'usersEmails');  
+    await pathLoop(strungArray[0]);
+    console.log('email', arrayOfVal);
+}
 
 
