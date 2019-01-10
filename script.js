@@ -1,17 +1,15 @@
 // FFP Order:
 
-// getUID(<UID>)
-// addUserToChatroom(<email>)
-// makeMessage(sender, message)
+// 1) getUID(<UID>)
+// 2) addUserToChatroom(<email>)
+// 3) makeMessage(sender, message)
 
 // bigArray - array of all UIDs
 // NEXT? to run through all array of
 
 
-// Getting fields from chatroom
-// - pathLoop(path)
-// - general(strungArray[i]+'field')
-// 
+// Getting chatroom data?? 
+// reference - line 150
 
 
 var db = firebase.database();
@@ -20,18 +18,19 @@ var db = firebase.database();
 async function setup(){
     //sets up dummy data
     await makeHugeArrayOfAllUIDs();
-    await getUID(bigArray[1]);
+    await console.table(bigArray);
+    // await getUID(bigArray[]);
 
     
 }
-
+var key = "";
 async function makeChatRoom(email){
     // function that makes a chat room
     // adds 'themselves' as its sole user
     var chatroomID = await db.ref('chatrooms').push();
     console.log('chatroomID', chatroomID);
 
-    var key = await chatroomID.key;
+    key = await chatroomID.key;
     console.log('key', key);
 
     db.ref('chatrooms/'+key+'/usersEmails').push({
@@ -42,7 +41,7 @@ async function makeChatRoom(email){
 //================================================
 
 var currentChatroom = "";
-function getUID(UID){
+function setUID(UID){
     currentChatroom = 'chatrooms/'+UID+'/';
     console.log('currentChatroom', currentChatroom);
     return new Promise((resolve)=>{
@@ -104,21 +103,21 @@ async function makeListOfChatroomsThatBelongToYou(email){
 
 }
 //================================================
-var arrayOfEmails = [];
-async function getChatRoomBasedOnEmail(){
-    // function that pulls a single chatroom
-    // runs through a for loop to extract users
-    // then spits out users
-    // NEXT? 
-    // compare to email passed
-    // make array of all chats with my email
-    await pathLoop(currentChatroom+'usersEmails');
-    for (let i = 0; i < arrayOfVal.length; i++) {
-        await arrayOfEmails.push(arrayOfVal[i].users);   
+// var arrayOfEmails = [];
+// async function getChatRoomBasedOnEmail(){
+//     // function that pulls a single chatroom
+//     // runs through a for loop to extract users
+//     // then spits out users
+//     // NEXT? 
+//     // compare to email passed
+//     // make array of all chats with my email
+//     await pathLoop(currentChatroom+'usersEmails');
+//     for (let i = 0; i < arrayOfVal.length; i++) {
+//         await arrayOfEmails.push(arrayOfVal[i].users);   
         
-    }
-    console.table(arrayOfEmails);
-}
+//     }
+//     console.table(arrayOfEmails);
+// }
 
 var bigArray = [];
 async function makeHugeArrayOfAllUIDs(){
@@ -137,16 +136,15 @@ async function makeHugeArrayOfAllUIDs(){
         });
 }
 
-
 //================================================
 
-// async function getAllEmails(){
-//     await pathLoop(currentChatroom+'usersEmails');  
-//     await pathLoop(strungArray[0]);
-//     console.log('email', arrayOfVal);
-// }
 
-//================================================
+// 1) Select a chatroom
+// 2) get all data sets from chat room
+// 2.1) getBox() - all box text
+// 2.2) getAllMsgs() - get all the messages back and forth
+// 2.3) getAllUsers() - pull a list of users from 'currentChatroom'
+// 3) output the data to HTML
 
 async function getBox(){
     await pathLoop(currentChatroom+'box');
@@ -155,6 +153,7 @@ async function getBox(){
 
 var arrayOfMsgs = [];
 async function getAllMsgs(){
+    arrayOfMsgs = [];
     await pathLoop(currentChatroom+'messages');
 
     var len = strungArray.length;
@@ -169,8 +168,21 @@ async function getAllMsgs(){
 
 //================================================
 
+var arrayOfEmails=[];
 async function getAllUsers(){
-    await pathLoop(currentChatroom+'')
+    arrayOfEmails = [];
+    await pathLoop(currentChatroom+'usersEmails');
+
+    var len = strungArray.length;
+    var tmpArray = strungArray;
+
+    for (let i = 0; i < len; i++) {
+        await pathLoop(tmpArray[i]);
+
+        arrayOfEmails.push(arrayOfVal);
+    }
+
+    log(arrayOfEmails);
 }
 
 
