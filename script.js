@@ -99,7 +99,7 @@ async function makeListOfChatroomsThatBelongToYou(email){
 
     
 
-
+// 
 
 }
 //================================================
@@ -123,6 +123,7 @@ var bigArray = [];
 async function makeHugeArrayOfAllUIDs(){
     db.ref('chatrooms/').once('value')
     .then((snapshot)=>{
+        bigArray = [];
         snapshot.forEach((el)=>{
             me = el;
             console.log(me);
@@ -182,9 +183,35 @@ async function getAllUsers(){
         arrayOfEmails.push(arrayOfVal);
     }
 
+
+
     log(arrayOfEmails);
+
+
+    return new Promise((resolve)=>{
+        resolve(arrayOfEmails);
+    })
 }
 
+//================================================
+
+var tmpArray = [];
+async function allUIDsAllUsers(){
+    tmpArray = [];
+
+
+    await makeHugeArrayOfAllUIDs();
+    var len = bigArray.length;
+
+    var tmpReturn;
+
+    for (let i = 0; i < len; i++) {
+        setUID(bigArray[i]);
+
+        tmpReturn = await getAllUsers();
+        tmpArray.push(tmpReturn);
+    }
+}
 
 //================================================
 
