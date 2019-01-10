@@ -114,10 +114,10 @@ async function getChatRoomBasedOnEmail(){
     // make array of all chats with my email
     await pathLoop(currentChatroom+'usersEmails');
     for (let i = 0; i < arrayOfVal.length; i++) {
-        arrayOfEmails.push(arrayOfVal[i].users);   
-        console.log('arrayOfVal', arrayOfEmails);
+        await arrayOfEmails.push(arrayOfVal[i].users);   
         
     }
+    console.table(arrayOfEmails);
 }
 
 var bigArray = [];
@@ -131,6 +131,7 @@ async function makeHugeArrayOfAllUIDs(){
         })});
 
     return new Promise((resolve)=>{
+            console.table(bigArray);
             resolve(bigArray);
             // console.log('', );
         });
@@ -139,10 +140,42 @@ async function makeHugeArrayOfAllUIDs(){
 
 //================================================
 
-async function getAllEmails(){
-    await pathLoop(currentChatroom+'usersEmails');  
-    await pathLoop(strungArray[0]);
-    console.log('email', arrayOfVal);
+// async function getAllEmails(){
+//     await pathLoop(currentChatroom+'usersEmails');  
+//     await pathLoop(strungArray[0]);
+//     console.log('email', arrayOfVal);
+// }
+
+//================================================
+
+async function getBox(){
+    await pathLoop(currentChatroom+'box');
+    console.log('BOX???', arrayOfVal);
+}
+
+var arrayOfMsgs = [];
+async function getAllMsgs(){
+    await pathLoop(currentChatroom+'messages');
+
+    var len = strungArray.length;
+    var tmpArray = strungArray;
+    for (let i = 0; i < len; i++) {
+        await pathLoop(tmpArray[i]);
+        console.log('messageReturned', arrayOfVal);
+        arrayOfMsgs.push(arrayOfVal);         
+    }
+    log(arrayOfMsgs);
+}
+
+//================================================
+
+async function getAllUsers(){
+    await pathLoop(currentChatroom+'')
 }
 
 
+//================================================
+
+function log(data){
+    console.table(data);
+}

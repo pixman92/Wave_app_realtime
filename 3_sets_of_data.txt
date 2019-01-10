@@ -26,4 +26,19 @@ also
 pathLoop('chatrooms/') // spits out all paths, to all chatrooms
 pathLoop(strungArray[posOfChatroom])    //spits out 'elements of chatroom'
 
+//============================================
+
+1)
+- I select a chatroom
+    - 
+- out pops the box, a msg, and place to type
+
+10:35 - problem solving
+10:40 - working
+10:45 - break
+10:55 - problem solvoing
+11:00 - break
+
+
+
 
