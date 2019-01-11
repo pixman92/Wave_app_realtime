@@ -147,8 +147,8 @@ async function makeHugeArrayOfAllUIDs(){
 
 //================================================
 
-
-// 1) Select a chatroom
+// 1) makeHugeArrayOfAllUIDs() - get all chatrooms
+// 1.1) setUID(<UID>) - Select a chatroom
 // 2) get all data sets from chat room
 // 2.1) getBox() - all box text
 // 2.2) getAllMsgs() - get all the messages back and forth
@@ -157,7 +157,9 @@ async function makeHugeArrayOfAllUIDs(){
 
 async function getBox(){
     await pathLoop(currentChatroom+'box');
-    console.log('BOX???', arrayOfVal);
+    console.log('BOX???', arrayOfVal[0].text);
+    return arrayOfVal[0].text;
+
 }
 
 var arrayOfMsgs = [];
@@ -179,6 +181,8 @@ async function getAllMsgs(){
 
 var arrayOfEmails=[];
 async function getAllUsers(){
+    // function that,
+    // once currentChatroom is set, returns usersEmails
     arrayOfEmails = [];
     await pathLoop(currentChatroom+'usersEmails');
 
@@ -192,7 +196,7 @@ async function getAllUsers(){
     }
 
 
-
+    console.log('arrayOfEmails');
     log(arrayOfEmails);
 
 
@@ -228,7 +232,14 @@ function log(data){
 }
 
 //========================================
+
+
+
+//========================================
 async function myListOfMyChatrooms(email){
+    // BIG FUNCTION:
+    // takes all emails, from EVERY chatroom
+    // then you can compare the subarrays to bigArray[<index>]
     await allUIDsAllUsers();
 
     for (var i = 0; i < allUsersArray.length; i++) {
