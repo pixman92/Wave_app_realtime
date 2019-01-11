@@ -7,3 +7,6 @@ _find all chatrooms that user is a member of
 TODO??
 _make creator of <chatroom> => owner
 _only owner can add/delete extra users
+_'enter' function for newMessage
+_write text in 'BOX'
+_menu to change 'chatrooms'

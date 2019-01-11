@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=100, initial-scale=1.0">
+    <meta name="viewport" content="width=100, initial-scale=1.0 user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Wave (chatrooms) - Realtime Database</title>
     
@@ -14,10 +14,28 @@
     firebase.initializeApp(config);
     </script>
     <script src="script.js"></script>
+    <script src="outputting.js"></script>
     <!-- <script src="selectChat.js"></script> -->
     <script src="helperFunctions.js"></script>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <h1>Hello</h1>
+  
+        <div class="header">
+            <h1 id="title">Your Chatroom</h1>
+        
+            <div>
+                <textarea name="" id="box" ></textarea>
+            </div>
+        </div>
+        <div class="messages">
+            
+        </div>
+
+        <div>
+            <textarea name="" id="newMessage" ></textarea>
+        </div>
+    
+
 </body>
 </html>

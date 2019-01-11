@@ -19,7 +19,7 @@ async function setup(){
     //sets up dummy data
     await makeHugeArrayOfAllUIDs();
     await console.table(bigArray);
-    // await getUID(bigArray[]);
+    await setUID(bigArray[0]);
 
     
 }
@@ -59,6 +59,9 @@ function setUID(UID){
 
 //========================================
 
+// Adding functions
+// functions that add to a chat room
+
 async function addUserToChatroom(user){
     // functiont that adds a 'user' to a corresponding 'Current' of chatroom
     db.ref(currentChatroom+'usersEmails').push({
@@ -85,6 +88,12 @@ async function addMessageToChatroom(message, sender){
     });
 }
 
+async function makeChatRoomTitle(title){
+    await db.ref(currentChatroom+'title').push({
+        title: title,
+    });
+}
+
 
 
 //================================================
@@ -101,15 +110,13 @@ async function massEmailGatherAndCheck(){
 }
 
 //================================================
-async function makeListOfChatroomsThatBelongToYou(email){
-    await pathLoop('chatrooms/');
+// async function makeListOfChatroomsThatBelongToYou(email){
+//     await pathLoop('chatrooms/');
 
 
     
 
-// 
-
-}
+//
 //================================================
 // var arrayOfEmails = [];
 // async function getChatRoomBasedOnEmail(){
@@ -153,6 +160,7 @@ async function makeHugeArrayOfAllUIDs(){
 // 2.1) getBox() - all box text
 // 2.2) getAllMsgs() - get all the messages back and forth
 // 2.3) getAllUsers() - pull a list of users from 'currentChatroom'
+// 2.4) getTitle() - gets title of chatroom
 // 3) output the data to HTML
 
 async function getBox(){
@@ -175,6 +183,21 @@ async function getAllMsgs(){
         arrayOfMsgs.push(arrayOfVal);         
     }
     log(arrayOfMsgs);
+
+    return new Promise((resolve)=>{
+        resolve(arrayOfMsgs);
+    });
+
+}
+
+async function getTitle(){
+    await pathLoop(currentChatroom+'title');
+
+    console.log('title', arrayOfVal[0].title);
+    // return arrayOfVal[0].title;
+    return new Promise((resolve)=>{
+        resolve(arrayOfVal[0].title);
+    });
 }
 
 //================================================
@@ -233,7 +256,11 @@ function log(data){
 
 //========================================
 
-
+async function removeEmail(email){
+    // take current chatroom
+    // getAllUsers array
+    // remove
+}
 
 //========================================
 async function myListOfMyChatrooms(email){
