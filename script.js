@@ -24,7 +24,7 @@ async function setup(){
     
 }
 var key = "";
-async function makeChatRoom(email){
+async function makeChatRoom(email, owner){
     // function that makes a chat room
     // adds 'themselves' as its sole user
     var chatroomID = await db.ref('chatrooms').push();
@@ -33,9 +33,17 @@ async function makeChatRoom(email){
     key = await chatroomID.key;
     console.log('key', key);
 
-    db.ref('chatrooms/'+key+'/usersEmails').push({
-        users: email
-    });
+    if(owner){
+        db.ref('chatrooms/'+key+'/usersEmails').push({
+            users: email
+        });
+        
+    }else{
+        db.ref('chatrooms/'+key+'/usersEmails').push({
+            owner: email
+        });
+        
+    }
 }
 
 //================================================
@@ -49,7 +57,7 @@ function setUID(UID){
     })
 }
 
-
+//========================================
 
 async function addUserToChatroom(user){
     // functiont that adds a 'user' to a corresponding 'Current' of chatroom
@@ -121,7 +129,7 @@ async function makeListOfChatroomsThatBelongToYou(email){
 
 var bigArray = [];
 async function makeHugeArrayOfAllUIDs(){
-    db.ref('chatrooms/').once('value')
+    await db.ref('chatrooms/').once('value')
     .then((snapshot)=>{
         bigArray = [];
         snapshot.forEach((el)=>{
@@ -195,9 +203,9 @@ async function getAllUsers(){
 
 //================================================
 
-var tmpArray = [];
+var allUsersArray = [];
 async function allUIDsAllUsers(){
-    tmpArray = [];
+    allUsersArray = [];
 
 
     await makeHugeArrayOfAllUIDs();
@@ -206,10 +214,10 @@ async function allUIDsAllUsers(){
     var tmpReturn;
 
     for (let i = 0; i < len; i++) {
-        setUID(bigArray[i]);
+        await setUID(bigArray[i]);
 
         tmpReturn = await getAllUsers();
-        tmpArray.push(tmpReturn);
+        allUsersArray.push(tmpReturn);
     }
 }
 
@@ -217,4 +225,20 @@ async function allUIDsAllUsers(){
 
 function log(data){
     console.table(data);
+}
+
+//========================================
+async function myListOfMyChatrooms(email){
+    await allUIDsAllUsers();
+
+    for (var i = 0; i < allUsersArray.length; i++) {
+        for (var ii = 0; ii < allUsersArray[i].length; ii++) {
+            if(allUsersArray[i][ii]==email){
+                console.log('yes');
+                console.log(bigArray[i]);
+            }
+        }
+    }
+
+
 }

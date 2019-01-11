@@ -1,0 +1,9 @@
+Working???
+_get all users' emails
+_compare those to 'bigArray'
+_find all chatrooms that user is a member of
+
+
+TODO??
+_make creator of <chatroom> => owner
+_only owner can add/delete extra users
