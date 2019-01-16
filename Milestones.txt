@@ -3,6 +3,24 @@ _get all users' emails
 _compare those to 'bigArray'
 _find all chatrooms that user is a member of
 
+_write text in 'BOX'
+
+TODO??
+_'enter' function for newMessage
+_menu to change 'chatrooms'
+
+
+
+
+
+
+//========================================
+
+Working???
+_get all users' emails
+_compare those to 'bigArray'
+_find all chatrooms that user is a member of
+
 
 TODO??
 _make creator of <chatroom> => owner
@@ -10,3 +28,5 @@ _only owner can add/delete extra users
 _'enter' function for newMessage
 _write text in 'BOX'
 _menu to change 'chatrooms'
+
+

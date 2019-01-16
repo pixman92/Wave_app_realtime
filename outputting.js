@@ -8,13 +8,21 @@ async function changeTitle(){
     // console.log('title', newTitle);
 }
 
-var messageObj;
-async function changeMessages(){
+var messageObj, tmp;
+async function changeMessages(range){
     messageObj = await getAllMsgs();
 
-    var str = "";
+    // var str = "";
+    document.getElementById('makeMessages').innerHTML = "";
+    tmp = "";
+    for(var i=0; i<=range; i++){
+        tmp = tmp + "<div><div class='text'>"+messageObj[i][1]+"</div><br><div class='sender'>"+messageObj[i][2]+"</div><br><div class='time'>"+messageObj[i][0]+"</div></div><div></div>";
 
-    
+    }
+
+    console.log('tmp', tmp);
+
+    document.getElementById('makeMessages').innerHTML = tmp;
 
 
 }

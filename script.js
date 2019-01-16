@@ -48,14 +48,14 @@ async function makeChatRoom(email, owner){
 
 //================================================
 
-var currentChatroom = "";
-function setUID(UID){
-    currentChatroom = 'chatrooms/'+UID+'/';
-    console.log('currentChatroom', currentChatroom);
-    return new Promise((resolve)=>{
-        resolve(currentChatroom);
-    })
-}
+// var currentChatroom = "";
+// async function setUID(UID){
+//     currentChatroom = 'chatrooms/'+UID+'/';
+//     console.log('currentChatroom', currentChatroom);
+//     return new Promise((resolve)=>{
+//         resolve(currentChatroom);
+//     })
+// }
 
 //========================================
 
@@ -69,10 +69,14 @@ async function addUserToChatroom(user){
     });
 }
 
-async function addBoxToChatroom(text){
-    db.ref(currentChatroom+'box').push({
-        text:text,
-    });
+var text2 = "" // var of compounding string
+async function addBoxToChatroom(){
+    // function that adds text2 up to Firebase realtime database
+    //
+       await db.ref(currentChatroom+'box').set({
+            text:text2,
+        });
+    // '/chatrooms/-LVg3yX4h-be2DPeGeei/box/'
 }
 
 async function addMessageToChatroom(message, sender){
@@ -82,9 +86,13 @@ async function addMessageToChatroom(message, sender){
  
     // await pathLoop('chatrooms/');
     // await pathLoop(strungArray[3]);
+
+
+    var myDate = Date();
     var chatroomID = await db.ref(currentChatroom+'messages').push({
         message: message,
         sender: sender,
+        date: myDate,
     });
 }
 
@@ -279,4 +287,13 @@ async function myListOfMyChatrooms(email){
     }
 
 
+}
+
+//========================================
+function boxHTMLGrab(text) {
+
+    text2 += text;
+    
+
+   
 }

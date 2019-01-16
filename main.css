@@ -28,3 +28,17 @@
     width: 100%;
 
 }
+
+.text{
+    font-size: 1.5em;
+    
+}
+
+.sender{
+    font-size: .8em;
+}
+
+.time{
+    font-size: .75em;
+
+}

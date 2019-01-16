@@ -33,6 +33,12 @@ pathLoop(strungArray[posOfChatroom])    //spits out 'elements of chatroom'
     - 
 - out pops the box, a msg, and place to type
 
+2)
+- make msg
+- save msg
+- add msg to msg stream
+
+
 
 
 
