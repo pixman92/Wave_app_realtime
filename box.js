@@ -7,6 +7,7 @@
 
 var boxStringCompound = "";
 function attachBoxListener() {
+    // function that attaches 'type changing event' to Box
     document.getElementById('box').addEventListener('input', (evt)=>{
         boxStringCompound = document.getElementById('box').value;
         console.log('input??', boxStringCompound);
@@ -16,3 +17,5 @@ function attachBoxListener() {
     });
 
 }
+
+// Functions for HTML listeners for new Messages

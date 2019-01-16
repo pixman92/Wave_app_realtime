@@ -69,7 +69,7 @@ async function addUserToChatroom(user){
     });
 }
 
-var text2 = "" // var of compounding string
+var text2 = "" // var of compounding string, allows string to be compounded elsewhere, then transfered here
 async function addBoxToChatroom(){
     // function that adds text2 up to Firebase realtime database
     //
@@ -80,7 +80,7 @@ async function addBoxToChatroom(){
 }
 
 async function addMessageToChatroom(message, sender){
-    // function that gets a chatroom based on NUM
+    // function that gets a chatroom based on message and sender
     // then appends a obj{}
     // obj{} is a sender&message 
  
@@ -118,14 +118,6 @@ async function massEmailGatherAndCheck(){
 }
 
 //================================================
-// async function makeListOfChatroomsThatBelongToYou(email){
-//     await pathLoop('chatrooms/');
-
-
-    
-
-//
-//================================================
 // var arrayOfEmails = [];
 // async function getChatRoomBasedOnEmail(){
 //     // function that pulls a single chatroom
@@ -144,6 +136,8 @@ async function massEmailGatherAndCheck(){
 
 var bigArray = [];
 async function makeHugeArrayOfAllUIDs(){
+    // function that pulls ALL UIDS from all Nodes
+    // dumps into an array
     await db.ref('chatrooms/').once('value')
     .then((snapshot)=>{
         bigArray = [];
@@ -161,6 +155,8 @@ async function makeHugeArrayOfAllUIDs(){
 }
 
 //================================================
+
+// Functions that get all data points (title/box/msgs) for 'currentChatroom'
 
 // 1) makeHugeArrayOfAllUIDs() - get all chatrooms
 // 1.1) setUID(<UID>) - Select a chatroom
