@@ -1,0 +1,5 @@
+db.ref('chatrooms/').once('value').then((snapshot)=>{
+snapshot.foreEach((el)=>{
+console.log(el);
+}
+));
