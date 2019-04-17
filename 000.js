@@ -12,10 +12,11 @@
 
 async function printOutMsgData(){
     await setUID('-LVg3yX4h-be2DPeGeei');
-    await changeMessages(1);
-
-    await makeNewMsgNode(false);
+    await changeMessages(arrayOfMsgs.length-1);
+    // await makeNewMsgNode(true);
     await makeNewMsgNodeListener();
     
+    
 }
+
 

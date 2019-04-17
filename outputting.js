@@ -10,6 +10,8 @@ async function changeTitle(){
 
 var messageObj, tmp;
 async function changeMessages(range){
+    // changes HTML output for messages
+    messageObj = {};
     messageObj = await getAllMsgs();
 
     // var str = "";

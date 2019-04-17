@@ -94,6 +94,8 @@ async function addMessageToChatroom(message, sender){
         sender: sender,
         date: myDate,
     });
+
+    await makeNewMsgNode(true);
 }
 
 async function makeChatRoomTitle(title){

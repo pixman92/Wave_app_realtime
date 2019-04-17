@@ -7,19 +7,38 @@
 // Msg node - stuff
 function makeNewMsgNode(msg){
     // makes/changes NewMsg node
+    // usually msg=true
     db.ref(currentChatroom+'/newMsg').set({
         msg:msg,
     });
 }
 
-function makeNewMsgNodeListener(){
+async function makeNewMsgNodeListener(){
     // function that makes a listener for changes to the NewMsg node
-    db.ref(currentChatroom+'newMsg/').on('value', (snapshot)=>{
+    await db.ref(currentChatroom+'newMsg/').on('value', (snapshot)=>{
         console.log('val', snapshot.val);
         // console.log('msg', newMsgTrue);
-        getNewMsgStatus();
+        // getNewMsgStatus();
+        // if(newMsgTrue==true){
+        //     console.log('yup i fired', );
+        //     changeMessages(arrayOfMsgs.length-1);
+        // }
+        
+
+        
     });
+    await getNewMsgStatus();
+    await printWhenTrue();
 }
+
+async function printWhenTrue(){
+    if(newMsgTrue==true){
+        console.log('yup i fired');
+        changeMessages(arrayOfMsgs.length-1);
+        return new Promise(resolve)
+    }
+}
+
 
 var newMsgTrue = false;
 async function getNewMsgStatus(){
