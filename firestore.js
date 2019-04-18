@@ -25,30 +25,8 @@ function addDataToFirestore(path, data){
     } 
 }
 
-// function pullDataEven(path){
-//     db2.collection(path).get().
-//     then((doc)=>{
-//         // console.log('docdata', doc.data());
-//         if(doc.exists){
-//             console.log('doc', doc);
-//         }else{
-//             console.log('no doc');
-//         }
-//     });
-// }
 
-// function pullDataOdd(path){
-//     db2.doc(path).get().
-//     then((doc)=>{
-//         // console.log('docdata', doc.data());
-//         if(doc.exists){
-//             console.log('doc', doc.data());
-//         }else{
-//             console.log('no doc');
-//         }
-//     });
-// }
-
+var savedDoc;
 function pullData(path){
     if(isOddOrEven(path)=="odd"){
         db2.doc(path).get().
@@ -56,6 +34,7 @@ function pullData(path){
             // console.log('docdata', doc.data());
             if(doc.exists){
                 console.log('doc', doc.data());
+                savedDoc = doc.data();
             }else{
                 console.log('no doc');
             }
@@ -67,6 +46,7 @@ function pullData(path){
             // console.log('docdata', doc.data());
             if(doc.exists){
                 console.log('doc', doc);
+                savedDoc = doc;
             }else{
                 console.log('no doc');
             }
