@@ -18,7 +18,7 @@ function addDataToFirestore(path, data){
     });
     }
     if(isOddOrEven(path)=="even"){
-        db2.collection(path).set(data).
+        db2.collection(path).set(data, {merge: true}).
     catch((error)=>{
         console.error('error caught', error);
     });
@@ -88,3 +88,8 @@ function pullFields(path){
 }
 
 //NEX? - working to get multi layered collections
+
+//where function 
+function whereFinder(){
+    d2.collection('dummy').where('date')
+} 
