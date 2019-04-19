@@ -26,7 +26,7 @@ function addDataToFirestore(path, data){
 }
 
 
-var savedDoc;
+var savedDoc=[];
 function pullData(path){
     if(isOddOrEven(path)=="odd"){
         db2.doc(path).get().
@@ -34,7 +34,7 @@ function pullData(path){
             // console.log('docdata', doc.data());
             if(doc.exists){
                 console.log('doc', doc.data());
-                savedDoc = doc.data();
+                savedDoc.push(doc.data());
             }else{
                 console.log('no doc');
             }
@@ -46,7 +46,7 @@ function pullData(path){
             // console.log('docdata', doc.data());
             if(doc.exists){
                 console.log('doc', doc);
-                savedDoc = doc;
+                savedDoc.push(doc);
             }else{
                 console.log('no doc');
             }
