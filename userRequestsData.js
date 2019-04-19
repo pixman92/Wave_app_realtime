@@ -7,6 +7,7 @@ function pullInivites(myEmail){
 
 async function sendInvite(from, to, chatroomSelected){
     // function that sends a Chat Room invite from me to them
+    
 }
 
 async function confirmInvite(inviteArray, myEmail){
