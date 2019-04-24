@@ -1,3 +1,19 @@
 History:
 
 - getting firestore set up
+
+-NEXT?
+chatroom:
+-UID
+-dateCreated
+-messages:
+    -text
+    -name
+    -date
+-list Of current chatroom members
+-box (at top)
+-textbox - to invite to chatroom
+
+-NEXT?
+-users:
+    -list of requests to join
