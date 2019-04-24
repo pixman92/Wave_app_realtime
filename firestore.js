@@ -89,7 +89,4 @@ function pullFields(path){
 
 //NEX? - working to get multi layered collections
 
-//where function 
-function whereFinder(){
-    d2.collection('dummy').where('date')
-} 
+
