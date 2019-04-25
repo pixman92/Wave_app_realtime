@@ -10,6 +10,13 @@ function addDataToFirestoreForCompletelyNew(path, data){
     });   
 }
 
+function addDataMergeTrue(path, data){   
+    db2.collection(path).set(data, {merge: true}).
+    catch((error)=>{
+        console.error('error caught', error);
+    });   
+}
+
 var dataMe = []; var firestorePaths = [];
 var slashCount = 0;
 async function queryData(path){
