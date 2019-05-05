@@ -67,6 +67,43 @@ function selectChatRoomFromThoseIAmApart(myEmail){
     
 }
 
+
+//================================================
+var docMe2=[];
+var savedMessage = []; var savedMessagePaths = []; 
+function matchAdmin(path, adminEmail, roomNumber){
+    //function that matches where() - admin <email>
+    db2.collection(path)
+    .where('admin', '==', adminEmail)
+    .get()
+    .then((snapshot)=>{
+        snapshot.forEach((doc)=>{
+            var docData = doc.data();
+            savedMessage.push(docData);
+            // var docId = doc.id;
+            docMe2.push(doc);
+
+        });
+        for(var i in docMe2){
+            savedMessagePaths.push(docMe2[i].ref.path);
+        }
+        console.log('savedMessagePaths', savedMessagePaths);
+    });
+}
+
+function pullMessages(path, chatroomNum){
+    //funciton that pull messages from a matched Room
+
+    queryData(path);
+    queryData(savedMessagePaths[chatroomNum]+'/messages');
+    for(var i in firestorePaths){
+        pullDataFromFirestore(firestorePaths[0]);
+
+    }
+
+}
+
+
 //================================================
 // steps for adding Msg(s)
 // -query data
