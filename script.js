@@ -91,13 +91,46 @@ function matchAdmin(path, adminEmail, roomNumber){
     });
 }
 
-function pullMessages(path, chatroomNum){
+function pullMessages(path, adminEmail, chatroomNum){
     //funciton that pull messages from a matched Room
 
-    queryData(path);
-    queryData(savedMessagePaths[chatroomNum]+'/messages');
-    for(var i in firestorePaths){
-        pullDataFromFirestore(firestorePaths[0]);
+    first();
+
+    async function first(){
+        // await queryData(path);
+        // wait(700).then(()=>{
+        //     if(firestorePaths==""){
+        //         first();
+        //     }else{
+        //         second();
+        //     }
+        // });
+
+        matchAdmin(path, adminEmail, chatroomNum);
+        wait(700).then(()=>{
+            if(savedMessagePaths==""){
+                first();
+            }else{
+                second();
+            }
+        });
+    }
+    async function second(){
+        await queryData(savedMessagePaths[chatroomNum]+'/messages');
+        wait(700).then(()=>{
+            if(savedMessagePaths==""){
+                second();
+            }else{
+                third();
+            }
+        });
+
+    }
+    function third(){
+        for(var i in firestorePaths){
+            pullDataFromFirestore(firestorePaths[0]);
+
+    }
 
     }
 
