@@ -16,33 +16,19 @@ function createMsg(myEmail, chatroomNum, msg){
     //     roomNumber(chatroomNum);
     // });
 
-    returnedQuery(chatroomNum);
+    returnedQuery();
+    pullingData(chatroomNum);
 
-    async function returnedQuery(chatroomNum){
-        await queryData('chatrooms2');
-        wait(800).then(()=>{
-            if(firestorePaths==""){
-                returnedQuery();
-            // }else{
-        }
-        });
-    }   
-    function pullingData(){
-        pullDataFromFirestore(firestorePaths[chatroomNum]);
-    }
-    wait(800).then(()=>{
-        if(savedDoc==""){
-            pullingData();
-        }
-        meCount = savedDoc[savedDoc.length-1].counter;
-    });
+    
 
     console.log('meCount', meCount);
-    console.log('savedDoc', savedDoc);    }
+    console.log('savedDoc', savedDoc);    
 
     console.log('firepath', firestorePaths[chatroomNum]);
 
-    addDataMergeTrue(firestorePaths[chatroomNum], {email: myEmail, msg: msg, counter: meCount++ });
+    // pathsComplete(myEmail, chatroomNum, msg);
+
+    addDataMergeTrue(firestorePaths[0], {email: myEmail, msg: msg, counter: meCount++ });
     
 }
 
@@ -82,3 +68,51 @@ function selectChatRoomFromThoseIAmApart(myEmail){
 
 //     });
 // }
+
+//========================================
+var globMe;
+async function returnedQuery(){
+    await queryData('chatrooms2');
+    wait(800).then(async()=>{
+        // globMe = firestorePaths;
+        // console.log('firestorePaths2', firestorePaths);
+        if(!firestorePaths){
+            console.log('paths null', );
+            returnedQuery();
+        // }else{
+    }
+    });
+}   
+// function pullingData(chatroomNum){
+//     console.log('firepaths3', firestorePaths);
+//     pullDataFromFirestore(firestorePaths[chatroomNum]);
+//     wait(800).then(()=>{
+//         if(!savedDoc){
+//             pullingData();
+//         }
+//         meCount = savedDoc[savedDoc.length-1].counter;
+//     });
+// }
+
+function pullingData(chatroomNum){
+    console.log('firepaths3', firestorePaths);
+    wait(800).then(()=>{
+        if(!firestorePaths){
+            returnedQuery();
+            pullingData(chatroomNum);
+        }
+    });
+    pullDataFromFirestore(firestorePaths[chatroomNum]);
+    meCount = savedDoc[savedDoc.length-1].counter;
+}
+
+
+function pathsComplete(myEmail, chatroomNum, msg){
+    wait(800).then(()=>{
+        if(!firestorePaths){
+            console.log('paths incomplete for messages', );
+            pathsComplete();
+        }
+    });
+    addDataMergeTrue(firestorePaths[0]+"/messages", {email: myEmail, msg: msg, counter: meCount });
+}

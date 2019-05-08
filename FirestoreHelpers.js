@@ -11,8 +11,11 @@ function addDataToFirestoreForCompletelyNew(path, data){
 }
 
 function addDataMergeTrue(path, data){   
-    db2.collection(path).set(data, {merge: true}).
-    catch((error)=>{
+    db2.collection(path).add(data, {merge: true}).
+    then(()=>{
+        console.log('saved');
+    })
+    .catch((error)=>{
         console.error('error caught', error);
     });   
 }
