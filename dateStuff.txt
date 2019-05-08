@@ -1,0 +1,8 @@
+Date stuff figured out!!!
+
+-get seconds from Firestore
+-save to variable
+-var tmp = new Date()
+-tmp.setSeconds(sec*1000);
+-tmp, now equals a Date
+!!!
