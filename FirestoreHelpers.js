@@ -24,7 +24,6 @@ function addDataMergeTrue(path, data){
         });   
     }
 
->>>>>>> b0340b294fe0888f97083e11e399afde30ad1610
 }
 
 var dataMe = []; var firestorePaths = [];

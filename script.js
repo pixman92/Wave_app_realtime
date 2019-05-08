@@ -15,19 +15,16 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
     // wait(1000).then(()=>{
     //     roomNumber(chatroomNum);
     // });
-
-<<<<<<< HEAD
     returnedQuery();
-    pullingData(chatroomNum);
+    // pullingData(chatroomNum);
 
     
 
     console.log('meCount', meCount);
     console.log('savedDoc', savedDoc);    
-=======
 
        
-    returnedQuery(chatroomNum);
+    // returnedQuery(chatroomNum);
 
 
     async function returnedQuery(chatroomNum){
@@ -60,7 +57,8 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
             }else{
                 console.log('saveDoc undefined?', savedDoc==undefined);
                 meCount = savedDoc[savedDoc.length-1].counter;
-                addDataMergeTrue(savedMessagePaths[chatroomNum]+'/messages', {email: myEmail, msg: msg, counter: meCount++});
+                meCount++;
+                addDataMergeTrue(savedMessagePaths[chatroomNum]+'/messages', {email: myEmail, msg: msg, counter: meCount});
 
             }
         });
@@ -69,15 +67,11 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
     console.log('meCount', meCount);
     console.log('savedDoc', savedDoc);    
     console.log('firepath', savedMessagePaths[chatroomNum]);
->>>>>>> b0340b294fe0888f97083e11e399afde30ad1610
 
-
-<<<<<<< HEAD
     // pathsComplete(myEmail, chatroomNum, msg);
 
-    addDataMergeTrue(firestorePaths[0], {email: myEmail, msg: msg, counter: meCount++ });
-=======
->>>>>>> b0340b294fe0888f97083e11e399afde30ad1610
+    // somehow?? - mixed up in syncing - ugh
+    // addDataMergeTrue(firestorePaths[0], {email: myEmail, msg: msg, counter: meCount++ });
     
 }
 
@@ -111,8 +105,8 @@ function matchAdmin(path, adminEmail, roomNumber){
     });
 }
 
-function pullMessages(path, adminEmail, chatroomNum){
-    //funciton that pull messages from a matched Room
+//funciton that pull messages from a matched Room
+    function pullMessages(path, adminEmail, chatroomNum){
 
     first();
 
@@ -241,4 +235,19 @@ function pathsComplete(myEmail, chatroomNum, msg){
         }
     });
     addDataMergeTrue(firestorePaths[0]+"/messages", {email: myEmail, msg: msg, counter: meCount });
+}
+
+
+//================================================
+var countMe=[];
+function orderMe(path){
+    db2.collection(path).orderBy('counter')
+    .limit(1)
+    .get()
+    .then(async(snap)=>{
+        snap.forEach(async (doc)=>{
+            await countMe.push(doc);
+        });
+    });
+
 }
