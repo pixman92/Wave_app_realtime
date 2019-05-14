@@ -98,12 +98,6 @@ function pullFields(path){
 var docdata; var docId; var docMe=[]; var afterDate; var beforeDate;
 var whereFinderPaths = [];
 var docDataArray=[];
-function whereFinder(inputDate){    //function used in outputting.js to be used with date passed to this function
-   
-   //where function 
-var docdata; var docId; var docMe=[]; var afterDate; var beforeDate;
-var whereFinderPaths = [];
-var docDataArray=[];
 var originDate;
 function whereFinder(inputMe){    //function used in outputting.js to be used with date passed to this function
     //function that takes in an input date,
