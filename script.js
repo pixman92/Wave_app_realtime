@@ -275,7 +275,7 @@ function messageGet(adminEmail, chatroomNum){
     match();
 
     function match(){
-        matchAdmin('chatrooms2', adminEmail, chatroomNum);
+        matchAdmin('chatrooms', adminEmail, chatroomNum);
         wait(700).then(()=>{
             if(savedMessage==""){
                 match();
