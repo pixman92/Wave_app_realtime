@@ -272,10 +272,12 @@ function orderMe(path){
 //================================================
 function messageGet(adminEmail, chatroomNum){
 
+    //NEXT? - get this function working!!!
+
     match();
 
     function match(){
-        matchAdmin('chatrooms', adminEmail, chatroomNum);
+        matchAdmin('chatrooms2', adminEmail, chatroomNum);
         wait(700).then(()=>{
             if(savedMessage==""){
                 match();
