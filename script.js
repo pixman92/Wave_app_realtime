@@ -99,7 +99,7 @@ function selectChatRoomFromThoseIAmApart(myEmail){
 //================================================
 var docMe2=[];
 var savedMessage = []; var savedMessagePaths = []; 
-function matchAdmin(path, adminEmail, roomNumber){
+function matchAdmin(path, adminEmail){
     //function that matches where() - admin <email>
 
     savedMessagePaths=[];
@@ -270,3 +270,25 @@ function orderMe(path){
 }
 
 //================================================
+function messageGet(adminEmail, chatroomNum){
+    matchAdmin('paterons', adminEmail, chatroomNum);
+    db2.collection(savedMessage[0])
+    .orderBy('date')
+    .get()
+    .then((snapshot)=>{
+        snapshot.forEach((doc)=>{
+            var docData = doc.data();
+            savedMessage.push(docData);
+            // var docId = doc.id;
+            docMe2.push(doc);
+
+        });
+        for(var i in docMe2){
+            messagesPaths.push(docMe2[i].ref.path);
+        }
+        console.log('messagesPaths', messagesPaths);
+    });
+
+    pullDataFromFirestore()
+
+}
