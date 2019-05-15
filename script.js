@@ -39,7 +39,7 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
         // });
 
         matchAdmin('chatrooms2', adminEmail, chatroomNum);
-        wait(800).then(()=>{
+        wait(1800).then(()=>{
             if(docMe2==""){
                 returnedQuery();
             }else{
@@ -56,9 +56,14 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
                 pullingData();
             }else{
                 console.log('saveDoc undefined?', savedDoc==undefined);
-                meCount = savedDoc[savedDoc.length-1].counter;
-                meCount++;
-                addDataMergeTrue(savedMessagePaths[chatroomNum]+'/messages', {email: myEmail, msg: msg, counter: meCount});
+                // NEXT? - Refactor a counter, that is tied to an 'assorted'
+                // list of messages, based on timestamp. 
+                // Sort, by timestamp, then increment 1 to latest message timestamp.
+                // meCount = savedDoc[savedDoc.length-1].counter;
+                // meCount++;
+                makeMeCount();
+                var date = new Date();
+                addDataMergeTrue(savedMessagePaths[chatroomNum]+'/messages', {email: myEmail, msg: msg, counter: meCount, date: date});
 
             }
         });
@@ -72,8 +77,17 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
 
     // somehow?? - mixed up in syncing - ugh
     // addDataMergeTrue(firestorePaths[0], {email: myEmail, msg: msg, counter: meCount++ });
-    
 }
+
+
+function makeMeCount(){
+
+}
+
+//================================================
+
+
+
 
 
 function selectChatRoomFromThoseIAmApart(myEmail){
@@ -87,6 +101,9 @@ var docMe2=[];
 var savedMessage = []; var savedMessagePaths = []; 
 function matchAdmin(path, adminEmail, roomNumber){
     //function that matches where() - admin <email>
+
+    savedMessagePaths=[];
+
     db2.collection(path)
     .where('admin', '==', adminEmail)
     .get()

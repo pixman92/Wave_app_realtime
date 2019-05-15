@@ -107,17 +107,16 @@ function whereFinder(inputMe){    //function used in outputting.js to be used wi
     whereFinderPaths = [];
     docDataArray=[];
 
-    originDate = new Date(inputMe);
-    originDate = new Date(originDate);
-    afterDate = new Date(originDate);
-    beforeDate = new Date(originDate);
+    dateLessTmp = new Date();
+    dateLessTmp = dateToBePassed.setSeconds(dateToBePassed.getSeconds() - 1);
 
-    afterDate = afterDate.setHours(23, 59, 59, 0);
-    beforeDate = beforeDate.setHours(0, 0, 0, 0);
+    dateMoreTmp = new Date();
+    dateMoreTmp = dateToBePassed.setSeconds(dateToBePassed.getSeconds() + 2);
 
-    afterDate = new Date(afterDate);
-    beforeDate = new Date(beforeDate);
+    var dateLess = new Date(dateLessTmp);
+    // dateLess.setSeconds(dateLessTmp);
 
+    var dateMore = new Date(dateMoreTmp);
     // afterDate = afterDate.setDate(originDate.getDate()+1);
     // beforeDate = beforeDate.setDate(originDate.getDate()-1);
 
@@ -125,7 +124,7 @@ function whereFinder(inputMe){    //function used in outputting.js to be used wi
 
 
     db2.collection(path)
-    .where('date', '<', afterDate).where('date', '>', beforeDate)
+    .where('date', '<', dateMore).where('date', '>', dateLess)
     // .where('date', '==', originDate)
     .get()
     .then((snapshot)=>{
@@ -181,7 +180,7 @@ function whereFinder(inputMe){    //function used in outputting.js to be used wi
 //     //return docDataArray!!!!
 // } 
 
-}
+// }
 
 //========================================
 //defines the wait function() - for timing out a task
