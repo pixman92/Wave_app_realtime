@@ -139,7 +139,7 @@ function matchAdmin(path, adminEmail){
 
         matchAdmin(path, adminEmail, chatroomNum);
         wait(700).then(()=>{
-            if(savedMessagePaths==""){
+            if(docMe2==""){
                 first();
             }else{
                 second();
@@ -275,7 +275,7 @@ function messageGet(adminEmail, chatroomNum){
     match();
 
     function match(){
-        matchAdmin('paterons', adminEmail, chatroomNum);
+        matchAdmin('chatrooms2', adminEmail, chatroomNum);
         wait(700).then(()=>{
             if(savedMessage==""){
                 match();
