@@ -271,24 +271,65 @@ function orderMe(path){
 
 //================================================
 function messageGet(adminEmail, chatroomNum){
-    matchAdmin('paterons', adminEmail, chatroomNum);
-    db2.collection(savedMessage[0])
-    .orderBy('date')
-    .get()
-    .then((snapshot)=>{
-        snapshot.forEach((doc)=>{
-            var docData = doc.data();
-            savedMessage.push(docData);
-            // var docId = doc.id;
-            docMe2.push(doc);
 
+    match();
+
+    function match(){
+        matchAdmin('paterons', adminEmail, chatroomNum);
+        wait(700).then(()=>{
+            if(savedMessage==""){
+                match();
+            }else{
+                order();
+
+            }
         });
-        for(var i in docMe2){
-            messagesPaths.push(docMe2[i].ref.path);
-        }
-        console.log('messagesPaths', messagesPaths);
-    });
+    }
 
-    pullDataFromFirestore()
+    function order(){
+        db2.collection(savedMessage[0])
+        .orderBy('date')
+        .get()
+        .then((snapshot)=>{
+            snapshot.forEach((doc)=>{
+                var docData = doc.data();
+                savedMessage.push(docData);
+                // var docId = doc.id;
+                docMe2.push(doc);
+    
+            });
+            for(var i in docMe2){
+                messagesPaths.push(docMe2[i].ref.path);
+            }
+            console.log('messagesPaths', messagesPaths);
+        });
+
+        wait(700).then(()=>{
+            if(messagesPaths==""){
+                order();
+            }else{
+                printThem();
+            }
+        });
+
+    }
+
+
+    function printThem(){
+        for(i in messagesPaths){
+            pullDataFromFirestore(messagesPaths[i]);
+        }
+        
+        wait(700).then(()=>{
+            if(savedDoc==""){
+                printThem();
+            }
+        });
+
+    
+
+    }
+    
+
 
 }
