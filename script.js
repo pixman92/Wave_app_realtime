@@ -279,7 +279,7 @@ function messageGet(adminEmail, chatroomNum){
     function match(){
         matchAdmin('chatrooms2', adminEmail, chatroomNum);
         wait(700).then(()=>{
-            if(savedMessage==""){
+            if(savedMessagePaths==""){
                 match();
             }else{
                 order();
@@ -289,7 +289,8 @@ function messageGet(adminEmail, chatroomNum){
     }
 
     function order(){
-        db2.collection(savedMessage[0])
+        var messagesPaths=[];
+        db2.collection(savedMessagePaths[0]+'/messages')
         .orderBy('date')
         .get()
         .then((snapshot)=>{
