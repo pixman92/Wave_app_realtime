@@ -13,7 +13,7 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
     //function that creates a message and appends it to the correct child Chat Room
 
     // NEXT? - add finding chat room by date
-    
+
     
     returnedQuery();
     // pullingData(chatroomNum);
@@ -38,7 +38,7 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
         //     }
         // });
 
-        matchAdmin('chatrooms2', adminEmail, chatroomNum);
+        matchAdmin('chatrooms', adminEmail, chatroomNum);
         wait(1800).then(()=>{
             if(docMe2==""){
                 returnedQuery();
@@ -56,12 +56,12 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
                 pullingData();
             }else{
                 console.log('saveDoc undefined?', savedDoc==undefined);
-                // NEXT? - Refactor a counter, that is tied to an 'assorted'
+                // DONE - Refactor a counter, that is tied to an 'assorted'
                 // list of messages, based on timestamp. 
                 // Sort, by timestamp, then increment 1 to latest message timestamp.
                 // meCount = savedDoc[savedDoc.length-1].counter;
                 // meCount++;
-                makeMeCount();
+                makeMeCount(savedMessagePaths[chatroomNum]+'/messages');
                 var date = new Date();
                 addDataMergeTrue(savedMessagePaths[chatroomNum]+'/messages', {email: myEmail, msg: msg, counter: globCounterForMessages, date: date});
 
@@ -82,12 +82,12 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
 
 var savedStuff = []; var tmpPaths=[];
 var globCounterForMessages = 0;
-async function makeMeCount(){
+async function makeMeCount(path){
     //function that takes in a SPECIFIC group of messages. Takes highest message counter and adds 1
     //NEXT? - make this a general function
 
     savedStuff=[];
-    await db2.collection('/chatrooms2/25HLM54Bvtzzo0tMHrnw/messages')
+    await db2.collection(path)
     .orderBy("date")
     .get()
     .then(async(snap)=>{
@@ -109,18 +109,6 @@ async function makeMeCount(){
         });
 
     });
-
-
-
-
-
-
-
-
-
-
-
-
     console.log(savedStuff);
 }
 
@@ -163,7 +151,7 @@ function matchAdmin(path, adminEmail){
 }
 
 //funciton that pull messages from a matched Room
-    function pullMessages(path, adminEmail, chatroomNum){
+function pullMessages(path, adminEmail, chatroomNum){
 
     first();
 
@@ -199,7 +187,7 @@ function matchAdmin(path, adminEmail){
     }
     function third(){
         for(var i in firestorePaths){
-            pullDataFromFirestore(firestorePaths[0]);
+            pullDataFromFirestore(firestorePaths[i]);
 
     }
 
