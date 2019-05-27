@@ -12,9 +12,9 @@ var meCount=0;
 function createMsg(myEmail, chatroomNum, msg, adminEmail){
     //function that creates a message and appends it to the correct child Chat Room
 
-    // wait(1000).then(()=>{
-    //     roomNumber(chatroomNum);
-    // });
+    // NEXT? - add finding chat room by date
+    
+    
     returnedQuery();
     // pullingData(chatroomNum);
 
