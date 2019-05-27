@@ -5,7 +5,7 @@
 async function createRoom(myEmail){
     // function that creates a new Chat Room
     var tmpDate = new Date();
-    addDataToFirestoreForCompletelyNew('chatrooms2', {admin: myEmail, date: tmpDate, counter: 1});
+    addDataToFirestoreForCompletelyNew('chatrooms', {admin: myEmail, date: tmpDate});
 }
 
 var meCount=0;
@@ -63,7 +63,7 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
                 // meCount++;
                 makeMeCount();
                 var date = new Date();
-                addDataMergeTrue(savedMessagePaths[chatroomNum]+'/messages', {email: myEmail, msg: msg, counter: meCount, date: date});
+                addDataMergeTrue(savedMessagePaths[chatroomNum]+'/messages', {email: myEmail, msg: msg, counter: globCounterForMessages, date: date});
 
             }
         });
@@ -80,8 +80,48 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
 }
 
 
-function makeMeCount(){
+var savedStuff = []; var tmpPaths=[];
+var globCounterForMessages = 0;
+async function makeMeCount(){
+    //function that takes in a SPECIFIC group of messages. Takes highest message counter and adds 1
+    //NEXT? - make this a general function
 
+    savedStuff=[];
+    await db2.collection('/chatrooms2/25HLM54Bvtzzo0tMHrnw/messages')
+    .orderBy("date")
+    .get()
+    .then(async(snap)=>{
+        snap.forEach(async (doc)=>{
+            await savedStuff.push(doc);
+        });
+        for(var i=0; i<savedStuff.length; i++){
+            tmpPaths.push(savedStuff[i].ref.path);
+        }
+        for(var i in tmpPaths){
+            pullDataFromFirestore(tmpPaths[i]);
+            // console.log('i', i);
+        }
+        wait(700).then(()=>{
+            var tmp = savedDoc.length-1;
+            globCounterForMessages = savedDoc[tmp].counter;
+            globCounterForMessages++;
+
+        });
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+    console.log(savedStuff);
 }
 
 //================================================

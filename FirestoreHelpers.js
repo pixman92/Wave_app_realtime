@@ -86,10 +86,6 @@ function isOddOrEven(str){
     }
 }
 
-//NEXT? - figuring out how to compile all 'fields'
-function pullFields(path){
-
-}
 
 //NEX? - working to get multi layered collections
 //================================================
