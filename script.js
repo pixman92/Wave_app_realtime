@@ -61,6 +61,9 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
                 // Sort, by timestamp, then increment 1 to latest message timestamp.
                 // meCount = savedDoc[savedDoc.length-1].counter;
                 // meCount++;
+
+                console.log('path', savedMessagePaths[chatroomNum] );
+
                 makeMeCount(savedMessagePaths[chatroomNum]+'/messages');
                 var date = new Date();
                 addDataMergeTrue(savedMessagePaths[chatroomNum]+'/messages', {email: myEmail, msg: msg, counter: globCounterForMessages, date: date});
@@ -86,7 +89,7 @@ async function makeMeCount(path){
     //function that takes in a SPECIFIC group of messages. Takes highest message counter and adds 1
     //NEXT? - make this a general function
 
-    savedStuff=[];
+    savedStuff=[]; tmpPaths=[];
     await db2.collection(path)
     .orderBy("date")
     .get()
@@ -305,7 +308,7 @@ function messageGet(adminEmail, chatroomNum){
     match();
 
     function match(){
-        matchAdmin('chatrooms2', adminEmail, chatroomNum);
+        matchAdmin('chatrooms', adminEmail, chatroomNum);
         wait(700).then(()=>{
             if(savedMessagePaths==""){
                 match();
