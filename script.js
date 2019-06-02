@@ -123,7 +123,7 @@ function matchAdmin(path, adminEmail, roomNumber){
 }
 
 //funciton that pull messages from a matched Room
-    function pullMessages(path, adminEmail, chatroomNum){
+function pullMessages(path, adminEmail, chatroomNum){
 
     first();
 
@@ -257,9 +257,9 @@ function pathsComplete(myEmail, chatroomNum, msg){
 
 //================================================
 var countMe=[];
-function orderMe(path){
-    db2.collection(path).orderBy('counter')
-    .limit(1)
+function orderMe(path, orderMe){
+    db2.collection(path).orderBy(orderMe)
+    // .limit(1)
     .get()
     .then(async(snap)=>{
         snap.forEach(async (doc)=>{
