@@ -12,8 +12,7 @@ var meCount=0;
 function createMsg(myEmail, chatroomNum, msg, adminEmail){
     //function that creates a message and appends it to the correct child Chat Room
 
-    // NEXT? - add finding chat room by date
-
+    
     
     returnedQuery();
     // pullingData(chatroomNum);
@@ -84,7 +83,7 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
 
 
 var savedStuff = []; var tmpPaths=[];
-var globCounterForMessages = 0;
+var globCounterForMessages = -1;
 async function makeMeCount(path){
     //function that takes in a SPECIFIC group of messages. Takes highest message counter and adds 1
     //NEXT? - make this a general function
@@ -104,12 +103,27 @@ async function makeMeCount(path){
             pullDataFromFirestore(tmpPaths[i]);
             // console.log('i', i);
         }
-        wait(700).then(()=>{
+        pullCounter();
+        function pullCounter(){
             var tmp = savedDoc.length-1;
             globCounterForMessages = savedDoc[tmp].counter;
+            console.log('counter pre', globCounterForMessages);
             globCounterForMessages++;
+            console.log('counter added', globCounterForMessages);
+            wait(850).then(()=>{                
+                if(globCounterForMessages==-1){
+                    pullCounter();
+                }
+                // else{
+                //     var tmp = savedDoc.length-1;
+                //     globCounterForMessages = savedDoc[tmp].counter;
+                //     globCounterForMessages++;
 
-        });
+                // }
+    
+            });
+
+        }
 
     });
     console.log(savedStuff);
