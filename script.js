@@ -1,4 +1,21 @@
 
+//========================================
+// make-state-fast functions
+
+function make(arg){
+    if(arg==1){
+        //making a message
+        createMsg('email', 0, 'msg', 'sam@gmail.com');
+    }
+    if(arg==2){
+        //pulling message to HTML
+
+    }
+}
+
+
+//========================================
+
 
 //functions to add data, then pull data
 
@@ -83,7 +100,7 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
 
 
 var savedStuff = []; var tmpPaths=[];
-var globCounterForMessages = -1;
+var globCounterForMessages = 0;
 async function makeMeCount(path){
     //function that takes in a SPECIFIC group of messages. Takes highest message counter and adds 1
     //NEXT? - make this a general function
@@ -105,14 +122,18 @@ async function makeMeCount(path){
         }
         pullCounter();
         function pullCounter(){
-            var tmp = savedDoc.length-1;
-            globCounterForMessages = savedDoc[tmp].counter;
-            console.log('counter pre', globCounterForMessages);
-            globCounterForMessages++;
-            console.log('counter added', globCounterForMessages);
+            wait(500).then(()=>{
+                var tmp = savedDoc.length-1;
+                globCounterForMessages = savedDoc[tmp].counter;
+                console.log('counter pre', globCounterForMessages);
+                globCounterForMessages++;
+                console.log('counter added', globCounterForMessages);
+
+            });
             wait(850).then(()=>{                
                 if(globCounterForMessages==-1){
                     pullCounter();
+                    console.log('pullCounter run');
                 }
                 // else{
                 //     var tmp = savedDoc.length-1;
