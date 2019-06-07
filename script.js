@@ -11,7 +11,7 @@ async function createRoom(myEmail){
 }
 
 var meCount=0;
-function createMsg(myEmail, chatroomNum, msg, adminEmail){
+async function createMsg(myEmail, chatroomNum, msg, adminEmail){
     //function that creates a message and appends it to the correct child Chat Room
 
     
@@ -49,7 +49,7 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
         });
 
     }   
-    function pullingData(){
+    async function pullingData(){
         //pulling fields, to make sure of right Room
         pullDataFromFirestore(savedMessagePaths[chatroomNum]);
         wait(800).then(()=>{
@@ -67,6 +67,7 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
 
                 makeMeCount(savedMessagePaths[chatroomNum]+'/messages');
                 var date = new Date();
+                console.log('before adding counter', globCounterForMessages);
                 addDataMergeTrue(savedMessagePaths[chatroomNum]+'/messages', {email: myEmail, msg: msg, counter: globCounterForMessages, date: date});
 
             }
@@ -85,7 +86,7 @@ function createMsg(myEmail, chatroomNum, msg, adminEmail){
 
 
 var savedStuff = []; var tmpPaths=[];
-var globCounterForMessages=0;
+var globCounterForMessages=-1;
 async function makeMeCount(path){
     //function that takes in a SPECIFIC group of messages. Takes highest message counter and adds 1
     //NEXT? - make this a general function
@@ -105,23 +106,44 @@ async function makeMeCount(path){
             pullDataFromFirestore(tmpPaths[i]);
             // console.log('i', i);
         }
-        pullCounter();
-        function pullCounter(){
+        console.log("saveDoc", {savedDoc});
+    // });
+        // pullCounter();
+        // function pullCounter(){
+            console.log('savedDoc', savedDoc);
             var tmp = savedDoc.length-1;
-            console.log('counter?', savedDoc[tmp].counter);
-            wait(850).then(()=>{          
-                if(savedDoc[tmp].counter==undefined){
+            console.log('counter1?', savedDoc[tmp].counter);
+            wait(850).then(()=>{ 
+                var tmp = savedDoc.length-1;         
+                if(savedDoc==undefined&&globCounterForMessages==-1){
                     globCounterForMessages=0
+                    console.log('i fired');
+                    var tmp = savedDoc.length-1;
+                    console.log('counter2?', savedDoc[tmp].counter);
+                    console.log('globCounterForMessages', globCounterForMessages);
                 }else{
 
-                    wait(500).then(()=>{
-                        var tmp = savedDoc.length-1;
-                        globCounterForMessages = savedDoc[tmp].counter;
-                        console.log('counter pre', globCounterForMessages);
-                        globCounterForMessages++;
-                        console.log('counter added', globCounterForMessages);
-        
-                    });
+                    notNegative();
+                    function notNegative(){
+                        wait(500).then(()=>{
+                            var tmp = savedDoc.length-1;
+                            console.log('savedDoc Counter', savedDoc[tmp].counter);
+                            if(savedDoc[tmp].counter!=-1){
+                                wait(500).then(()=>{
+            
+                                    globCounterForMessages = savedDoc[tmp].counter;
+                                    console.log('counter pre', globCounterForMessages);
+                                    globCounterForMessages++;
+                                    console.log('counter added', globCounterForMessages);
+                    
+                                });
+                            }else{
+                                notNegative();
+
+                            }
+
+                        });
+                    }
                 }
                 // if(globCounterForMessages!=NaN){
                 //     pullCounter();
@@ -138,7 +160,7 @@ async function makeMeCount(path){
                 // }
             });
 
-        }
+        // }
 
     });
     console.log(savedStuff);
