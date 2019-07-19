@@ -6,7 +6,11 @@ function addMessage(roomID, msg, senderEmail, counter){
 
     addDataMergeTrue("/chatrooms/I4IwkTcAnzFWUhs5dKHL/messages", {message: msg, email: senderEmail, counter: counter});
 
-    
 
 
+
+}
+
+function pullMessages(roomID){
+    db.
 }
