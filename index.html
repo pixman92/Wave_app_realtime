@@ -8,11 +8,28 @@
     
     <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#config-web-app -->
+        
     <script src="config.js"></script>
+    <script>
+    // Your web app's Firebase configuration
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var db = firebase.firestore();
+    </script>
+    
     <script src="FirestoreHelpers.js"></script>
     <script src="helperFunctions.js"></script>
     <script src="script.js"></script>
     <script src="state.js"></script>
+    <script src="creatingMsgBasedOnTime.js"></script>
+
+
+
     <!-- <script src="selectChat.js"></script> -->
     
     <link rel="stylesheet" href="main.css">
