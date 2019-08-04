@@ -2,13 +2,14 @@
 //functions to create messages in a chatroom
 //said chatroom is determined by <admin> & <timeStamp>
 
+var tmp; var tmp2;
 async function findRoom(date){
 
     // date1 = new Date("May 26,2019 7:48:05 PM");
     // date2 = new Date("May 26,2019 7:48:07 PM");
 
 
-    // "July 19, 2019 3:23:19 PM"
+    // "July 19, 2019 3:23:19 PM"   //THIS IS THE CORRECT FORMAT!!!
     
     date = new Date(date);
 
@@ -29,17 +30,24 @@ async function findRoom(date){
     // debugger
 
 
-
-    await db.collection("/chatrooms").where("date", "<", newDateMore).where("date", ">", newDateLess).get()
+    db.collection("/chatrooms").where("date", "<", newDateMore).where("date", ">", newDateLess).get()
     .then(async function(querySnapshot) {
-        await querySnapshot.forEach(async function(doc) {
+        tmp2 = querySnapshot;
+        await querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
             console.log(doc.id, " => ", doc.data());
-            
+            tmp = doc.data();
+            return doc.data();
         });
+        // return new Promise((resolve)=>{
+
+        //     resolve(tmp);
+        // });
+        return querySnapshot;
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
     });
+
 
 }
