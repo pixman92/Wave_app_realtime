@@ -14,12 +14,15 @@ function addDataMergeTrue(path, data){
     //adding data to Firebase, doesn't matter odd/even path
 
     if(isOddOrEven(path)=="even"){
+        console.log("even");
+        
         db2.collection(path).add(data).
         catch((error)=>{
             console.error('error caught', error);
         });   
     }
     if(isOddOrEven(path)=="odd"){
+        console.log("odd");
         db2.doc(path).set(data, {merge: true}).
         catch((error)=>{
             console.error('error caught', error);

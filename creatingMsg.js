@@ -7,7 +7,9 @@ function addMessage(roomID, msg, senderEmail, counter){
 
     var tmpDate = new Date();
 
-    addDataMergeTrue("/chatrooms/I4IwkTcAnzFWUhs5dKHL/messages", {message: msg, email: senderEmail, date: tmpDate});
+    addDataMergeTrue("/chatrooms/I4IwkTcAnzFWUhs5dKHL/messages/", {message: msg, email: senderEmail, date: tmpDate});   //important! have last '/' in path String
+
+    
 
 
 
