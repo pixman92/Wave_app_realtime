@@ -92,7 +92,7 @@ async function makeMeCount(path){
     //NEXT? - make this a general function
 
     savedStuff=[]; tmpPaths=[];
-    await db2.collection(path)
+    await db.collection(path)
     .orderBy("date")
     .get()
     .then(async(snap)=>{
@@ -186,7 +186,7 @@ function matchAdmin(path, adminEmail){
 
     savedMessagePaths=[];
 
-    db2.collection(path)
+    db.collection(path)
     .where('admin', '==', adminEmail)
     .get()
     .then((snapshot)=>{
@@ -340,7 +340,7 @@ function pathsComplete(myEmail, chatroomNum, msg){
 //================================================
 var countMe=[];
 function orderMe(path, orderMe){
-    db2.collection(path).orderBy(orderMe)
+    db.collection(path).orderBy(orderMe)
     // .limit(1)
     .get()
     .then(async(snap)=>{
@@ -372,7 +372,7 @@ function messageGet(adminEmail, chatroomNum){
 
     function order(){
         var messagesPaths=[];
-        db2.collection(savedMessagePaths[0]+'/messages')
+        db.collection(savedMessagePaths[0]+'/messages')
         .orderBy('date')
         .get()
         .then((snapshot)=>{
