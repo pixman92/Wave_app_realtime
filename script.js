@@ -205,49 +205,49 @@ function matchAdmin(path, adminEmail){
 }
 
 //funciton that pull messages from a matched Room
-function pullMessages(path, adminEmail, chatroomNum){
+// function pullMessages(path, adminEmail, chatroomNum){
 
-    first();
+//     first();
 
-    async function first(){
-        // await queryData(path);
-        // wait(700).then(()=>{
-        //     if(firestorePaths==""){
-        //         first();
-        //     }else{
-        //         second();
-        //     }
-        // });
+//     async function first(){
+//         // await queryData(path);
+//         // wait(700).then(()=>{
+//         //     if(firestorePaths==""){
+//         //         first();
+//         //     }else{
+//         //         second();
+//         //     }
+//         // });
 
-        matchAdmin(path, adminEmail, chatroomNum);
-        wait(700).then(()=>{
-            if(docMe2==""){
-                first();
-            }else{
-                second();
-            }
-        });
-    }
-    async function second(){
-        await queryData(savedMessagePaths[chatroomNum]+'/messages');
-        wait(700).then(()=>{
-            if(savedMessagePaths==""){
-                second();
-            }else{
-                third();
-            }
-        });
+//         matchAdmin(path, adminEmail, chatroomNum);
+//         wait(700).then(()=>{
+//             if(docMe2==""){
+//                 first();
+//             }else{
+//                 second();
+//             }
+//         });
+//     }
+//     async function second(){
+//         await queryData(savedMessagePaths[chatroomNum]+'/messages');
+//         wait(700).then(()=>{
+//             if(savedMessagePaths==""){
+//                 second();
+//             }else{
+//                 third();
+//             }
+//         });
 
-    }
-    function third(){
-        for(var i in firestorePaths){
-            pullDataFromFirestore(firestorePaths[i]);
+//     }
+//     function third(){
+//         for(var i in firestorePaths){
+//             pullDataFromFirestore(firestorePaths[i]);
 
-    }
+//     }
 
-    }
+//     }
 
-}
+// }
 
 
 //================================================

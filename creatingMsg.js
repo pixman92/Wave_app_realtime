@@ -7,9 +7,9 @@ function addMessage(roomID, msg, senderEmail, counter){
 
     var tmpDate = new Date();
 
-    addDataMergeTrue("/chatrooms/I4IwkTcAnzFWUhs5dKHL/messages/", {message: msg, email: senderEmail, date: tmpDate});   //important! have last '/' in path String
+    addDataMergeTrue("/chatrooms/"+roomID+"/messages/", {message: msg, email: senderEmail, date: tmpDate});   //important! have last '/' in path String
 
-    
+
 
 
 
@@ -22,5 +22,6 @@ function pullMessages(roomID){
     // -if there is are no messages within less than 10 days, or there are less than 10 Messages, it will pool all messages, until the requirement for 10 Messages has been met
     // -this function will also compare and query only 
 
-    // db.
+    pullDataFromFirestore("/chatrooms/"+roomID+"/messages/");
+    
 }

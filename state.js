@@ -1,22 +1,21 @@
-function state(prop, email, message){       
+function state(s, email, message){       
     //function to set the Stage, per each run!
 
-    if(prop==1){
+    if(s==1){
         //creating a message for a chatroom, based on who is admin
-        // createMsg('email', 0, 'msg', 'sam@gmail.com');
-
-        addMessage("", message, email, "");
+        // 
+        addMessage("iCPK9FJyJlfktOJL2v9T", message, email, "");
 
 
     }
-    if(prop==2){
+    if(s==2){
         //creating a chat room, with who is named Admin
-        createRoom("lover2@gmail.com")
+        createRoom(email)
     }
 
-    if(prop==3){
+    if(s==3){
         //retrieving 10 messages, or all messages
-
+        pullMessages("iCPK9FJyJlfktOJL2v9T")
     }
 
 }
