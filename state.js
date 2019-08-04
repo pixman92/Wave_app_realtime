@@ -11,7 +11,7 @@ function state(prop, email, message){
     }
     if(prop==2){
         //creating a chat room, with who is named Admin
-        createRoom(email)
+        createRoom("lover@gmail.com")
     }
 
     if(prop==3){

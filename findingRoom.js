@@ -2,7 +2,7 @@
 //functions to create messages in a chatroom
 //said chatroom is determined by <admin> & <timeStamp>
 
-function findRoom(date){
+async function findRoom(date){
 
     // date1 = new Date("May 26,2019 7:48:05 PM");
     // date2 = new Date("May 26,2019 7:48:07 PM");
@@ -26,15 +26,16 @@ function findRoom(date){
     var newDateMore = new Date(null);
     newDateMore.setTime(secondsMore*1000);
 
-    debugger
+    // debugger
 
 
 
-    db.collection("/chatrooms").where("date", "<", newDateMore).where("date", ">", newDateLess).get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
+    await db.collection("/chatrooms").where("date", "<", newDateMore).where("date", ">", newDateLess).get()
+    .then(async function(querySnapshot) {
+        await querySnapshot.forEach(async function(doc) {
             // doc.data() is never undefined for query doc snapshots
             console.log(doc.id, " => ", doc.data());
+            
         });
     })
     .catch(function(error) {
