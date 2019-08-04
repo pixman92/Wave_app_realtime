@@ -11,6 +11,8 @@ function addDataToFirestoreForCompletelyNew(path, data){
 }
 
 function addDataMergeTrue(path, data){
+    //adding data to Firebase, doesn't matter odd/even path
+
     if(isOddOrEven(path)=="even"){
         db2.collection(path).add(data).
         catch((error)=>{
@@ -30,6 +32,7 @@ var dataMe = []; var firestorePaths = [];
 var slashCount = 0;
 //for finding paths
 async function queryData(path){
+    //queries data from the database
     dataMe=[]; firestorePaths=[];
     await db2.collection(path).get().
     then(async (snap)=>{
