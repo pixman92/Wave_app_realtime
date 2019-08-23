@@ -1,7 +1,4 @@
-function state(prop, email){       
-    //TODO:
-    //tags: state, creatingMessages
-    
+function state(s, email, message){       
     //function to set the Stage, per each run!
 
     if(s==1){

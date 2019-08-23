@@ -4,7 +4,12 @@
 
 //functions to add data, then pull data
 
-
+// async function createRoom(myEmail){
+//     // function that creates a new Chat Room
+    
+//     var tmpDate = new Date();
+//     addDataToFirestoreForCompletelyNew('chatrooms', {admin: myEmail, date: tmpDate});
+// }
 
 var meCount=0;
 async function createMsg(myEmail, chatroomNum, msg, adminEmail){

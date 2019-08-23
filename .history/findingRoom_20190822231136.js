@@ -3,6 +3,7 @@
 var tmp; var tmp2;
 async function findRoom(date){
     //functions to find a room based on Date Obj{} - of when Room was created
+    //said chatroom is determined by <admin> & <timeStamp>
 
     // date1 = new Date("May 26,2019 7:48:05 PM");
     // date2 = new Date("May 26,2019 7:48:07 PM");
