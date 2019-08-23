@@ -34,11 +34,7 @@ async function bigGET(email, roomNum){
 
     await matchAdmin(email);
     wait(1000).then(async()=>{
-        if(savedMessagePaths==[]){
-            bigGET(email, roomNum);
-        }else{
-            
-        }
+        
 
     });
 

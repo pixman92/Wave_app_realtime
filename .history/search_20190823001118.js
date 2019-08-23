@@ -29,19 +29,7 @@ function matchAdmin(adminEmail){
 
 //========================================
 
-async function bigGET(email, roomNum){
+async function bigGET(){
     //function that gets it all! based on RoomID
-
-    await matchAdmin(email);
-    wait(1000).then(async()=>{
-        if(savedMessagePaths==[]){
-            bigGET(email, roomNum);
-        }else{
-            
-        }
-
-    });
-
-
 
 }
