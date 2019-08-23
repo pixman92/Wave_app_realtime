@@ -93,7 +93,7 @@ async function makeMeCount(path){
     //NEXT? - make this a general function
 
     savedStuff=[]; tmpPaths=[];
-    await db2.collection(path)
+    await db.collection(path)
     .orderBy("date")
     .get()
     .then(async(snap)=>{
@@ -187,7 +187,7 @@ function matchAdmin(path, adminEmail){
 
     savedMessagePaths=[];
 
-    db2.collection(path)
+    db.collection(path)
     .where('admin', '==', adminEmail)
     .get()
     .then((snapshot)=>{
@@ -206,49 +206,49 @@ function matchAdmin(path, adminEmail){
 }
 
 //funciton that pull messages from a matched Room
-function pullMessages(path, adminEmail, chatroomNum){
+// function pullMessages(path, adminEmail, chatroomNum){
 
-    first();
+//     first();
 
-    async function first(){
-        // await queryData(path);
-        // wait(700).then(()=>{
-        //     if(firestorePaths==""){
-        //         first();
-        //     }else{
-        //         second();
-        //     }
-        // });
+//     async function first(){
+//         // await queryData(path);
+//         // wait(700).then(()=>{
+//         //     if(firestorePaths==""){
+//         //         first();
+//         //     }else{
+//         //         second();
+//         //     }
+//         // });
 
-        matchAdmin(path, adminEmail, chatroomNum);
-        wait(700).then(()=>{
-            if(docMe2==""){
-                first();
-            }else{
-                second();
-            }
-        });
-    }
-    async function second(){
-        await queryData(savedMessagePaths[chatroomNum]+'/messages');
-        wait(700).then(()=>{
-            if(savedMessagePaths==""){
-                second();
-            }else{
-                third();
-            }
-        });
+//         matchAdmin(path, adminEmail, chatroomNum);
+//         wait(700).then(()=>{
+//             if(docMe2==""){
+//                 first();
+//             }else{
+//                 second();
+//             }
+//         });
+//     }
+//     async function second(){
+//         await queryData(savedMessagePaths[chatroomNum]+'/messages');
+//         wait(700).then(()=>{
+//             if(savedMessagePaths==""){
+//                 second();
+//             }else{
+//                 third();
+//             }
+//         });
 
-    }
-    function third(){
-        for(var i in firestorePaths){
-            pullDataFromFirestore(firestorePaths[i]);
+//     }
+//     function third(){
+//         for(var i in firestorePaths){
+//             pullDataFromFirestore(firestorePaths[i]);
 
-    }
+//     }
 
-    }
+//     }
 
-}
+// }
 
 
 //================================================
@@ -341,7 +341,7 @@ function pathsComplete(myEmail, chatroomNum, msg){
 //================================================
 var countMe=[];
 function orderMe(path, orderMe){
-    db2.collection(path).orderBy(orderMe)
+    db.collection(path).orderBy(orderMe)
     // .limit(1)
     .get()
     .then(async(snap)=>{
@@ -373,7 +373,7 @@ function messageGet(adminEmail, chatroomNum){
 
     function order(){
         var messagesPaths=[];
-        db2.collection(savedMessagePaths[0]+'/messages')
+        db.collection(savedMessagePaths[0]+'/messages')
         .orderBy('date')
         .get()
         .then((snapshot)=>{

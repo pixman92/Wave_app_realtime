@@ -7,18 +7,33 @@ function addMessage(roomID, msg, senderEmail, counter){
 
     var tmpDate = new Date();
 
-    addDataMergeTrue("/chatrooms/I4IwkTcAnzFWUhs5dKHL/messages", {message: msg, email: senderEmail, date: tmpDate});
+    addDataMergeTrue("/chatrooms/"+roomID+"/messages/", {message: msg, email: senderEmail, date: tmpDate});   //important! have last '/' in path String
+
+
 
 
 
 
 }
 
-function pullMessages(roomID){
+var savedMessages;
+async function pullMessages(roomID){
     // function that pulls messages from a specific Room
     // -it will pull last 10 days of messages, based on a .where("date", "<", tenDatesVariable)
     // -if there is are no messages within less than 10 days, or there are less than 10 Messages, it will pool all messages, until the requirement for 10 Messages has been met
     // -this function will also compare and query only a Reasonable amount of Recent Messagesf
 
-    // db.
+    // pullDataFromFirestore("/chatrooms/"+roomID+"/messages/");
+
+    await db.collection("/chatrooms/"+roomID+"/messages/").get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+            savedMessages.push(doc.data());
+            console.log(doc.id, ' => ', doc.data());
+        });
+        
+    });
+
+    
+
+    
 }
