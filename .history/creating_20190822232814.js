@@ -14,12 +14,12 @@ function addMessage(roomID, msg, senderEmail, counter){
 
 
     var tmpDate = new Date();
-    addDataMergeTrue("/"+roomID+"/messages/", {message: msg, email: senderEmail, date: tmpDate});   //important! have last '/' in path String
+    addDataMergeTrue("/chatrooms/"+roomID+"/messages/", {message: msg, email: senderEmail, date: tmpDate});   //important! have last '/' in path String
 }
 
 var savedMessages=[];
 async function pullMessages(roomID){
-    savedMessages=[];
+    savedms
     // TODO
     // function that pulls messages from a specific Room
     // -it will pull last 10 days of messages, based on a .where("date", "<", tenDatesVariable)

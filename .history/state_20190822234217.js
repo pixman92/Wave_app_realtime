@@ -22,10 +22,7 @@ async function state(s, email){
     }
 
     if(s==4){
-        //match an admin email
-        //pull all messages
-        //pull Date{} of 1 message
-        //convert it to timestamp
+        // 
         await matchAdmin('lover@gmail.com');
         wait(2000).then(async()=>{
             if(savedMessagePaths==[]){
