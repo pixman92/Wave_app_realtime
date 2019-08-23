@@ -34,7 +34,7 @@ async function state(s, email){
                 state(4);
             }else {
                 await pullMessages(savedMessagePaths[1]);
-                var tmp = savedMessages[0].date.seconds;
+                var tmp = savedMessage[0].date.seconds;
                 var date = new Date(null);
                 date.setTime(tmp*1000);
                 console.log('date', date);
@@ -47,12 +47,12 @@ async function state(s, email){
 
     if(s==5){
         //state function to pull all messages and sort them based on time
-        storedDates = [];
+        var storedDates = [];
 
         await matchAdmin('lover@gmail.com');
         wait(2000).then(async()=>{
             if(savedMessagePaths==[]){
-                state(5);
+                state(4);
             }else {
                 await pullMessages(savedMessagePaths[1]);
                
@@ -67,7 +67,7 @@ async function state(s, email){
     
                 // console.log('date', date);
     
-                storedDates.push(date.toString());
+                storedDates.push(date);
             }
             console.log('storedDates', storedDates);
 

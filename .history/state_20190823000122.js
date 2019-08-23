@@ -47,7 +47,7 @@ async function state(s, email){
 
     if(s==5){
         //state function to pull all messages and sort them based on time
-        storedDates = [];
+        var storedDates = [];
 
         await matchAdmin('lover@gmail.com');
         wait(2000).then(async()=>{

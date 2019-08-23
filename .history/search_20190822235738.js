@@ -5,7 +5,6 @@ function matchAdmin(adminEmail){
     //function that matches where() - admin <email>
 
     savedMessagePaths=[]; savedMessage=[];
-    docMe2=[];
 
     db.collection('chatrooms')
     .where('admin', '==', adminEmail)
