@@ -6,7 +6,6 @@
 
 async function createRoom(myEmail){
     // function that creates a new Chat Room
-    
     var tmpDate = new Date();
     addDataToFirestoreForCompletelyNew('chatrooms', {admin: myEmail, date: tmpDate});
 }

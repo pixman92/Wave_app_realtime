@@ -18,7 +18,7 @@ function pullMessages(roomID){
     // function that pulls messages from a specific Room
     // -it will pull last 10 days of messages, based on a .where("date", "<", tenDatesVariable)
     // -if there is are no messages within less than 10 days, or there are less than 10 Messages, it will pool all messages, until the requirement for 10 Messages has been met
-    // -this function will also compare and query only 
+    // -this function will also compare and query only a Reasonable amount of Recent Messagesf
 
     // db.
 }
