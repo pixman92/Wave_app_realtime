@@ -1,7 +1,7 @@
 //================================================
 var docMe2=[];
 var savedMessage = []; var savedMessagePaths = []; 
-async function matchAdmin(adminEmail){
+function matchAdmin(adminEmail){
     //function that matches where() - admin <email>
 
     savedMessagePaths=[]; savedMessage=[];
@@ -10,7 +10,7 @@ async function matchAdmin(adminEmail){
     db.collection('chatrooms')
     .where('admin', '==', adminEmail)
     .get()
-    .then(async(snapshot)=>{
+    .then((snapshot)=>{
         snapshot.forEach((doc)=>{
             var docData = doc.data();
             savedMessage.push(docData);
@@ -24,24 +24,32 @@ async function matchAdmin(adminEmail){
         }
         console.log('savedMessagePaths', savedMessagePaths);
 
-        return await savedMessagePaths;
+        
 
 
-    }).then(async (commsavedMessagePaths)=>{
-        if(savedMessagePaths==undefined||savedMessagePaths==[]||savedMessagePaths.length==0){
-            console.log('false');
-            return await false;
+
+    }).then(async(savedMessagePaths)=>{
+
+        if(savedMessagePaths.length==0){
+            debugger;
+            return 1;
         }else{
-            console.log('true');
-            return await true;
+            return 0;
         }
-
-    });
-}
-
-function test(){
-    var testMe = matchAdmin('someone@gmail.com');
-    return testMe;
+        
+    })
+    // return new Promise((resolve)=>{
+    //     // console.table(bigArray);
+    //     resolve(savedMessagePaths);
+    //     if(savedMessagePaths.length==0){
+    //         // resolve(false);
+    //         return false;
+    //     }else{
+    //         // resolve(true);
+    //         return true;
+    //     }
+    //     // resolve(savedMessagePaths);
+    // });
 }
 
 

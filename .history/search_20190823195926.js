@@ -24,10 +24,10 @@ async function matchAdmin(adminEmail){
         }
         console.log('savedMessagePaths', savedMessagePaths);
 
-        return await savedMessagePaths;
+        return savedMessagePaths;
 
 
-    }).then(async (commsavedMessagePaths)=>{
+    }).then((savedMessagePaths)=>{
         if(savedMessagePaths==undefined||savedMessagePaths==[]||savedMessagePaths.length==0){
             console.log('false');
             return await false;
@@ -37,11 +37,6 @@ async function matchAdmin(adminEmail){
         }
 
     });
-}
-
-function test(){
-    var testMe = matchAdmin('someone@gmail.com');
-    return testMe;
 }
 
 

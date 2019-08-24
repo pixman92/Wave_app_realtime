@@ -1,7 +1,7 @@
 //================================================
 var docMe2=[];
 var savedMessage = []; var savedMessagePaths = []; 
-async function matchAdmin(adminEmail){
+function matchAdmin(adminEmail){
     //function that matches where() - admin <email>
 
     savedMessagePaths=[]; savedMessage=[];
@@ -24,24 +24,27 @@ async function matchAdmin(adminEmail){
         }
         console.log('savedMessagePaths', savedMessagePaths);
 
-        return await savedMessagePaths;
+        return savedMessagePaths;
 
 
-    }).then(async (commsavedMessagePaths)=>{
-        if(savedMessagePaths==undefined||savedMessagePaths==[]||savedMessagePaths.length==0){
+    }).then((savedMessagePaths)=>{
+        if(savedMessagePaths==undefined||savedMessagePaths==[]){
             console.log('false');
-            return await false;
+            return false;
         }else{
             console.log('true');
-            return await true;
+            return true;
         }
 
-    });
-}
 
-function test(){
-    var testMe = matchAdmin('someone@gmail.com');
-    return testMe;
+
+    // })
+    // .then(async(foundPaths)=>{
+      
+    //     console.log('found Paths?', foundPaths);
+    //     return foundPaths;
+
+    });
 }
 
 

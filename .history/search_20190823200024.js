@@ -27,7 +27,7 @@ async function matchAdmin(adminEmail){
         return await savedMessagePaths;
 
 
-    }).then(async (commsavedMessagePaths)=>{
+    }).then(async (savedMessagePaths)=>{
         if(savedMessagePaths==undefined||savedMessagePaths==[]||savedMessagePaths.length==0){
             console.log('false');
             return await false;
@@ -37,11 +37,6 @@ async function matchAdmin(adminEmail){
         }
 
     });
-}
-
-function test(){
-    var testMe = matchAdmin('someone@gmail.com');
-    return testMe;
 }
 
 
