@@ -4,81 +4,86 @@
 
 //functions to add data, then pull data
 
+async function createRoom(myEmail){
+    // function that creates a new Chat Room
+    
+    var tmpDate = new Date();
+    addDataToFirestoreForCompletelyNew('chatrooms', {admin: myEmail, date: tmpDate});
+}
 
-
-// var meCount=0;
-// async function createMsg(myEmail, chatroomNum, msg, adminEmail){
-//     //function that creates a message and appends it to the correct child Chat Room
+var meCount=0;
+async function createMsg(myEmail, chatroomNum, msg, adminEmail){
+    //function that creates a message and appends it to the correct child Chat Room
 
     
     
-//     returnedQuery();
-//     // pullingData(chatroomNum);
+    returnedQuery();
+    // pullingData(chatroomNum);
 
     
 
-//     console.log('meCount', meCount);
-//     console.log('savedDoc', savedDoc);    
+    console.log('meCount', meCount);
+    console.log('savedDoc', savedDoc);    
 
        
-//     // returnedQuery(chatroomNum);
+    // returnedQuery(chatroomNum);
 
 
-//     async function returnedQuery(chatroomNum){
-//         //querying to populate firestorePaths
-//         // await queryData('chatrooms2');
-//         // wait(800).then(()=>{
-//         //     if(firestorePaths==""){
-//         //         returnedQuery();
-//         //     }else{
-//         //         pullingData();
-//         //     }
-//         // });
+    async function returnedQuery(chatroomNum){
+        //querying to populate firestorePaths
+        // await queryData('chatrooms2');
+        // wait(800).then(()=>{
+        //     if(firestorePaths==""){
+        //         returnedQuery();
+        //     }else{
+        //         pullingData();
+        //     }
+        // });
 
-//         matchAdmin('chatrooms', adminEmail, chatroomNum);
-//         wait(1800).then(()=>{
-//             if(docMe2==""){
-//                 returnedQuery();
-//             }else{
-//                 pullingData();
-//             }
-//         });
+        matchAdmin('chatrooms', adminEmail, chatroomNum);
+        wait(1800).then(()=>{
+            if(docMe2==""){
+                returnedQuery();
+            }else{
+                pullingData();
+            }
+        });
 
-//     }   
-//     async function pullingData(){
-//         //pulling fields, to make sure of right Room
-//         pullDataFromFirestore(savedMessagePaths[chatroomNum]);
-//         wait(800).then(()=>{
-//             if(savedDoc==""){
-//                 pullingData();
-//             }else{
-//                 console.log('saveDoc undefined?', savedDoc==undefined);
-//                 // DONE - Refactor a counter, that is tied to an 'assorted'
-//                 // list of messages, based on timestamp. 
-//                 // Sort, by timestamp, then increment 1 to latest message timestamp.
-//                 // meCount = savedDoc[savedDoc.length-1].counter;
-//                 // meCount++;
+    }   
+    async function pullingData(){
+        //pulling fields, to make sure of right Room
+        pullDataFromFirestore(savedMessagePaths[chatroomNum]);
+        wait(800).then(()=>{
+            if(savedDoc==""){
+                pullingData();
+            }else{
+                console.log('saveDoc undefined?', savedDoc==undefined);
+                // DONE - Refactor a counter, that is tied to an 'assorted'
+                // list of messages, based on timestamp. 
+                // Sort, by timestamp, then increment 1 to latest message timestamp.
+                // meCount = savedDoc[savedDoc.length-1].counter;
+                // meCount++;
 
-//                 console.log('path', savedMessagePaths[chatroomNum] );
+                console.log('path', savedMessagePaths[chatroomNum] );
 
-//                 makeMeCount(savedMessagePaths[chatroomNum]+'/messages');
-//                 var date = new Date();
-//                 console.log('before adding counter', globCounterForMessages);
-//                 addDataMergeTrue(savedMessagePaths[chatroomNum]+'/messages', {email: myEmail, msg: msg, counter: globCounterForMessages, date: date});
+                makeMeCount(savedMessagePaths[chatroomNum]+'/messages');
+                var date = new Date();
+                console.log('before adding counter', globCounterForMessages);
+                addDataMergeTrue(savedMessagePaths[chatroomNum]+'/messages', {email: myEmail, msg: msg, counter: globCounterForMessages, date: date});
 
-//             }
-//         });
-//     }
+            }
+        });
+    }
 
-//     console.log('meCount', meCount);
-//     console.log('savedDoc', savedDoc);    
-//     console.log('firepath', savedMessagePaths[chatroomNum]);
+    console.log('meCount', meCount);
+    console.log('savedDoc', savedDoc);    
+    console.log('firepath', savedMessagePaths[chatroomNum]);
 
-//     // pathsComplete(myEmail, chatroomNum, msg);
+    // pathsComplete(myEmail, chatroomNum, msg);
 
-//     // somehow?? - mixed up in syncing - ugh
-//     // addDataMergeTrue(firestorePaths[0], {email: myEmail, msg: msg, counter: meCount++ });
-// }
+    // somehow?? - mixed up in syncing - ugh
+    // addDataMergeTrue(firestorePaths[0], {email: myEmail, msg: msg, counter: meCount++ });
+}
 
 
 var savedStuff = []; var tmpPaths=[];
@@ -168,13 +173,37 @@ async function makeMeCount(path){
 
 
 
-// function selectChatRoomFromThoseIAmApart(myEmail){
-//     //function that will return an array of Chat Room paths of which this Email is listed within
+function selectChatRoomFromThoseIAmApart(myEmail){
+    //function that will return an array of Chat Room paths of which this Email is listed within
     
-// }
+}
 
 
+//================================================
+var docMe2=[];
+var savedMessage = []; var savedMessagePaths = []; 
+function matchAdmin(path, adminEmail){
+    //function that matches where() - admin <email>
 
+    savedMessagePaths=[];
+
+    db.collection(path)
+    .where('admin', '==', adminEmail)
+    .get()
+    .then((snapshot)=>{
+        snapshot.forEach((doc)=>{
+            var docData = doc.data();
+            savedMessage.push(docData);
+            // var docId = doc.id;
+            docMe2.push(doc);
+
+        });
+        for(var i in docMe2){
+            savedMessagePaths.push(docMe2[i].ref.path);
+        }
+        console.log('savedMessagePaths', savedMessagePaths);
+    });
+}
 
 //funciton that pull messages from a matched Room
 // function pullMessages(path, adminEmail, chatroomNum){

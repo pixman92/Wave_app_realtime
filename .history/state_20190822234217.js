@@ -1,5 +1,3 @@
-var storedDates = [];
-
 async function state(s, email){       
     //TODO:
     //tags: state, creatingMessages
@@ -24,10 +22,7 @@ async function state(s, email){
     }
 
     if(s==4){
-        //match an admin email
-        //pull all messages
-        //pull Date{} of 1 message
-        //convert it to timestamp
+        // 
         await matchAdmin('lover@gmail.com');
         wait(2000).then(async()=>{
             if(savedMessagePaths==[]){
@@ -42,38 +37,6 @@ async function state(s, email){
             }
 
         });
-
-    }
-
-    if(s==5){
-        //state function to pull all messages and sort them based on time
-        storedDates = [];
-
-        await matchAdmin('lover@gmail.com');
-        wait(2000).then(async()=>{
-            if(savedMessagePaths==[]){
-                state(5);
-            }else {
-                await pullMessages(savedMessagePaths[1]);
-               
-                
-            }
-
-        }).then(()=>{
-            for(var i=0; i<savedMessagePaths.length; i++){
-                var tmp = savedMessages[i].date.seconds;
-                var date = new Date(null);
-                date.setTime(tmp*1000);
-    
-                // console.log('date', date);
-    
-                storedDates.push(date.toString());
-            }
-            console.log('storedDates', storedDates);
-
-
-        });
-
 
     }
 
