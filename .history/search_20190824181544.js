@@ -24,8 +24,7 @@ async function matchAdmin(adminEmail){
         }
         console.log('savedMessagePaths', savedMessagePaths);
 
-
-        return await savedMessagePaths;
+        // return await savedMessagePaths;
 
         // wait(2000).then(()=>{
         //     if(savedMessagePaths==undefined||savedMessagePaths==[]||savedMessagePaths.length==0){
@@ -44,34 +43,12 @@ async function matchAdmin(adminEmail){
         // });
 
 
-    }).then((savedMessagePaths)=>{
-        if(savedMessagePaths==undefined||savedMessagePaths==[]||savedMessagePaths.length==0){
-            passedFalse();
-        }else if(savedMessagePaths.length>0){
-            passedTrue();
-        }
-
-
+    }).then(()=>{
+        
     });
-    // .then((savedMessagePaths)=>{
-    //     return resolve(savedMessagePaths);
-    // });
-}
 
-var passed;
-function passedTrue(){
-    console.log('passed');
-    return passed=true;    
-}
-function passedFalse(){
-    console.log('failed');
-    return passed=false;
-}
 
-function passedReset(){
-    done=false;
 }
-
 
 function test(){
     var testMe = matchAdmin('someone@gmail.com');

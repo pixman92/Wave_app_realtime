@@ -24,54 +24,21 @@ async function matchAdmin(adminEmail){
         }
         console.log('savedMessagePaths', savedMessagePaths);
 
-
         return await savedMessagePaths;
 
-        // wait(2000).then(()=>{
-        //     if(savedMessagePaths==undefined||savedMessagePaths==[]||savedMessagePaths.length==0){
-        //         console.log('false');
-        //         return new Promise((resolve)=>{
-        //             return resolve(false);
-        //         });
-        //     }else if(savedMessagePaths.length>0){
-        //     // if(savedMessagePaths.length>0){
-        //         console.log('true');
-        //         return new Promise((resolve)=>{
-        //             return resolve(true);
-        //         });
-        //     }
 
-        // });
-
-
-    }).then((savedMessagePaths)=>{
+    }).then(async (savedMessagePaths)=>{
         if(savedMessagePaths==undefined||savedMessagePaths==[]||savedMessagePaths.length==0){
-            passedFalse();
-        }else if(savedMessagePaths.length>0){
-            passedTrue();
+            console.log('false');
+            return false;
+        }else{
+            console.log('true');
+            return true;
         }
 
 
     });
-    // .then((savedMessagePaths)=>{
-    //     return resolve(savedMessagePaths);
-    // });
 }
-
-var passed;
-function passedTrue(){
-    console.log('passed');
-    return passed=true;    
-}
-function passedFalse(){
-    console.log('failed');
-    return passed=false;
-}
-
-function passedReset(){
-    done=false;
-}
-
 
 function test(){
     var testMe = matchAdmin('someone@gmail.com');

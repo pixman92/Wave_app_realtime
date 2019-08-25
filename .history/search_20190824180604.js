@@ -24,54 +24,43 @@ async function matchAdmin(adminEmail){
         }
         console.log('savedMessagePaths', savedMessagePaths);
 
-
         return await savedMessagePaths;
-
-        // wait(2000).then(()=>{
-        //     if(savedMessagePaths==undefined||savedMessagePaths==[]||savedMessagePaths.length==0){
-        //         console.log('false');
-        //         return new Promise((resolve)=>{
-        //             return resolve(false);
-        //         });
-        //     }else if(savedMessagePaths.length>0){
-        //     // if(savedMessagePaths.length>0){
-        //         console.log('true');
-        //         return new Promise((resolve)=>{
-        //             return resolve(true);
-        //         });
-        //     }
-
-        // });
-
-
-    }).then((savedMessagePaths)=>{
-        if(savedMessagePaths==undefined||savedMessagePaths==[]||savedMessagePaths.length==0){
-            passedFalse();
-        }else if(savedMessagePaths.length>0){
-            passedTrue();
-        }
 
 
     });
     // .then((savedMessagePaths)=>{
-    //     return resolve(savedMessagePaths);
+
+        // return savedMessagePaths;
+        
+        // .then(async (savedMessagePaths)=>{
+            if(savedMessagePaths==undefined||savedMessagePaths==[]||savedMessagePaths.length==0){
+                console.log('false');
+                return new Promise((resolve)=>{
+                    return resolve(false);
+                });
+            }
+            if(savedMessagePaths.length>0){
+                console.log('true');
+                return new Promise((resolve)=>{
+                    return resolve(true);
+                });
+            }
+
+    // });  
+
+
     // });
-}
 
-var passed;
-function passedTrue(){
-    console.log('passed');
-    return passed=true;    
-}
-function passedFalse(){
-    console.log('failed');
-    return passed=false;
-}
+    // return new Promise((resolve)=>{
+    //     wait(2000).then(()=>{
+    //         resolve(savedMessagePaths);
+    //         return false;
+    //     });
 
-function passedReset(){
-    done=false;
-}
+    // });
 
+
+}
 
 function test(){
     var testMe = matchAdmin('someone@gmail.com');

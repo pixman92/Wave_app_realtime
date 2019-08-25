@@ -46,10 +46,8 @@ async function matchAdmin(adminEmail){
 
     }).then((savedMessagePaths)=>{
         if(savedMessagePaths==undefined||savedMessagePaths==[]||savedMessagePaths.length==0){
-            passedFalse();
-        }else if(savedMessagePaths.length>0){
-            passedTrue();
-        }
+            done();
+        
 
 
     });
@@ -60,11 +58,9 @@ async function matchAdmin(adminEmail){
 
 var passed;
 function passedTrue(){
-    console.log('passed');
     return passed=true;    
 }
 function passedFalse(){
-    console.log('failed');
     return passed=false;
 }
 

@@ -60,11 +60,9 @@ async function matchAdmin(adminEmail){
 
 var passed;
 function passedTrue(){
-    console.log('passed');
     return passed=true;    
 }
 function passedFalse(){
-    console.log('failed');
     return passed=false;
 }
 
