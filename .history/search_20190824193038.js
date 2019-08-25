@@ -27,10 +27,6 @@ async function matchAdmin(adminEmail){
         console.log('savedMessagePaths', savedMessagePaths);
 
 
-        findRoomBasedOnTimestamp(savedMessagePaths);
-
-
-
         return await savedMessagePaths;
 
         }).then((savedMessagePaths)=>{
@@ -38,34 +34,24 @@ async function matchAdmin(adminEmail){
                 passedFalse();
             }else if(savedMessagePaths.length>0){
                 passedTrue();
-            }            
+            }
+
+
         });
+    // .then((savedMessagePaths)=>{
+    //     return resolve(savedMessagePaths);
+    // });
 }
 
-//=============================================
-var datesToSiftThrough = [];
-async function findRoomBasedOnTimestamp(arr){
-
-    for(var i=0; i<arr.length; i++){
-        await pullDataFromFirestore(arr[i]);
-        // datesToSiftThrough.push(savedDoc);
-        // console.log('datesToSiftThrough', datesToSiftThrough)
-        wait(800).then(()=>{
-            console.log('savedDoc2', savedDoc);
-        });
-        
-    }
-
-
-}
-
-
-
-//=============================================
-
-// functions for knowing when Promise has passed/failed
 var passed;
 
+// function passed(something){
+//     if(something==true){
+//         return true;
+//     }else{
+//         return false;
+//     }
+// }
 
 function passedTrue(){
     console.log('passed? true');
@@ -93,20 +79,13 @@ async function bigGET(email, roomNum){
     //function that gets it all! based on RoomID
 
     await matchAdmin(email);
-    // wait(1000).then(async()=>{
-    //     if(savedMessagePaths==[]){
-    //         bigGET(email, roomNum);
-    //     }else{
+    wait(1000).then(async()=>{
+        if(savedMessagePaths==[]){
+            bigGET(email, roomNum);
+        }else{
             
-    //     }
-
-    // });
-
-    wait(2000).then(()=>{
-        if(passed==true){
-            var str = "/"+savedMessagePaths[0].toString()+"/"+"messages";
-            pullDataFromFirestore(str);
         }
+
     });
 
 

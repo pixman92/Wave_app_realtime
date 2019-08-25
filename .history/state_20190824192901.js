@@ -80,7 +80,7 @@ async function state(s, email){
     if(s==6){
         await matchAdmin('lover@gmail.com');
         wait(2000).then(()=>{
-                if(passed==true){
+            if(passed==true){
                 console.log('yup');
             }else{
                 console.log('nope');

@@ -69,15 +69,12 @@ async function queryData(path){
 var savedDoc=[];
 function pullDataFromFirestore(path){
     //function for finding fields
-
-    savedDoc=[];
-
     if(isOddOrEven(path)=="odd"){
         db.doc(path).get().
         then((doc)=>{
             // console.log('docdata', doc.data());
             if(doc.exists){
-                console.log('savedDoc', doc.data());
+                console.log('doc', doc.data());
                 savedDoc.push(doc.data());
             }else{
                 console.log('no doc, odd');

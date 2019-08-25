@@ -50,9 +50,7 @@ async function findRoomBasedOnTimestamp(arr){
         await pullDataFromFirestore(arr[i]);
         // datesToSiftThrough.push(savedDoc);
         // console.log('datesToSiftThrough', datesToSiftThrough)
-        wait(800).then(()=>{
-            console.log('savedDoc2', savedDoc);
-        });
+        console.log('savedDoc2', savedDoc);
         
     }
 

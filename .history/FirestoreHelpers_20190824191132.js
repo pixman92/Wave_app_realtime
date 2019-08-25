@@ -16,18 +16,12 @@ function addDataToFirestoreForCompletelyNew(path, data){
 function addDataMergeTrue(path, data){
     //adding data to Firebase, doesn't matter odd/even path
 
-    passedReset();
-
-
-
     if(isOddOrEven(path)=="even"){
         console.log("even");
         
         db.collection(path).add(data).
         catch((error)=>{
             console.error('error caught', error);
-        }).then(()=>{
-            passedTrue();
         });   
     }
     if(isOddOrEven(path)=="odd"){
@@ -35,8 +29,6 @@ function addDataMergeTrue(path, data){
         db.doc(path).set(data, {merge: true}).
         catch((error)=>{
             console.error('error caught', error);
-        }).then(()=>{
-            passedTrue();
         });   
     }
 
@@ -69,15 +61,12 @@ async function queryData(path){
 var savedDoc=[];
 function pullDataFromFirestore(path){
     //function for finding fields
-
-    savedDoc=[];
-
     if(isOddOrEven(path)=="odd"){
         db.doc(path).get().
         then((doc)=>{
             // console.log('docdata', doc.data());
             if(doc.exists){
-                console.log('savedDoc', doc.data());
+                console.log('doc', doc.data());
                 savedDoc.push(doc.data());
             }else{
                 console.log('no doc, odd');

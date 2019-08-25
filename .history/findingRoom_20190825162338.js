@@ -30,19 +30,19 @@ async function findRoom(date){
     var newDateMore = new Date(null);
     newDateMore.setTime(secondsMore*1000);
 
-    // debugger
+    debugger
 
 
     db.collection("/chatrooms").where("date", "<", newDateMore).where("date", ">", newDateLess).get()
     .then(async function(querySnapshot) {
         dateStuff2 = querySnapshot;
         await querySnapshot.forEach(function(doc) {
-            // debugger;
+            debugger;
             // doc.data() is never undefined for query doc snapshots
             console.log(doc.id, " => ", doc.data());
             dateStuff = doc.data();
 
-            // debugger;
+            debugger;
 
             return doc.data();
         });

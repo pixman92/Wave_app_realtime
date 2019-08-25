@@ -43,19 +43,13 @@ async function matchAdmin(adminEmail){
 }
 
 //=============================================
-var datesToSiftThrough = [];
+
 async function findRoomBasedOnTimestamp(arr){
 
     for(var i=0; i<arr.length; i++){
         await pullDataFromFirestore(arr[i]);
-        // datesToSiftThrough.push(savedDoc);
-        // console.log('datesToSiftThrough', datesToSiftThrough)
-        wait(800).then(()=>{
-            console.log('savedDoc2', savedDoc);
-        });
-        
-    }
 
+    }
 
 }
 

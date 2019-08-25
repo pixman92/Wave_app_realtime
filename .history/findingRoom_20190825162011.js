@@ -16,33 +16,33 @@ async function findRoom(date){
     
     date = new Date(date);
 
-    var secondsLess = date.getTime();       //possible need to divide by 1000
+    var secondsLess = date.getTime();
     secondsLess -= 1;
     console.log(secondsLess);
 
-    var secondsMore = date.getTime();       //possible need to divide by 1000
+    var secondsMore = date.getTime();
     secondsMore += 1;
     console.log(secondsMore);
 
 
     var newDateLess = new Date(null);
-    newDateLess.setTime(secondsLess*1000);
+    newDateLess.setTime(secondsLess);
     var newDateMore = new Date(null);
-    newDateMore.setTime(secondsMore*1000);
+    newDateMore.setTime(secondsMore);
 
     // debugger
 
 
-    db.collection("/chatrooms").where("date", "<", newDateMore).where("date", ">", newDateLess).get()
+    db.collection("/chatrooms/").where("date", "<", newDateMore).where("date", ">", newDateLess).get()
     .then(async function(querySnapshot) {
         dateStuff2 = querySnapshot;
         await querySnapshot.forEach(function(doc) {
-            // debugger;
+            debugger;
             // doc.data() is never undefined for query doc snapshots
             console.log(doc.id, " => ", doc.data());
             dateStuff = doc.data();
 
-            // debugger;
+            debugger;
 
             return doc.data();
         });

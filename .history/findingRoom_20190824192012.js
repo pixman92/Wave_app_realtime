@@ -1,6 +1,6 @@
 
 
-var dateStuff; var dateStuff2;
+var tmp; var tmp2;
 async function findRoom(date){
     //functions to find a room based on Date Obj{} - of when Room was created
 
@@ -16,11 +16,11 @@ async function findRoom(date){
     
     date = new Date(date);
 
-    var secondsLess = date.getTime();       //possible need to divide by 1000
+    var secondsLess = date.getTime()/1000;
     secondsLess -= 1;
     console.log(secondsLess);
 
-    var secondsMore = date.getTime();       //possible need to divide by 1000
+    var secondsMore = date.getTime()/1000;
     secondsMore += 1;
     console.log(secondsMore);
 
@@ -35,15 +35,11 @@ async function findRoom(date){
 
     db.collection("/chatrooms").where("date", "<", newDateMore).where("date", ">", newDateLess).get()
     .then(async function(querySnapshot) {
-        dateStuff2 = querySnapshot;
+        tmp2 = querySnapshot;
         await querySnapshot.forEach(function(doc) {
-            // debugger;
             // doc.data() is never undefined for query doc snapshots
             console.log(doc.id, " => ", doc.data());
-            dateStuff = doc.data();
-
-            // debugger;
-
+            tmp = doc.data();
             return doc.data();
         });
         // return new Promise((resolve)=>{

@@ -79,14 +79,11 @@ async function state(s, email){
 
     if(s==6){
         await matchAdmin('lover@gmail.com');
-        wait(2000).then(()=>{
-                if(passed==true){
-                console.log('yup');
-            }else{
-                console.log('nope');
-            }
-
-        });
+        if(passed==true){
+            console.log('yup i found them!');
+        }else{
+            console.log('nope');
+        }
     }
 
 }
