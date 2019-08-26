@@ -52,22 +52,17 @@ function makeBoth(){
         // debugger;
         bothSaved.push(obj);;
     }
-    console.log('bothSaved', bothSaved);
-
-    wait(800).then(()=>{
-        findRoomBasedOnTimestamp();
-    });
 }
 
 
 
 //=============================================
-var reorganizedDates = [];
-async function findRoomBasedOnTimestamp(){
+var datesToSiftThrough = [];
+async function findRoomBasedOnTimestamp(arr){
     //function to organize by data
     //based on 'combined' data obj{} arr[]
 
-    reorganizedDates = bothSaved.sort((a,b) => (a.admin.date > b.admin.date) ? 1: -1)
+    var reorganizedDates = bothSaved.sort((a,b) => (a.admin.date > b.admin.date) ? 1: -1)
 
     console.log('reorganizedDates', reorganizedDates);
 

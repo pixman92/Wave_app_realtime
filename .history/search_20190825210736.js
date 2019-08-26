@@ -42,36 +42,46 @@ async function matchAdminToPaths(adminEmail){
 
 }
 
-function makeBoth(){
-    //function that pulls PATH data and ADMIN data
-    //combines 2 into an Obj{}, then pushes to an array
+function getAdminStuff(){
     for(var i in savedDoc){
         var obj = {};
-        obj["path"] = savedMessagePaths[i];
-        obj["admin"] = savedDoc[i];
-        // debugger;
+        obj[path] = tmpSavedMessagePaths[i];
+        obj[admin] = savedDoc[i];
+        debugger;
         bothSaved.push(obj);;
     }
-    console.log('bothSaved', bothSaved);
-
-    wait(800).then(()=>{
-        findRoomBasedOnTimestamp();
-    });
 }
 
 
 
 //=============================================
-var reorganizedDates = [];
-async function findRoomBasedOnTimestamp(){
-    //function to organize by data
-    //based on 'combined' data obj{} arr[]
+var datesToSiftThrough = [];
+async function findRoomBasedOnTimestamp(arr){
 
-    reorganizedDates = bothSaved.sort((a,b) => (a.admin.date > b.admin.date) ? 1: -1)
+    for(var i=0; i<arr.length; i++){
+        await pullDataFromFirestore(arr[i]);
+        // datesToSiftThrough.push(savedDoc);
+        // console.log('datesToSiftThrough', datesToSiftThrough)
+    }
+    wait(800).then(()=>{
+        console.log('savedDoc2', savedDoc);
+    }).then(()=>{
+        //TODO:
+        //split the dates out of 
 
-    console.log('reorganizedDates', reorganizedDates);
+        var reorganizedDates = savedDoc.sort((a,b) => (a.date > b.date) ? 1: -1)
 
-    return reorganizedDates;
+        console.log('reorganizedDates', reorganizedDates);
+
+        return reorganizedDates;
+
+    }).then((reorganizedDates)=>{
+
+        // for(var i=0; i<reorganizedDates.length; i++){
+            pullMessages()
+        // }
+
+    });
 }
 //=============================================
 var savedMessages=[];
