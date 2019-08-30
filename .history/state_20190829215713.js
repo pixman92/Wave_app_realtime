@@ -52,10 +52,13 @@ async function state(s, email){
         await matchAdminToPaths('lover@gmail.com');
         wait(2000).then(async()=>{
             if(passed==false){
-                await matchAdminToPaths('lover@gmail.com');
+                state(5);
             }else {
                 await pullMessages(savedMessagePaths[1]);
+               
+                
             }
+
         }).then(()=>{
             for(var i=0; i<savedMessagePaths.length; i++){
                 var tmp = savedMessages[i].date.seconds;

@@ -128,6 +128,14 @@ function passedFalse(){
 function passedReset(){
     passed=undefined;
 }
+
+
+function test(){
+    var testMe = matchAdmin('someone@gmail.com');
+    return testMe;
+}
+
+
 //========================================
 
 async function bigGET(email, roomNum){

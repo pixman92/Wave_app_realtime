@@ -33,10 +33,10 @@ async function matchAdminToPaths(adminEmail){
             pullDataFromFirestore(savedMessagePaths[i]);
         }
         
-        // wait(800).then(()=>{
-        //     console.log('savedDoc2', savedDoc);
+        wait(800).then(()=>{
+            console.log('savedDoc2', savedDoc);
 
-        // }); 
+        }); 
       
 
         if(savedMessagePaths.length>0){
@@ -116,6 +116,8 @@ async function pullMessages(roomID){
 
 // functions for knowing when Promise has passed/failed
 var passed;
+
+
 function passedTrue(){
     console.log('passed? true');
     return passed=true;    
@@ -128,6 +130,14 @@ function passedFalse(){
 function passedReset(){
     passed=undefined;
 }
+
+
+function test(){
+    var testMe = matchAdmin('someone@gmail.com');
+    return testMe;
+}
+
+
 //========================================
 
 async function bigGET(email, roomNum){

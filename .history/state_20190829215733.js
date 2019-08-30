@@ -55,7 +55,9 @@ async function state(s, email){
                 await matchAdminToPaths('lover@gmail.com');
             }else {
                 await pullMessages(savedMessagePaths[1]);
+               
             }
+
         }).then(()=>{
             for(var i=0; i<savedMessagePaths.length; i++){
                 var tmp = savedMessages[i].date.seconds;

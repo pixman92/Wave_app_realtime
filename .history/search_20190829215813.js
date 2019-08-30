@@ -32,15 +32,14 @@ async function matchAdminToPaths(adminEmail){
         for(var i=0; i<savedMessagePaths.length; i++){
             pullDataFromFirestore(savedMessagePaths[i]);
         }
-        
-        // wait(800).then(()=>{
-        //     console.log('savedDoc2', savedDoc);
+        // console.log('savedDoc', savedDoc);
+        wait(800).then(()=>{
+            console.log('savedDoc2', savedDoc);
 
-        // }); 
-      
+        }); 
+        // return tmpSavedMessagePaths;
 
         if(savedMessagePaths.length>0){
-            console.log('savedMessagePaths', savedMessagePaths);
             passedTrue();
         }else{
             passedFalse();
@@ -106,9 +105,7 @@ async function pullMessages(roomID){
     if(savedMessages.length==0){
         passedFalse();
         console.log('No messages');
-    }else{
-        passedTrue();
-    }
+    }   
 }
 
 
@@ -116,6 +113,8 @@ async function pullMessages(roomID){
 
 // functions for knowing when Promise has passed/failed
 var passed;
+
+
 function passedTrue(){
     console.log('passed? true');
     return passed=true;    
@@ -128,6 +127,14 @@ function passedFalse(){
 function passedReset(){
     passed=undefined;
 }
+
+
+function test(){
+    var testMe = matchAdmin('someone@gmail.com');
+    return testMe;
+}
+
+
 //========================================
 
 async function bigGET(email, roomNum){
