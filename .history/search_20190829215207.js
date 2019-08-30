@@ -39,11 +39,7 @@ async function matchAdminToPaths(adminEmail){
         }); 
         // return tmpSavedMessagePaths;
 
-        if(savedMessagePaths.length>0){
-            passedTrue();
-        }else{
-            passedFalse();
-        }
+        if(savemd)
 
     });
 

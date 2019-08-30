@@ -28,7 +28,7 @@ async function state(s, email){
         //pull all messages
         //pull Date{} of 1 message
         //convert it to timestamp
-        await matchAdminToPaths('lover@gmail.com');
+        await matchAdminToPaths(adminEmail)('lover@gmail.com');
         wait(2000).then(async()=>{
             if(savedMessagePaths==[]){
                 state(4);
@@ -49,7 +49,7 @@ async function state(s, email){
         //state function to pull all messages and sort them based on time
         storedDates = [];
 
-        await matchAdminToPaths('lover@gmail.com');
+        await matchAdminToPaths(adminEmail)('lover@gmail.com');
         wait(2000).then(async()=>{
             if(savedMessagePaths==[]){
                 state(5);
@@ -79,7 +79,7 @@ async function state(s, email){
 
     if(s==6){
         //testing out passed==true||false logic
-        await matchAdminToPaths('lover@gmail.com');
+        await matchAdminToPaths(adminEmail)('lover@gmail.com');
         wait(2000).then(()=>{
                 if(passed==true){
                 console.log('yup');

@@ -42,7 +42,7 @@ async function matchAdminToPaths(adminEmail){
         if(savedMessagePaths.length>0){
             passedTrue();
         }else{
-            passedFalse();
+            passe
         }
 
     });
