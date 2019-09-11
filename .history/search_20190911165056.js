@@ -1,4 +1,4 @@
-// file that makes both[], to make it easier to do???
+//
 
 var bothSaved = [];
 //================================================
