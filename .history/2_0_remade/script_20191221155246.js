@@ -44,7 +44,7 @@ async function addMemeberToRoom(adminEmail, memberEmail){
                     //error case...
                     for(var i=0; i<=tmp1.length; i++){
                         if(tmp1[i]==undefined){
-                            tmp1.splice(i);
+       gi                     tmp1.splice(i);
                         }
                     }
             

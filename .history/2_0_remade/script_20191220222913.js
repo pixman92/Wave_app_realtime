@@ -14,10 +14,10 @@ async function addMemeberToRoom(adminEmail, memberEmail){
 
 
     // addDataMergeTrue('/chatroom2/'+roomId, {mem})
-    wait(700).then(async ()=>{
+    wait(700).then(()=>{
         tmp1 = [];
         function one(){
-            await whereMe("adminEmail", adminEmail)
+            whereMe("adminEmail", adminEmail)
         }
             // .then(()=>
     //     }
@@ -48,12 +48,12 @@ async function addMemeberToRoom(adminEmail, memberEmail){
                         }
                     }
             
-                });
+                    });
+                }
                 wait(700).then(()=>{
                     addDoc(whereIds[0], {memberList: tmp1} )
-            
+    
                 });
-                }
             });
 }
 //=============================================
