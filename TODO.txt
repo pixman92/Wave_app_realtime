@@ -1,0 +1,5 @@
+TODO:
+- getting messages
+- getting people in Room
+- add peoples/remove them
+
