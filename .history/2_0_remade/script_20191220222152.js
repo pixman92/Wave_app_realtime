@@ -15,14 +15,12 @@ async function addMemeberToRoom(adminEmail, memberEmail){
 
     // addDataMergeTrue('/chatroom2/'+roomId, {mem})
     wait(700).then(()=>{
-        tmp1 = [];
         function one(){
             whereMe("adminEmail", adminEmail)
-        }
             // .then(()=>
-    //     }
-    // }).then(()=>{
-    //     wait(700).then(()=>{
+        }
+    }).then(()=>{
+        wait(700).then(()=>{
 
             if(!whereIds[0]){
                 one();
@@ -31,6 +29,7 @@ async function addMemeberToRoom(adminEmail, memberEmail){
                 getting(whereIds[0]).then(async ()=>{
                     //for statement that cycles through old 
                     //list of memberEmails, then adds to them
+                    tmp1 = [];
                     for(var i=0; i<=evenArr2[0].memberList.length; i++){
                         await tmp1.push(evenArr2[0].memberList[i]);
                     }
@@ -50,10 +49,11 @@ async function addMemeberToRoom(adminEmail, memberEmail){
             
                     });
                 }
-                wait(700).then(()=>{
-                    addDoc(whereIds[0], {memberList: tmp1} )
-    
-                });
+            });
+        });
+            wait(700).then(()=>{
+                addDoc(whereIds[0], {memberList: tmp1} )
+
             });
 }
 //=============================================
