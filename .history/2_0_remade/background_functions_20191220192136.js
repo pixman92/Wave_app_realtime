@@ -14,9 +14,9 @@ function adding(data){
 
 }
 
-function addDoc(docMe, data){
+function addDoc(docMe, data, mergeMe){
     //function to push updated data up to firebase
-    db.collection('chatrooms2').doc(docMe).set(data, {merge: true});
+    db.collection('chatrooms2').doc(docMe).add(data, {merge: mergeMe});
 }
 
 var evenArr2=[];
@@ -41,13 +41,4 @@ async function whereMe(first, second){
     }));
 
 
-}
-
-//=============================================
-function isOddOrEven(str){
-    if((str.split('/').length-1)%2==0){
-        return "even";
-    }else{
-        return "odd";
-    }
 }

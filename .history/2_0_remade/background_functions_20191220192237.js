@@ -42,12 +42,3 @@ async function whereMe(first, second){
 
 
 }
-
-//=============================================
-function isOddOrEven(str){
-    if((str.split('/').length-1)%2==0){
-        return "even";
-    }else{
-        return "odd";
-    }
-}

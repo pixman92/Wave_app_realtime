@@ -6,7 +6,7 @@ function makeNewRoom(email, title){
 
     // addDataMergeTrue('/chatroom2/', {adminEmailK: email, titleOfRoom: title});
 
-    adding({adminEmail: email, title: title, memberList:""});
+    adding({adminEmail: email, title: title});
 }
 
 
@@ -18,10 +18,9 @@ function addMemeberToRoom(adminEmail, memberEmail){
     whereMe("adminEmail", adminEmail);
 
     getting(whereIds[0])
-    // var saveStrJSON = JSON.stringify(evenArr2[0]);
+    var saveStrJSON = JSON.stringify(evenArr2[0]);
 
-    evenArr2[0].memberList.push(memberEmail);
-    
+
 
     addDoc(whereIds[0], {memberList} )
 
@@ -44,3 +43,11 @@ function addMemeberToRoom(adminEmail, memberEmail){
 
 
 
+//=============================================
+function isOddOrEven(str){
+    if((str.split('/').length-1)%2==0){
+        return "even";
+    }else{
+        return "odd";
+    }
+}

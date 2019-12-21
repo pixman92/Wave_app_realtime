@@ -1,0 +1,11 @@
+What I've learned so far:
+
+-adding DATA - (collection, chatroom - add), to add new DATA
+-adding/updating DATA - (.doc(whereIds), .set DATA, and merge:true)
+
+THEN...
+-gettng DATA
+    -snapshot-> snap.data() - function that calls out the id Data on the returned query
+    -getting(ID) - put in DocString, get out all Fields(!)
+-where query
+    -

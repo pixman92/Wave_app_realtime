@@ -16,7 +16,7 @@ function adding(data){
 
 function addDoc(docMe, data){
     //function to push updated data up to firebase
-    db.collection('chatrooms2').doc(docMe).set(data, {merge: true});
+    db.collection('chatrooms2').doc(docMe).get(data, {merge: true});
 }
 
 var evenArr2=[];

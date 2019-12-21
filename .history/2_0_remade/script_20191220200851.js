@@ -6,7 +6,7 @@ function makeNewRoom(email, title){
 
     // addDataMergeTrue('/chatroom2/', {adminEmailK: email, titleOfRoom: title});
 
-    adding({adminEmail: email, title: title, memberList:""});
+    adding({adminEmail: email, title: title, memberList});
 }
 
 
@@ -20,7 +20,7 @@ function addMemeberToRoom(adminEmail, memberEmail){
     getting(whereIds[0])
     // var saveStrJSON = JSON.stringify(evenArr2[0]);
 
-    evenArr2[0].memberList.push(memberEmail);
+    evenArr2[0].push([memberEmail])
     
 
     addDoc(whereIds[0], {memberList} )

@@ -9,21 +9,19 @@
 
 function adding(data){
     //function that adds to firebase
-    //when there is no existing doc, already
-    db.collection("/chatrooms2/").add(data);
+    db.collection(path).add(data);
 
 }
 
-function addDoc(docMe, data){
-    //function to push updated data up to firebase
-    db.collection('chatrooms2').doc(docMe).set(data, {merge: true});
+function addDoc(docMe, data, mergeMe){
+    db.collection('chatrooms2').doc(docMe).set(data, {merge: mergeMe});
 }
 
 var evenArr2=[];
 async function getting(docMe){
     await db.collection("chatrooms2").doc(docMe).get().then(async (snap)=>{
         console.log(snap.data());
-        await evenArr2.push(snap.data());
+
     });
 
 }
@@ -41,13 +39,4 @@ async function whereMe(first, second){
     }));
 
 
-}
-
-//=============================================
-function isOddOrEven(str){
-    if((str.split('/').length-1)%2==0){
-        return "even";
-    }else{
-        return "odd";
-    }
 }
