@@ -8,9 +8,7 @@ async function two(){
     await getting(whereIds[0]);
     console.log('whereIds', whereIds);
     wait(700).then(()=>{
-        if(evenArr2==undefined){
-            two();
-        }
+        if(whereIds)
     });
 }
 
@@ -32,7 +30,6 @@ async function three(memberEmail) {
             // wait(700).then(async ()=>{
             //     tmpOne.push(memberEmail);
     
-            
             // });
             console.log('tmpOne', tmpOne);
         }else{

@@ -32,7 +32,6 @@ async function three(memberEmail) {
             // wait(700).then(async ()=>{
             //     tmpOne.push(memberEmail);
     
-            
             // });
             console.log('tmpOne', tmpOne);
         }else{

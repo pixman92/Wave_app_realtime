@@ -7,11 +7,6 @@ async function one(adminEmail="john@gmail.com"){
 async function two(){
     await getting(whereIds[0]);
     console.log('whereIds', whereIds);
-    wait(700).then(()=>{
-        if(evenArr2==undefined){
-            two();
-        }
-    });
 }
 
 var tmpOne=[];
@@ -32,7 +27,6 @@ async function three(memberEmail) {
             // wait(700).then(async ()=>{
             //     tmpOne.push(memberEmail);
     
-            
             // });
             console.log('tmpOne', tmpOne);
         }else{
@@ -70,9 +64,9 @@ async function five(){
 
 async function runThemAll(memberEmail) {
     one();
-    wait(700).then(async()=>{
-        await two();
-        wait(800).then(async ()=>{
+    wait(700).then(asy()=>{
+        two();
+        wait(700).then(async ()=>{
             await three(memberEmail);
             wait(700).then(()=>{
                 four();
