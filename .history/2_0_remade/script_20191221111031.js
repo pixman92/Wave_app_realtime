@@ -10,8 +10,9 @@ function makeNewRoom(email, title){
 }
 
 
+var tmp1=[]
 async function addMemeberToRoom(adminEmail, memberEmail){
-}
+
 //=============================================
 function wait(timout){
     return new Promise(resolve=>setTimeout(resolve, timout));
