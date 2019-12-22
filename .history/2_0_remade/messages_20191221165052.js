@@ -40,7 +40,7 @@
         messageObj['text'] = message;
         messageObj['date'] = dateTmp;
 
-        return messageObj;
+        reut
         // return JSON.stringify(messageObj);
     }
 

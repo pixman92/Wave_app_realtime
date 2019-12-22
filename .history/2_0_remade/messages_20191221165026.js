@@ -40,8 +40,7 @@
         messageObj['text'] = message;
         messageObj['date'] = dateTmp;
 
-        return messageObj;
-        // return JSON.stringify(messageObj);
+        return JSON.stringify(messageObj);
     }
 
     async function six(objToPass){

@@ -23,7 +23,7 @@
     }
 
     var messageList = [];
-    async function three() {
+    function three() {
         if(evenArr2[0].messages ==undefined){
             await addDoc(whereIds[0], {messages: ""});
         }
@@ -35,17 +35,8 @@
         }
     }
     function five(message){
-        var dateTmp = new Date();
         var messageObj = {};
-        messageObj['text'] = message;
-        messageObj['date'] = dateTmp;
-
-        return messageObj;
-        // return JSON.stringify(messageObj);
-    }
-
-    async function six(objToPass){
-        await addDoc(whereIds[0], {messages: objToPass});
+        messageObj['text'] = 
     }
 
 // }
