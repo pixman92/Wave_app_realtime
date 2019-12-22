@@ -34,7 +34,7 @@
     }
     
     var messageList = "";
-    function four(){
+    function four(message){
         // if(evenArr2[0].messages==undefined||evenArr2[0].messages=={}) five(message);
         if(evenArr2[0].messages==""||evenArr2[0].messages==undefined){
             //  five(message);
