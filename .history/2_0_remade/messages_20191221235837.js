@@ -95,8 +95,8 @@
     function msg(){
         bx('sam');
         wait(700).then(()=>{
-            bxx();
-            bxxx();
+            two();
+            three();
         });
     }
 

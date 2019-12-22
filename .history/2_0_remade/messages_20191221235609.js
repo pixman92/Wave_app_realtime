@@ -3,7 +3,7 @@
 
 // function message(adminEmail, message, memberEmail){
 
-    async function bx(adminEmail="sam") {
+    async function bx(adminEmail) {
         await whereMe("adminEmail", adminEmail);
         wait(700).then(()=>{
             if(whereIds==undefined){
@@ -34,7 +34,7 @@
     }
     
     var messageList = "";
-    function bxxx_x(){
+    function bxxxx(){
         // if(evenArr2[0].messages==undefined||evenArr2[0].messages=={}) five(message);
         if(evenArr2[0].messages==""||evenArr2[0].messages==undefined){
             //  five(message);
@@ -81,22 +81,22 @@
     //     bigArr.push(smallArr);
     // }
     var jsonMe; 
-    function bxxx_xxx() {
+    function bxxxxxx() {
         
         jsonMe = JSON.stringify(bigArr);
     }
 
-    async function bxxx_xxx_x(){
+    async function bxxx(){
        await addDoc(whereIds[0], {messages: jsonMe});
         // 
         // addDoc(whereIds[0], {messages: {msg}});
     }
 
     function msg(){
-        bx('sam');
+        one('sam');
         wait(700).then(()=>{
-            bxx();
-            bxxx();
+            two();
+            three();
         });
     }
 

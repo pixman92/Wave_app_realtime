@@ -3,7 +3,7 @@
 
 // function message(adminEmail, message, memberEmail){
 
-    async function bx(adminEmail="sam") {
+    async function bx(adminEmail) {
         await whereMe("adminEmail", adminEmail);
         wait(700).then(()=>{
             if(whereIds==undefined){
@@ -86,17 +86,17 @@
         jsonMe = JSON.stringify(bigArr);
     }
 
-    async function bxxx_xxx_x(){
+    async function bxxx_xxxX(){
        await addDoc(whereIds[0], {messages: jsonMe});
         // 
         // addDoc(whereIds[0], {messages: {msg}});
     }
 
     function msg(){
-        bx('sam');
+        one('sam');
         wait(700).then(()=>{
-            bxx();
-            bxxx();
+            two();
+            three();
         });
     }
 

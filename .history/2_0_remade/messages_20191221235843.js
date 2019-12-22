@@ -96,7 +96,7 @@
         bx('sam');
         wait(700).then(()=>{
             bxx();
-            bxxx();
+            three();
         });
     }
 

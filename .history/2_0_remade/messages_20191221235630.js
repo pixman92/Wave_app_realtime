@@ -3,7 +3,7 @@
 
 // function message(adminEmail, message, memberEmail){
 
-    async function bx(adminEmail="sam") {
+    async function bx(adminEmail) {
         await whereMe("adminEmail", adminEmail);
         wait(700).then(()=>{
             if(whereIds==undefined){
@@ -93,10 +93,10 @@
     }
 
     function msg(){
-        bx('sam');
+        one('sam');
         wait(700).then(()=>{
-            bxx();
-            bxxx();
+            two();
+            three();
         });
     }
 

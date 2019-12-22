@@ -93,10 +93,10 @@
     }
 
     function msg(){
-        bx('sam');
+        one('sam');
         wait(700).then(()=>{
-            bxx();
-            bxxx();
+            two();
+            three();
         });
     }
 
