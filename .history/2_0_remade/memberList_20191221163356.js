@@ -3,19 +3,17 @@
 //they take adminEmail data, find room, and add memebers to an array
 //return that data back to Firestore()
 //addMember(adminEmail, memberEmail)
-function member(adminEmail, memberEmail){
-    addMember(adminEmail, memberEmail);
+function member(){
+
 
 
     async function one(adminEmail){
-        //this function pulls IDs
         await whereMe("adminEmail", adminEmail);
     
         console.log('one run');
     }
     
     async function two(){
-        //this function gets the doc.data();
         await getting(whereIds[0]);
         console.log('whereIds', whereIds);
         wait(700).then(()=>{
@@ -27,7 +25,6 @@ function member(adminEmail, memberEmail){
     
     var tmpOne=[];
     async function three(memberEmail) {
-        //this function transfers one array to another
         tmpOne=[];
         console.log('evenArr2', evenArr2);
         if(evenArr2[0]==undefined){
@@ -56,8 +53,6 @@ function member(adminEmail, memberEmail){
     }
     var tmpTwo=[];
     function four(){
-        //this function weeds out the undefined
-        //those undefined prevent uploading to Firebase
         tmpTwo=[];
         console.log('four ran');
         console.log('tmpOne', tmpOne);
@@ -81,12 +76,10 @@ function member(adminEmail, memberEmail){
     }
     
     async function five(){
-        //this function uploads the additional data - tmpTwo
         await addDoc(whereIds[0], {memberList: tmpTwo} );
     }
     
     async function addMember(adminEmail, memberEmail) {
-        //this is the main compulation of the functions
         one(adminEmail);
         wait(700).then(async()=>{
             await two();

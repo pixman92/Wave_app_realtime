@@ -56,8 +56,7 @@ function member(adminEmail, memberEmail){
     }
     var tmpTwo=[];
     function four(){
-        //this function weeds out the undefined
-        //those undefined prevent uploading to Firebase
+        //this function 
         tmpTwo=[];
         console.log('four ran');
         console.log('tmpOne', tmpOne);
@@ -81,12 +80,10 @@ function member(adminEmail, memberEmail){
     }
     
     async function five(){
-        //this function uploads the additional data - tmpTwo
         await addDoc(whereIds[0], {memberList: tmpTwo} );
     }
     
     async function addMember(adminEmail, memberEmail) {
-        //this is the main compulation of the functions
         one(adminEmail);
         wait(700).then(async()=>{
             await two();

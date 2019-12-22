@@ -86,7 +86,7 @@ function member(adminEmail, memberEmail){
     }
     
     async function addMember(adminEmail, memberEmail) {
-        //this is the main compulation of the functions
+        //this is the main co
         one(adminEmail);
         wait(700).then(async()=>{
             await two();
