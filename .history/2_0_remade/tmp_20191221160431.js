@@ -20,7 +20,7 @@ async function three(memberEmail) {
     console.log('evenArr2', evenArr2);
     if(evenArr2[0]==undefined){
         console.log('emptied, adding', memberEmail);
-        // tmpOne.push(memberEmail);
+        tmpOne.push(memberEmail);
     }else{
         if(evenArr2[0].memberList!=undefined){
             for(var i=0; i<=evenArr2[0].memberList.length; i++){
@@ -36,10 +36,9 @@ async function three(memberEmail) {
             // });
             console.log('tmpOne', tmpOne);
         }else{
-
+            
             tmpOne.push(memberEmail);
         }
-        console.log('tmpOne, close to done', tmpOne);
     }
 }
 var tmpTwo=[];
