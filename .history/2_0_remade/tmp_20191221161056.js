@@ -1,7 +1,6 @@
 
 async function one(adminEmail="john@gmail.com"){
     await whereMe("adminEmail", adminEmail);
-
     console.log('one run');
 }
 
@@ -24,7 +23,7 @@ async function three(memberEmail) {
         // tmpOne.push(memberEmail);
     }else{
         if(evenArr2[0].memberList!=undefined){
-            for(var i=0; i<evenArr2[0].memberList.length; i++){
+            for(var i=0; i<=evenArr2[0].memberList.length; i++){
                 tmpOne.push(evenArr2[0].memberList[i]);
                 console.log('i', i);
             }
@@ -54,6 +53,7 @@ function four(){
         console.log('tmpTwo', tmpTwo);
         tmpTwo.push(tmpOne[0]);
     }else{
+        console.log('tmpOne, ??', tmp);
         for(var i=0; i<tmpOne.length; i++){
             if(tmpOne[i]==undefined){
                 // tmpOne.splice(i);

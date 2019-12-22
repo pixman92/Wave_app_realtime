@@ -1,7 +1,6 @@
 
 async function one(adminEmail="john@gmail.com"){
     await whereMe("adminEmail", adminEmail);
-
     console.log('one run');
 }
 
