@@ -6,7 +6,7 @@ function makeNewRoom(email, title){
 
     // addDataMergeTrue('/chatroom2/', {adminEmailK: email, titleOfRoom: title});
 
-    adding({adminEmail: email, title: title, memberList:"", messages: ""});
+    adding({adminEmail: email, title: title, memberList:"", });
 }
 
 

@@ -62,7 +62,7 @@
     var smallArr=[];
     function five(message){
         smallArr=[]; 
-        //bigArr=[];
+        bigArr=[];
         console.log('five done');
         var dateTmp = new Date();
         smallArr.push(message);

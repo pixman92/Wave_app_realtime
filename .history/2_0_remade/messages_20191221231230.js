@@ -45,7 +45,7 @@
             //     bigArr.push(JSON.parse(evenArr2[0].messages[i]));
             // }
 
-            bigArr.push(JSON.parse(evenArr2[0].messages))
+            bigArr.push(JSON.parse)
 
 
             
@@ -61,8 +61,7 @@
     var bigArr=[];
     var smallArr=[];
     function five(message){
-        smallArr=[]; 
-        //bigArr=[];
+        smallArr=[]; bigArr=[];
         console.log('five done');
         var dateTmp = new Date();
         smallArr.push(message);

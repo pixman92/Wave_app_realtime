@@ -39,20 +39,17 @@
         if(evenArr2[0].messages==""){
              five(message);
         }else{
-            // var len = JSON.parse(evenArr2[0].messages);
+            var len = JSON.parse(evenArr2[0].messages);
     
-            // for(var i=0; i<len.length; i++){
-            //     bigArr.push(JSON.parse(evenArr2[0].messages[i]));
-            // }
-
-            bigArr.push(JSON.parse(evenArr2[0].messages))
-
-
-            
-            console.log('messageList', messageList);
-            // messageList = evenArr2[0].messages;
-            // bigArr+=messageList;
-            
+            for(var i=0; i<len.length; i++){
+                bigArr.push(JSON.parse(evenArr2[0].messages[i]));
+            }
+    
+                // messageList = evenArr2[0].messages;
+                
+                console.log('messageList', messageList);
+    
+                // bigArr+=messageList;
 
         }
     }
@@ -61,8 +58,7 @@
     var bigArr=[];
     var smallArr=[];
     function five(message){
-        smallArr=[]; 
-        //bigArr=[];
+        smallArr=[]; bigArr=[];
         console.log('five done');
         var dateTmp = new Date();
         smallArr.push(message);

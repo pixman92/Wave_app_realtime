@@ -35,40 +35,30 @@
     
     var messageList = "";
     function four(message){
-        // if(evenArr2[0].messages==undefined||evenArr2[0].messages=={}) five(message);
-        if(evenArr2[0].messages==""){
-             five(message);
-        }else{
-            // var len = JSON.parse(evenArr2[0].messages);
-    
-            // for(var i=0; i<len.length; i++){
-            //     bigArr.push(JSON.parse(evenArr2[0].messages[i]));
+        if(evenArr2[0].messages==undefined||evenArr2[0].messages=={}) five(message);
+
+        // for(var i=0; i<evenArr2[0].messages.length; i++){
+            //     messageList.push(evenArr2[0].messages[i]);
             // }
 
-            bigArr.push(JSON.parse(evenArr2[0].messages))
-
-
+            messageList = evenArr2[0].messages;
             
             console.log('messageList', messageList);
-            // messageList = evenArr2[0].messages;
-            // bigArr+=messageList;
-            
 
-        }
+            bigArr+=messageList;
     }
         
      
     var bigArr=[];
     var smallArr=[];
     function five(message){
-        smallArr=[]; 
-        //bigArr=[];
+        smallArr=[];
         console.log('five done');
         var dateTmp = new Date();
         smallArr.push(message);
         smallArr.push(dateTmp);
 
-        bigArr.push(smallArr);
+        bigArr+=smallArr;
 
     }
     
