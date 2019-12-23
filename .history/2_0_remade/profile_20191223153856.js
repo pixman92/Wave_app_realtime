@@ -8,7 +8,7 @@ function ax(myEmail){
 
     tmp2.get().then(async (snap)=>snap.forEach(async (doc)=>{
         console.log(doc)
-        await profileSelect.push(doc.id);
+        await whereIds.push(doc.id);
     }));
 }
 
