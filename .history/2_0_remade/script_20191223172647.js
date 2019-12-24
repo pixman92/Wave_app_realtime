@@ -44,8 +44,7 @@ async function getRoomBasedOnAdmin(adminEmail) {
     wait(700).then(()=>{
         getting('chatrooms2', whereIds[0]);
         wait(700).then(()=>{
-        console.log('secs of Room: ' + adminEmail, evenArr2[0].dateID.seconds);
-            return evenArr2[0].dateID.seconds;
+            return evenArr2[0].dateID.seconds
         });
     });
 }

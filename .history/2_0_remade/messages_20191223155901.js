@@ -29,7 +29,7 @@ function message(adminEmail, message, memberEmail){
 
 
     async function bx(adminEmail) {
-        await whereMe("chatrooms2", "adminEmail", adminEmail);
+        await whereMe("adminEmail", adminEmail);
         wait(700).then(()=>{
             if(whereIds==undefined){
                 one(adminEmail);
@@ -137,7 +137,7 @@ async function pullMessages(adminEmail){
     // if(guiStr==undefined) axxx_x(adminEmail);
   
     async function ax(adminEmail) {
-        await whereMe("chatrooms2", "adminEmail", adminEmail);
+        await whereMe("adminEmail", adminEmail);
             wait(700).then(async()=>{
                 if(whereIds==undefined){
                     one(adminEmail);
@@ -151,7 +151,7 @@ async function pullMessages(adminEmail){
     
     async function axx() {
         evenArr2 = []
-        await getting("chatrooms", whereIds[0]);
+        await getting(whereIds[0]);
         console.log('whereIds', whereIds);
     
         if(whereIds==undefined) ax(adminEmail);

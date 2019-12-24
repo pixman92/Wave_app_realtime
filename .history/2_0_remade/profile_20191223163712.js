@@ -1,10 +1,10 @@
 //========================================
-//functions that pull Profile Info 
+//functions that pull Profile Info
 
 var profileSelect=[];
-async function ax(myEmail){
-    //field in the profiles(Root) & field = myEmail
-    tmp = db.collection("/profiles/");
+function ax(myEmail){
+    tmp = db.collection("profiles");
+
     tmp2 = tmp.where("myEmail", '==', myEmail);
 
     tmp2.get().then(async (snap)=>snap.forEach(async (doc)=>{
@@ -25,7 +25,7 @@ async function axx(docMe=profileSelect[0]){
 }
 
 function axxx(){
-    console.log('wholeProfile', wholeProfile);
+
 }
 
 
@@ -38,4 +38,4 @@ function axxx(){
 //========================================
 //functions to compare the dates stored in my profile to those that exist elsewhere
 // 
-// whereMe('chatrooms2', 'dateID', evenArr2[0].dateID)
+whereMe('chatrooms2', 'dateID', evenArr2[0].dateID)

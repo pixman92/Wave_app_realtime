@@ -20,9 +20,9 @@ function addDoc(docMe, data){
 }
 
 var evenArr2=[];
-async function getting(main, docMe){
+async function getting(root, docMe){
     evenArr2=[];
-    await db.collection(main).doc(docMe).get().then(async (snap)=>{
+    await db.collection(root).doc(docMe).get().then(async (snap)=>{
         console.log(snap.data());
         await evenArr2.push(snap.data());
     });
@@ -31,8 +31,8 @@ async function getting(main, docMe){
 //=============================================
 //where function stuff
 var whereIds=[];
-async function whereMe(root, first, second){
-    tmp = db.collection(root);
+async function whereMe(first, second){
+    tmp = db.collection("chatrooms2");
 
     tmp2 = tmp.where(first, '==', second)
 
@@ -43,17 +43,6 @@ async function whereMe(root, first, second){
 
 
 }
-//========================================
-function secsToDate(seconds) {
-    //function takes seconds from doc.data()
-    //converts to a whole date String
-    var newD = new Date();
-
-    newD.setSeconds(seconds);
-
-    return newD;
-}
-
 
 //=============================================
 function isOddOrEven(str){

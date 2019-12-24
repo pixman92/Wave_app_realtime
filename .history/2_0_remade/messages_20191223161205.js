@@ -137,7 +137,7 @@ async function pullMessages(adminEmail){
     // if(guiStr==undefined) axxx_x(adminEmail);
   
     async function ax(adminEmail) {
-        await whereMe("chatrooms2", "adminEmail", adminEmail);
+        await whereMe("adminEmail", adminEmail);
             wait(700).then(async()=>{
                 if(whereIds==undefined){
                     one(adminEmail);

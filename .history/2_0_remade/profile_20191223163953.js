@@ -5,6 +5,7 @@ var profileSelect=[];
 async function ax(myEmail){
     //field in the profiles(Root) & field = myEmail
     tmp = db.collection("/profiles/");
+
     tmp2 = tmp.where("myEmail", '==', myEmail);
 
     tmp2.get().then(async (snap)=>snap.forEach(async (doc)=>{
@@ -25,7 +26,7 @@ async function axx(docMe=profileSelect[0]){
 }
 
 function axxx(){
-    console.log('wholeProfile', wholeProfile);
+
 }
 
 

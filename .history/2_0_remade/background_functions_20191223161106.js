@@ -32,7 +32,7 @@ async function getting(main, docMe){
 //where function stuff
 var whereIds=[];
 async function whereMe(root, first, second){
-    tmp = db.collection(root);
+    tmp = db.collection();
 
     tmp2 = tmp.where(first, '==', second)
 
@@ -43,17 +43,6 @@ async function whereMe(root, first, second){
 
 
 }
-//========================================
-function secsToDate(seconds) {
-    //function takes seconds from doc.data()
-    //converts to a whole date String
-    var newD = new Date();
-
-    newD.setSeconds(seconds);
-
-    return newD;
-}
-
 
 //=============================================
 function isOddOrEven(str){

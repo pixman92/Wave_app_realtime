@@ -12,7 +12,7 @@ function member(adminEmail, memberEmail, select){
 
     async function one(adminEmail){
         //this function pulls IDs
-        await whereMe("chatrooms2", "adminEmail", adminEmail);
+        await whereMe("adminEmail", adminEmail);
     
         console.log('one run');
     }
@@ -128,7 +128,7 @@ function pullMembers(adminEmail, select){
 
     async function ax(adminEmail){
         //this function pulls IDs
-        await whereMe("chatrooms2", "adminEmail", adminEmail);
+        await whereMe("adminEmail", adminEmail);
     
         console.log('one run');
     }

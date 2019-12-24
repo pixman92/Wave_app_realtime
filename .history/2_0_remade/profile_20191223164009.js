@@ -25,7 +25,7 @@ async function axx(docMe=profileSelect[0]){
 }
 
 function axxx(){
-    console.log('wholeProfile', wholeProfile);
+
 }
 
 
