@@ -2,7 +2,6 @@
 //functions that pull Profile Info 
 
 var profileSelect=[];
-var wholeProfile=[];
 function wholeProfileFunc(myEmail){
 
     ax(myEmail);
@@ -27,6 +26,7 @@ function wholeProfileFunc(myEmail){
         }));
     }
     
+    var wholeProfile=[];
     async function axx(docMe=profileSelect[0]){
         //function to get all 'chatRooms' I'm a part of
         wholeProfile=[];
@@ -49,15 +49,9 @@ function wholeProfileFunc(myEmail){
 // function 
 
 
-function ax(adminEmail){
-    getRoomBasedOnAdmin(adminEmail)
-
-    
-}
-
-function axx(docMe, data){
+function ax(docMe, data){
     //function to add to chatroom Data
-    db.collection('profiles').doc(docMe).set({chatrooms: data}, {merge: true});
+    db.collection('profiles').doc(docMe).set(data, {merge: true});
 }
 
 

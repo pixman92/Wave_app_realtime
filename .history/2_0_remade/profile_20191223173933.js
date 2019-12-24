@@ -49,10 +49,9 @@ function wholeProfileFunc(myEmail){
 // function 
 
 
-function ax(adminEmail){
-    getRoomBasedOnAdmin(adminEmail)
-
-    
+function ax(){
+    wholeProfileFunc(myEmail);
+    var roomSeconds = wholeProfile[0].
 }
 
 function axx(docMe, data){

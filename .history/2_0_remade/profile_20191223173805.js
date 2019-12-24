@@ -49,12 +49,6 @@ function wholeProfileFunc(myEmail){
 // function 
 
 
-function ax(adminEmail){
-    getRoomBasedOnAdmin(adminEmail)
-
-    
-}
-
 function axx(docMe, data){
     //function to add to chatroom Data
     db.collection('profiles').doc(docMe).set({chatrooms: data}, {merge: true});

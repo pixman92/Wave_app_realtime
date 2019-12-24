@@ -49,10 +49,8 @@ function wholeProfileFunc(myEmail){
 // function 
 
 
-function ax(adminEmail){
-    getRoomBasedOnAdmin(adminEmail)
-
-    
+function ax(){
+    get
 }
 
 function axx(docMe, data){
