@@ -1,0 +1,25 @@
+ 
+
+2020, 03, 12 - 20:29:23 --- ======================
+
+2020, 03, 12 - 20:29:42 --- Getting <back> into this app!
+
+2020, 03, 12 - 20:29:49 --- What's the function flow???
+
+2020, 03, 12 - 20:32:33 --- Remaking the 2_0_remade !!
+
+2020, 03, 12 - 20:38:07 --- makeNewRoom('sck@gmail.com', 'students to contact') <- function for new Chatroom
+
+2020, 03, 12 - 20:38:23 --- whereMe('chatrooms3', 'adminEmail', 'sck@gmail.com') <- function for pulling up Chatroom. Produces <whereId(s)>
+
+2020, 03, 12 - 20:52:34 --- whereMe (to pull whereId) & getting (to pull all of doc) - why? to pull messages, then add to them, then push back
+
+2020, 03, 12 - 21:17:55 --- NEXT? adding('chatrooms3' + '/' + whereIds[0] + '/' + 'messagesData'
+
+2020, 03, 12 - 21:24:48 --- whereMe('chatrooms3/8pgRMYcUogeIPXy5YyzJ/messagesData/', 'memberEmail', 'student1', ()=>{})
+
+2020, 03, 12 - 21:24:56 --- Working!
+
+2020, 03, 12 - 21:33:51 --- Find messagesData - within COLLECTION within a DOC
+
+2020, 03, 12 - 21:39:50 --- adding('chatrooms3/8pgRMYcUogeIPXy5YyzJ/messagesData/', {memberEmail: 'student2', message: '2'}) <- to ADD  N E W messages to Collection!!!
