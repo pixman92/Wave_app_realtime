@@ -107,7 +107,7 @@ async function runAll(adminEmail, memberEmail){
     try{
         let one1 = await one(adminEmail);
         let two2 = await two(one1, memberEmail);
-        let three3 = await three(two2);
+        let three3 = await three(two2, );
 
         return 'done!';
     }catch(e){
@@ -117,31 +117,31 @@ async function runAll(adminEmail, memberEmail){
 
 }
         
-var oneFinished; 
-var tmpIds=[];
-async function one(adminEmail){
+        var oneFinished; 
+        var tmpIds=[];
+        async function one(adminEmail){
     // whereIds=[];
     await whereMe('chatrooms3', 'adminEmail', adminEmail, async ()=>{
         // return new Promise((resolve)=>{
         //     resolve(whereIds);
         // });
         tmpIds[0] = whereIds[0];
-        // setTimeout(() => {
-        //     return true;
-        // }, 5000);
+        setTimeout(() => {
+            return true;
+        }, 5000);
     });
 }
 
 var twoFinished;
-async function two(etc, memberEmail){
+async function two(memberEmail){
     // whereIds=[];
     await whereMe('chatrooms3/' + tmpIds[0] + '/messagesData/', 'memberEmail', memberEmail, async()=>{
 
         // return twoFinished = true;
-        // setTimeout(() => {
-            tmpIds = whereIds;
-        //     return true;
-        // }, 5000);
+        setTimeout(() => {
+            // tmpIds = whereIds;
+            return true;
+        }, 5000);
     });
 }
 
@@ -152,8 +152,8 @@ async function three(){
     console.log('rootStr', rootStr);
     await getting(rootStr.toString(), tmpIds[1], async()=>{
         // rootStr =  + whereIds[1];
-        // setTimeout(() => {
-        //     return true;
-        // }, 5000);
+        setTimeout(() => {
+            return true;
+        }, 5000);
     });
 }

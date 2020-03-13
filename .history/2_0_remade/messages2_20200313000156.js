@@ -139,7 +139,7 @@ async function two(etc, memberEmail){
 
         // return twoFinished = true;
         // setTimeout(() => {
-            tmpIds = whereIds;
+        //     tmpIds = whereIds;
         //     return true;
         // }, 5000);
     });
@@ -152,8 +152,8 @@ async function three(){
     console.log('rootStr', rootStr);
     await getting(rootStr.toString(), tmpIds[1], async()=>{
         // rootStr =  + whereIds[1];
-        // setTimeout(() => {
-        //     return true;
-        // }, 5000);
+        setTimeout(() => {
+            return true;
+        }, 5000);
     });
 }

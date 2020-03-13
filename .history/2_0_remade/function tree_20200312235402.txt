@@ -1,0 +1,22 @@
+async function main (num, num2){
+    try{
+        let hello = await one(num2);
+        let goodbye = await two(hello, num);
+        let nope = await three(goodbye);
+    }catch(e){
+        console.log(e);
+        throw e;
+    }
+
+}
+
+async function one(num2){
+    console.log('first ' + num2);
+}
+
+async function two(tmp, num){
+    console.log('second ' + num);
+}
+async function three(){
+    console.log('third');
+}

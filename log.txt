@@ -23,3 +23,5 @@
 2020, 03, 12 - 21:33:51 --- Find messagesData - within COLLECTION within a DOC
 
 2020, 03, 12 - 21:39:50 --- adding('chatrooms3/8pgRMYcUogeIPXy5YyzJ/messagesData/', {memberEmail: 'student2', message: '2'}) <- to ADD  N E W messages to Collection!!!
+
+2020, 03, 13 - 00:02:48 --- Trying to get Await order working...

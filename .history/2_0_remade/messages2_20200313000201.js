@@ -139,7 +139,7 @@ async function two(etc, memberEmail){
 
         // return twoFinished = true;
         // setTimeout(() => {
-            tmpIds = whereIds;
+        //     tmpIds = whereIds;
         //     return true;
         // }, 5000);
     });

@@ -90,58 +90,58 @@ async function pullMessageData(adminEmail){
 
         }
         
-async function runAll(adminEmail, memberEmail){
-        // one(adminEmail).then(()=>{
-    //     two(memberEmail).then(()=>{
-    //         wait(800).then(()=>{
-    //             if(tmpIds[0]==undefined){
-    //                 runAll(adminEmail, memberEmail)
-    //             }
-    //             three();
-
-    //         });
-    //     });
-    // });
-
-    
-    try{
-        let one1 = await one(adminEmail);
-        let two2 = await two(one1, memberEmail);
-        let three3 = await three(two2);
-
-        return 'done!';
-    }catch(e){
-        console.log('error', e);
-        throw e;
-    }
-
-}
+        async function runAll(adminEmail, memberEmail){
+              // one(adminEmail).then(()=>{
+            //     two(memberEmail).then(()=>{
+            //         wait(800).then(()=>{
+            //             if(tmpIds[0]==undefined){
+            //                 runAll(adminEmail, memberEmail)
+            //             }
+            //             three();
         
-var oneFinished; 
-var tmpIds=[];
-async function one(adminEmail){
+            //         });
+            //     });
+            // });
+        
+            
+            try{
+                let one = await one();
+                let two = await two(one);
+                let three = await three(two);
+        
+                return 'done!';
+            }catch(e){
+                console.log('error', e);
+                throw e;
+            }
+        
+        }
+        
+        var oneFinished; 
+        var tmpIds=[];
+        async function one(adminEmail){
     // whereIds=[];
     await whereMe('chatrooms3', 'adminEmail', adminEmail, async ()=>{
         // return new Promise((resolve)=>{
         //     resolve(whereIds);
         // });
         tmpIds[0] = whereIds[0];
-        // setTimeout(() => {
-        //     return true;
-        // }, 5000);
+        setTimeout(() => {
+            return true;
+        }, 5000);
     });
 }
 
 var twoFinished;
-async function two(etc, memberEmail){
+async function two(memberEmail){
     // whereIds=[];
     await whereMe('chatrooms3/' + tmpIds[0] + '/messagesData/', 'memberEmail', memberEmail, async()=>{
 
         // return twoFinished = true;
-        // setTimeout(() => {
-            tmpIds = whereIds;
-        //     return true;
-        // }, 5000);
+        setTimeout(() => {
+            // tmpIds = whereIds;
+            return true;
+        }, 5000);
     });
 }
 
@@ -152,8 +152,8 @@ async function three(){
     console.log('rootStr', rootStr);
     await getting(rootStr.toString(), tmpIds[1], async()=>{
         // rootStr =  + whereIds[1];
-        // setTimeout(() => {
-        //     return true;
-        // }, 5000);
+        setTimeout(() => {
+            return true;
+        }, 5000);
     });
 }

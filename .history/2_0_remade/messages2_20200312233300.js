@@ -12,7 +12,7 @@
 //             if(wholeDoc[0].messageData==undefined){
 //                 messagesJSON = JSON.stringify(tmpArr);
 //             }else{
-    //                 messagesJSON = JSON.stringify(tmpArr) + wholeDoc[0].messageData;
+//                 messagesJSON = JSON.stringify(tmpArr) + wholeDoc[0].messageData;
 //             }
             
 //             console.log('tmpArr', tmpArr);
@@ -40,7 +40,7 @@ async function pullMessageData(adminEmail){
     whereIds=[];
     await whereMe('chatrooms3', 'adminEmail', adminEmail, async ()=>{
         // if(whereIds.length==0) pullMessageData(adminEmail);
-        while(exitCount<100){
+                while(exitCount<100){
                     wait(900).then(async ()=>{
                         if(whereIds.length>0){
                             exitCount=100;
@@ -54,7 +54,7 @@ async function pullMessageData(adminEmail){
 
                 }
             });
-            
+
                 await whereMe('chatrooms3/' + whereIds[0] + '/messagesData/', 'memberEmail', 'student1', async()=>{
                     console.log('whereIds[1]', whereIds[1]);
                     tmp = whereIds[1];
@@ -66,13 +66,13 @@ async function pullMessageData(adminEmail){
                                 }
                                 pullMessageData(adminEmail);
                                 exitCount2++;
-                                
+
                             }); 
                         }
                     });
                     
                     // if( whereIds[1])
-                    
+
                     await getting('chatrooms3/' + whereIds[0] + '/messagesData/', whereIds[1], async()=>{
                         while(rootStr==""){
                             wait(900).then(()=>{
@@ -80,18 +80,60 @@ async function pullMessageData(adminEmail){
                                     pullMessageData(adminEmail)
                                 }
                                 rootStr = 'chatrooms3/' + whereIds[0] + '/messagesData/' + whereIds[1];
-                                
+    
                             });
                         }
                     });
                 // });
             // });
-            // });
+        // });
 
-        }
-        
+}
+
+
+var oneFinished; 
+var tmpIds=[];
+async function one(adminEmail){
+    // whereIds=[];
+    await whereMe('chatrooms3', 'adminEmail', adminEmail, async ()=>{
+        // return new Promise((resolve)=>{
+        //     resolve(whereIds);
+        // });
+        tmpIds[0] = whereIds[0];
+        setTimeout(() => {
+            return true;
+        }, 5000);
+    });
+}
+
+var twoFinished;
+async function two(memberEmail){
+    // whereIds=[];
+    await whereMe('chatrooms3/' + tmpIds[0] + '/messagesData/', 'memberEmail', memberEmail, async()=>{
+
+        // return twoFinished = true;
+        setTimeout(() => {
+            // tmpIds = whereIds;
+            return true;
+        }, 5000);
+    });
+}
+
+var threeFinished;
+async function three(){
+    // console.log('whereIds[0]', whereIds[0]);
+    rootStr = 'chatrooms3/' + tmpIds[0] + '/messagesData/';
+    console.log('rootStr', rootStr);
+    await getting(rootStr.toString(), tmpIds[1], async()=>{
+        // rootStr =  + whereIds[1];
+        setTimeout(() => {
+            return true;
+        }, 5000);
+    });
+}
+
 async function runAll(adminEmail, memberEmail){
-        // one(adminEmail).then(()=>{
+      // one(adminEmail).then(()=>{
     //     two(memberEmail).then(()=>{
     //         wait(800).then(()=>{
     //             if(tmpIds[0]==undefined){
@@ -105,9 +147,9 @@ async function runAll(adminEmail, memberEmail){
 
     
     try{
-        let one1 = await one(adminEmail);
-        let two2 = await two(one1, memberEmail);
-        let three3 = await three(two2);
+        let one = await one();
+        let two = await two(two);
+        let three = await three(tow);
 
         return 'done!';
     }catch(e){
@@ -115,45 +157,4 @@ async function runAll(adminEmail, memberEmail){
         throw e;
     }
 
-}
-        
-var oneFinished; 
-var tmpIds=[];
-async function one(adminEmail){
-    // whereIds=[];
-    await whereMe('chatrooms3', 'adminEmail', adminEmail, async ()=>{
-        // return new Promise((resolve)=>{
-        //     resolve(whereIds);
-        // });
-        tmpIds[0] = whereIds[0];
-        // setTimeout(() => {
-        //     return true;
-        // }, 5000);
-    });
-}
-
-var twoFinished;
-async function two(etc, memberEmail){
-    // whereIds=[];
-    await whereMe('chatrooms3/' + tmpIds[0] + '/messagesData/', 'memberEmail', memberEmail, async()=>{
-
-        // return twoFinished = true;
-        // setTimeout(() => {
-            tmpIds = whereIds;
-        //     return true;
-        // }, 5000);
-    });
-}
-
-var threeFinished;
-async function three(){
-    // console.log('whereIds[0]', whereIds[0]);
-    rootStr = 'chatrooms3/' + tmpIds[0] + '/messagesData/';
-    console.log('rootStr', rootStr);
-    await getting(rootStr.toString(), tmpIds[1], async()=>{
-        // rootStr =  + whereIds[1];
-        // setTimeout(() => {
-        //     return true;
-        // }, 5000);
-    });
 }

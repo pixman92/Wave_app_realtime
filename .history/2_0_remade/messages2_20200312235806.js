@@ -126,9 +126,9 @@ async function one(adminEmail){
         //     resolve(whereIds);
         // });
         tmpIds[0] = whereIds[0];
-        // setTimeout(() => {
-        //     return true;
-        // }, 5000);
+        setTimeout(() => {
+            return true;
+        }, 5000);
     });
 }
 
@@ -138,10 +138,10 @@ async function two(etc, memberEmail){
     await whereMe('chatrooms3/' + tmpIds[0] + '/messagesData/', 'memberEmail', memberEmail, async()=>{
 
         // return twoFinished = true;
-        // setTimeout(() => {
+        setTimeout(() => {
             tmpIds = whereIds;
-        //     return true;
-        // }, 5000);
+            return true;
+        }, 5000);
     });
 }
 
@@ -152,8 +152,8 @@ async function three(){
     console.log('rootStr', rootStr);
     await getting(rootStr.toString(), tmpIds[1], async()=>{
         // rootStr =  + whereIds[1];
-        // setTimeout(() => {
-        //     return true;
-        // }, 5000);
+        setTimeout(() => {
+            return true;
+        }, 5000);
     });
 }
