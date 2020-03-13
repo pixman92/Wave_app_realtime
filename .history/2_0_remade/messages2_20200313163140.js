@@ -1,7 +1,7 @@
 async function addMessageToData(adminEmail, message, memberEmail){
     try{
         var one = await getWhereIds(adminEmail);
-        var two = await pushMessageData(one, message, memberEmail);
+        var two = await pushMessageData(one);
     }catch(e){
         console.log('e', e);
     }

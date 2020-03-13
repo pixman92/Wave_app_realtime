@@ -1,14 +1,14 @@
-async function addMessageToData(adminEmail, message, memberEmail){
+function addMessageToData(adminEmail, message, memberEmail){
     try{
         var one = await getWhereIds(adminEmail);
-        var two = await pushMessageData(one, message, memberEmail);
+        var two = await pushMessageData(one);
     }catch(e){
         console.log('e', e);
     }
 
     async function getWhereIds(){
         await whereMe('chatrooms3', 'adminEmail', adminEmail, ()=>{
-            console.log('whereIds1', whereIds);
+
         });
     }
     async function pushMessageData(one, message, memberEmail) {
