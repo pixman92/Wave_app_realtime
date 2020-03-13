@@ -121,7 +121,7 @@ async function three(){
         await getting(rootStr, whereIds[1], ()=>{
             console.log('3', whereIds);
         });
-        whereIds=[];
+
     }catch(e){
         console.log('e', e);
     }

@@ -78,6 +78,60 @@ async function runAll(adminEmail, memberEmail){
     }
 
 }
+
+        
+// var oneFinished; 
+// var tmpIds=[];
+// async function one(adminEmail){
+//     // whereIds=[];
+//     await whereMe('chatrooms3', 'adminEmail', adminEmail, async ()=>{
+//         // return new Promise((resolve)=>{
+//         //     resolve(whereIds);
+//         // });
+//         // tmpIds[0] = whereIds[0];
+//         setTimeout(() => {
+//             console.log('1', whereIds);
+//             return true;
+//         }, 2000);
+//     });
+// }
+
+// var twoFinished;
+// async function two(etc, memberEmail){
+//     // whereIds=[];
+//     try{
+//         await whereMe('chatrooms3/' + whereIds[0] + '/messagesData/', 'memberEmail', memberEmail, async()=>{
+    
+//             // return twoFinished = true;
+//             setTimeout(() => {
+//                 whereIds = whereIds;
+//                 console.log('2', whereIds);
+//             //     return true;
+//             }, 2000);
+//         });
+
+//     }catch(e){
+//         console.log('e', e);
+//         throw e;
+//     }
+// }
+
+// var threeFinished;
+// var rootStr;
+// async function three(){
+//     // console.log('whereIds[0]', whereIds[0]);
+//     rootStr = 'chatrooms3/' + whereIds[0] + '/messagesData/';
+//     console.log('rootStr', rootStr);
+//     await getting(rootStr.toString(), whereIds[1], async()=>{
+//         // rootStr =  + whereIds[1];
+//         setTimeout(() => {
+//             console.log('3', whereIds);
+//             return true;
+//         }, 2000);
+//     });
+// }
+
+
 //========================================
 
 
@@ -104,7 +158,7 @@ async function two(etc, memberEmail){
     // whereIds=[];
     // var tmpId = whereIds[0];
     try{
-        await whereMe('chatrooms3/' + whereIds[0] + '/messagesData/', 'memberEmail', memberEmail, ()=>{
+        whereMe('chatrooms3/' + tmpId[0] + '/messagesData/', 'memberEmail', memberEmail, ()=>{
             console.log('2', whereIds);
         });
 
@@ -116,12 +170,12 @@ async function two(etc, memberEmail){
 async function three(){
     // console.log('whereIds[0]', whereIds[0]);
     try{
-        rootStr = 'chatrooms3/' + whereIds[0] + '/messagesData/';
+        rootStr = 'chatrooms3/' + tmpId[0] + '/messagesData/';
         console.log('rootStr', rootStr);
         await getting(rootStr, whereIds[1], ()=>{
             console.log('3', whereIds);
         });
-        whereIds=[];
+
     }catch(e){
         console.log('e', e);
     }

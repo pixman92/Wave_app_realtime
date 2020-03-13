@@ -83,20 +83,19 @@ async function getting(main, docMe, callback){
     await db.collection(main).doc(docMe).get().then(async (snap)=>{
         console.log(snap.data());
         await wholeDoc.push(snap.data());
+        callback();
     });
-    callback();
 
 }
 //=============================================
 //where function stuff
 var whereIds=[];
 async function whereMe(root, first, second, callback){
-    // whereIds=[];
     tmp = db.collection(root);
 
     tmp2 = tmp.where(first, '==', second)
 
-    await tmp2.get().then(async (snap)=>snap.forEach(async (doc)=>{
+    tmp2.get().then(async (snap)=>snap.forEach(async (doc)=>{
         console.log(doc)
         await whereIds.push(doc.id);
     }));

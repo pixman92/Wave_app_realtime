@@ -104,7 +104,7 @@ async function two(etc, memberEmail){
     // whereIds=[];
     // var tmpId = whereIds[0];
     try{
-        await whereMe('chatrooms3/' + whereIds[0] + '/messagesData/', 'memberEmail', memberEmail, ()=>{
+        await whereMe('chatrooms3/' + tmpId[0] + '/messagesData/', 'memberEmail', memberEmail, ()=>{
             console.log('2', whereIds);
         });
 
@@ -116,12 +116,12 @@ async function two(etc, memberEmail){
 async function three(){
     // console.log('whereIds[0]', whereIds[0]);
     try{
-        rootStr = 'chatrooms3/' + whereIds[0] + '/messagesData/';
+        rootStr = 'chatrooms3/' + tmpId[0] + '/messagesData/';
         console.log('rootStr', rootStr);
         await getting(rootStr, whereIds[1], ()=>{
             console.log('3', whereIds);
         });
-        whereIds=[];
+
     }catch(e){
         console.log('e', e);
     }

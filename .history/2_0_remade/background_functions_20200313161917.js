@@ -91,7 +91,7 @@ async function getting(main, docMe, callback){
 //where function stuff
 var whereIds=[];
 async function whereMe(root, first, second, callback){
-    // whereIds=[];
+    whereIds=[];
     tmp = db.collection(root);
 
     tmp2 = tmp.where(first, '==', second)
