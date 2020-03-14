@@ -88,7 +88,7 @@ async function getting(main, docMe, callback){
 
     await db.collection(main).doc(docMe).get().then(async (doc)=>{
         console.log(doc.id);
-        await allPathsReturnred.push(doc.id);
+        await wholeDoc.push(doc.id);
     });
 
     callback();

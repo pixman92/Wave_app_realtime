@@ -28,7 +28,7 @@ function getMessages(adminEmail){
 
 function selectRoom(adminEmail){
     //function to pull and select room based on admin
-    getRoomID(adminEmail)
+    getRoomID(adminEmail)(adminEmail)
 }
 
 

@@ -2,7 +2,6 @@
 //file to select a chatRoom ID and store in global variable
 
 var selectingRoomID = [];
-var selectRoomPaths = [];
 async function getRoomID(adminEmail) {
     //function to get room based on adminEmail
 
@@ -27,12 +26,13 @@ async function getRoomID(adminEmail) {
     
     async function two(){
         //function to push all matching adminEmail(s) (rooms) to an Array[]
-        selectingRoomID=[];
+        var selectingRoomID=[];
         //this function gets the doc.data();
 
         for(var i=0; i<whereIds.length; i++){
             await getting('chatrooms3', whereIds[i], ()=>{
-                selectingRoomID.push(wholeDoc); 
+                selectingRoomID.push(wholeDoc);
+
             });
         }
         // console.log('returned values', evenArr2);

@@ -34,6 +34,7 @@ async function getRoomID(adminEmail) {
             await getting('chatrooms3', whereIds[i], ()=>{
                 selectingRoomID.push(wholeDoc); 
             });
+            await db.collection 
         }
         // console.log('returned values', evenArr2);
         console.log('selectingRoomID', selectingRoomID );

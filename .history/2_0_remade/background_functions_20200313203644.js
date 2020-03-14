@@ -78,7 +78,7 @@ function addDoc(root, docMe, data){
 }
 
 var wholeDoc=[];
-var allPathsReturnred=[];
+var 
 async function getting(main, docMe, callback){
     wholeDoc=[];
     await db.collection(main).doc(docMe).get().then(async (snap)=>{
@@ -88,7 +88,7 @@ async function getting(main, docMe, callback){
 
     await db.collection(main).doc(docMe).get().then(async (doc)=>{
         console.log(doc.id);
-        await allPathsReturnred.push(doc.id);
+        await wholeDoc.push(doc.id);
     });
 
     callback();

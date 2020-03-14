@@ -32,7 +32,8 @@ async function getRoomID(adminEmail) {
 
         for(var i=0; i<whereIds.length; i++){
             await getting('chatrooms3', whereIds[i], ()=>{
-                selectingRoomID.push(wholeDoc); 
+                selectingRoomID.push(wholeDoc);
+                
             });
         }
         // console.log('returned values', evenArr2);
