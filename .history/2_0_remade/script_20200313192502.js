@@ -31,19 +31,30 @@ function selectRoom(adminEmail){
     selectRoom(adminEmail)
 }
 
+function getRoomBasedOnEmail(email) {
+
+    
+}
+var secsFromRoom = 0;
+async function getRoomBasedOnAdmin(adminEmail) {
+    //function that pulls room based on adminEmail
+    //then returns room:DateID
+
+    await whereMe('chatrooms2', "adminEmail", adminEmail);
+    wait(700).then(()=>{
+        getting('chatrooms2', whereIds[0]);
+        wait(700).then(()=>{
+            console.log('secs of Room: ' + adminEmail, evenArr2[0].dateID.seconds);
+            secsFromRoom = evenArr2[0].dateID.seconds;
+            return evenArr2[0].dateID.seconds;
+        });
+    });
+}
 
 //========================================
 
 function getMembers(adminEmail, select){
-    pullMembersOfRoom(adminEmail, select)
-}
-
-function addMember(roomId, memberEmail){
-
-}
-
-function removeMember(roomId, memberEmail) {
-    
+    pullMembers(adminEmail, select)
 }
 
 //========================================

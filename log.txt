@@ -31,3 +31,5 @@
 2020, 03, 13 - 19:06:40 ---     //function to pull all messages from firestore -> based on adminEmail
 
 2020, 03, 13 - 19:08:14 --- NEXT? - tear into OLD files
+
+2020, 03, 13 - 19:22:08 --- addMessageToData() - working. pullMessages() - working. getRoomID() - working.

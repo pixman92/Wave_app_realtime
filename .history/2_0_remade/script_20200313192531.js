@@ -38,14 +38,6 @@ function getMembers(adminEmail, select){
     pullMembersOfRoom(adminEmail, select)
 }
 
-function addMember(roomId, memberEmail){
-
-}
-
-function removeMember(roomId, memberEmail) {
-    
-}
-
 //========================================
 
 function logOfProfileChatrooms() {

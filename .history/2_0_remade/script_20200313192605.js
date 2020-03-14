@@ -39,10 +39,6 @@ function getMembers(adminEmail, select){
 }
 
 function addMember(roomId, memberEmail){
-
-}
-
-function removeMember(roomId, memberEmail) {
     
 }
 
