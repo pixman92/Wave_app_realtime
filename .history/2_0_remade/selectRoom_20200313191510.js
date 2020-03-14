@@ -24,13 +24,12 @@ async function getRoomID(adminEmail) {
     
     }
     
+    var selectingRoomID=[];
     async function two(){
-        //function to push all matching adminEmail(s) (rooms) to an Array[]
-        var selectingRoomID=[];
         //this function gets the doc.data();
 
         for(var i=0; i<whereIds.length; i++){
-            await getting('chatrooms3', whereIds[i], ()=>{
+            await getting('chatrooms3', whereIds[0], ()=>{
                 selectingRoomID.push(wholeDoc);
 
             });

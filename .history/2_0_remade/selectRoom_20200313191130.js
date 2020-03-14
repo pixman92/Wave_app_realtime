@@ -6,34 +6,31 @@ async function getRoomID(adminEmail) {
     //function to get room based on adminEmail
 
     try{
-        var one1 = await one(adminEmail);
-        var two2 = await two(one1);
+        var one = await one();
+        var two = await two(one. adminEmail);
 
         return 'finished';
     }catch(e){
         console.log('e', e);
     }
 
-    async function one(adminEmail){
+    async function one(etc, adminEmail){
         //this function pulls IDs
         whereIds=[];
         await whereMe("chatrooms3", "adminEmail", adminEmail, ()=>{
-            console.log('one run');
-
+            
         });
     
+        console.log('one run');
     }
     
+    var selectingRoomID=[];
     async function two(){
-        //function to push all matching adminEmail(s) (rooms) to an Array[]
-        var selectingRoomID=[];
         //this function gets the doc.data();
 
         for(var i=0; i<whereIds.length; i++){
-            await getting('chatrooms3', whereIds[i], ()=>{
-                selectingRoomID.push(wholeDoc);
-
-            });
+            await getting(whereIds[i]);
+            selectingRoomID.push(evenArr2);
         }
         // console.log('returned values', evenArr2);
         console.log('selectingRoomID', selectingRoomID );

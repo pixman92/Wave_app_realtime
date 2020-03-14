@@ -7,7 +7,7 @@ async function getRoomID(adminEmail) {
 
     try{
         var one1 = await one(adminEmail);
-        var two2 = await two(one1);
+        var two2 = await two(one);
 
         return 'finished';
     }catch(e){
@@ -24,16 +24,13 @@ async function getRoomID(adminEmail) {
     
     }
     
+    var selectingRoomID=[];
     async function two(){
-        //function to push all matching adminEmail(s) (rooms) to an Array[]
-        var selectingRoomID=[];
         //this function gets the doc.data();
 
         for(var i=0; i<whereIds.length; i++){
-            await getting('chatrooms3', whereIds[i], ()=>{
-                selectingRoomID.push(wholeDoc);
-
-            });
+            await getting(whereIds[i]);
+            selectingRoomID.push(evenArr2);
         }
         // console.log('returned values', evenArr2);
         console.log('selectingRoomID', selectingRoomID );

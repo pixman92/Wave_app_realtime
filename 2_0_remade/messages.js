@@ -1,183 +1,68 @@
-//this file is for the purpose of creating a message and add messages to a chatRoom
+async function addMessageToData(adminEmail, message, memberEmail){
+    try{
 
+        var one = await getWhereIds(adminEmail);
+        var two = await pushMessageData(one, message, memberEmail);
+    }catch(e){
+        console.log('e', e);
+    }
 
-function message(adminEmail, message, memberEmail){
-
-    wait(700).then(()=>{
-        bx(adminEmail);
-        wait(700).then(()=>{
-            bxx();
-            wait(700).then(()=>{
-                bxxx();
-                wait(700).then(()=>{
-                    bxxx_x();
-                    wait(700).then(()=>{
-                        bxxx_xx(message, memberEmail);
-                        wait(700).then(()=>{
-                            bxxx_xxx();
-                            wait(700).then(()=>{
-                                bxxx_xxx_x();
-                            });
-                        });
-                    });
-                });
-            });
-        });
-    });
-
-
-
-
-    async function bx(adminEmail) {
-        await whereMe("chatrooms2", "adminEmail", adminEmail);
-        wait(700).then(()=>{
-            if(whereIds==undefined){
-                one(adminEmail);
-                console.log('i ran');
-            }
+    async function getWhereIds(adminEmail){
+        whereIds=[];
+        await whereMe('chatrooms3', 'adminEmail', adminEmail, ()=>{
+            console.log('whereIds1', whereIds);
         });
     }
-
-    async function bxx(){
-        evenArr2 = []
-        await getting("chatrooms3", whereIds[0]);
-        console.log('whereIds', whereIds);
-
-        if(whereIds==undefined) one();
-
-        wait(700).then(()=>{
-            if(evenArr2==undefined){
-                two();
-            }
-        });
-    }
-    
-    async function bxxx() {
-        if(evenArr2[0].messages==undefined){
-            await addDoc(whereIds[0], {messages: ""});
-        }
-    }
-    
-    var messageList = "";
-    function bxxx_x(){
-        // if(evenArr2[0].messages==undefined||evenArr2[0].messages=={}) five(message);
-        if(evenArr2[0].messages==""||evenArr2[0].messages==undefined){
-            //  five(message);
-        }else{
-            // var len = JSON.parse(evenArr2[0].messages);
-    
-            // for(var i=0; i<len.length; i++){
-            //     bigArr.push(JSON.parse(evenArr2[0].messages[i]));
-            // }
-
-            bigArr = (JSON.parse(evenArr2[0].messages))
-
-
-            
-            console.log('messageList', messageList);
-            // messageList = evenArr2[0].messages;
-            // bigArr+=messageList;
-            
-
-        }
-    }
+    async function pushMessageData(one, message, memberEmail) {
+        var tmpDate = new Date();
+        adding('chatrooms3/' +whereIds[0] + '/messagesData/', {memberEmail: memberEmail, message: message, date: tmpDate})
         
-     
-    var bigArr=[];
-    var smallArr=[];
-    function bxxx_xx(message, memberEmail){
-        smallArr=[]; 
-        //bigArr=[];
-        console.log('five done');
-        var dateTmp = new Date();
-        smallArr.push(message);
-        smallArr.push(memberEmail);
-        smallArr.push(dateTmp);
-
-        bigArr.push(smallArr);
-
-    }
-    
-    
-    var jsonMe; 
-    function bxxx_xxx() {
-        
-        jsonMe = JSON.stringify(bigArr);
-    }
-
-    async function bxxx_xxx_x(){
-       await addDoc(whereIds[0], {messages: jsonMe});
-        // 
-        // addDoc(whereIds[0], {messages: {msg}});
     }
 }
+
+
+
+
+//=//========================================
+        
+var tmpId=[];
+async function pullMessages(adminEmail){
+    //function to pull all messages from firestore -> based on adminEmail
+    try{
+        var one1 = await one(adminEmail);
+        var two2 = await two(one1);
+        return 'done!';
+    }catch(e){
+        console.log('error', e);
+        throw e;
+    }
+    async function one(adminEmail){
+        // finds path to Message Data based on adminEmail
+        try{
+            await whereMe('chatrooms3/', 'adminEmail', adminEmail,  ()=>{
+                console.log('1', whereIds);
+                if(!whereIds){
+                    console.log('NONE FOUND');
+                }
+            });
+        }catch(e){
+            console.log('e', e);
+        }
+    }
+    
+    async function two(etc){
+        // pulls all messages from Message Data -> from specified whereIds[]
+        try{
+            getAll('chatrooms3/' + whereIds[0] + '/messagesData/', ()=>{});
+        }catch(e){
+            console.log('e', e);
+        }
+    }
+}
+//========================================
+
 
 
 
 //========================================
-//pulling down messages to HTMLize them
-var guiStr=[];
-async function pullMessages(adminEmail){
 
-    axxx_x(adminEmail);
-
-    function axxx_x(adminEmail){
-        wait(700).then(async()=>{
-            await ax(adminEmail);
-            wait(700).then(()=>{
-                axx();
-                wait(700).then(()=>{
-                    axxx();
-                });
-            });
-        });
-
-    }
-
-    // if(guiStr==undefined) axxx_x(adminEmail);
-  
-    async function ax(adminEmail) {
-        await whereMe("chatrooms2", "adminEmail", adminEmail);
-            wait(700).then(async()=>{
-                if(whereIds==undefined){
-                    one(adminEmail);
-                    console.log('i ran');
-                }
-                else{
-                }
-            });
-        
-    }
-    
-    async function axx() {
-        evenArr2 = []
-        await getting("chatrooms", whereIds[0]);
-        console.log('whereIds', whereIds);
-    
-        if(whereIds==undefined) ax(adminEmail);
-    
-        wait(700).then(()=>{
-            if(evenArr2==undefined){
-                axx();
-            }
-            else{
-                axxx();
-            }
-        });
-    }
-    
-    
-    function axxx(){
-        guiStr=[];
-        // if(evenArr2.length!=0){
-        try{
-            guiStr = JSON.parse(evenArr2[0].messages);
-        }catch(error){
-            console.log('error', );(error);
-            console.log('no messages', );
-        }
-
-        console.log('guiStr', guiStr);
-    }
-
-}

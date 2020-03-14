@@ -25,7 +25,6 @@ async function getRoomID(adminEmail) {
     }
     
     async function two(){
-        //function to push all matching adminEmail(s) (rooms) to an Array[]
         var selectingRoomID=[];
         //this function gets the doc.data();
 
