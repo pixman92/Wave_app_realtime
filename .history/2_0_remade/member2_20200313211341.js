@@ -53,7 +53,7 @@ async function addMemberToList(adminEmail, memberEmail, i){
 
         try{
             console.log('whereIds', whereIds);
-            await adding('chatrooms3/' +whereIds[i] + '/memberList', {memberEmail: memberEmail});
+            await adding('chatrooms3/' +whereIds[0] + '/memberList', {memberEmail: memberEmail});
         }catch(e){
             console.log('e', e);
         }

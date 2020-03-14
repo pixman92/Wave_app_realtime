@@ -1,11 +1,11 @@
 //functions for adding/removing members
 //and the such from chatrooms
 
-async function pullUpMemberList(adminEmail, i){
-    //pulls out all Members of a Chatroom
+async function pullUpMemberList(adminEmail){
+
     try{
         var one1 = await one(adminEmail);
-        var two2 = await two(one1, i);
+        var two2 = await two(one1);
     }catch(e){
         console.log('e', e);
         throw e;
@@ -16,11 +16,11 @@ async function pullUpMemberList(adminEmail, i){
         // await whereMe('chatrooms3', 'adminEmail', adminEmail, ()=>{
         //     console.log('whereIds1', whereIds);
         // });
-        await getRoomID(adminEmail);
+        await getRoomId(adminEmail);
     }
 
-    async function two(etc, i){
-        getAll('chatrooms3/' + allPathsReturnred[i] + '/memberList', ()=>{});
+    async function two(){
+        getAll('chatrooms3/' + all[0] + '/memberList/', ()=>{});
     }
 
 
@@ -53,7 +53,7 @@ async function addMemberToList(adminEmail, memberEmail, i){
 
         try{
             console.log('whereIds', whereIds);
-            await adding('chatrooms3/' +whereIds[i] + '/memberList', {memberEmail: memberEmail});
+            await adding('chatrooms3/' +whereIds[0] + '/memberList', {memberEmail: memberEmail});
         }catch(e){
             console.log('e', e);
         }

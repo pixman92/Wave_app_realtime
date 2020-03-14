@@ -2,7 +2,7 @@
 //to pull all messages
 //to add a message
 
-//make sure to know your ROOMID
+//make sure to know your
 
 async function addMessageToData(adminEmail, message, memberEmail, i){
     try{

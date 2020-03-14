@@ -1,14 +1,8 @@
-//messaging functions
-//to pull all messages
-//to add a message
-
-//make sure to know your ROOMID
-
 async function addMessageToData(adminEmail, message, memberEmail, i){
     try{
 
         var one = await getWhereIds(adminEmail);
-        var two = await pushMessageData(one, message, memberEmail, i);
+        var two = await pushMessageData(one, message, memberEmail);
     }catch(e){
         console.log('e', e);
     }
@@ -56,15 +50,10 @@ async function pullMessages(adminEmail, i){
         }
     }
     
-    async function two(one1, i){
+    async function two(etc, i){
         // pulls all messages from Message Data -> from specified whereIds[]
         try{
-            getAll('chatrooms3/' + whereIds[i] + '/messagesData', ()=>{
-                console.log('getAllArr', getAllArr);
-                if(getAllArr.length==0){
-                    console.log('NO MESSAGES YET');
-                }
-            });
+            getAll('chatrooms3/' + whereIds[i] + '/messagesData/', ()=>{});
         }catch(e){
             console.log('e', e);
         }

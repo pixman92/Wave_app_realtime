@@ -33,3 +33,9 @@
 2020, 03, 13 - 19:08:14 --- NEXT? - tear into OLD files
 
 2020, 03, 13 - 19:22:08 --- addMessageToData() - working. pullMessages() - working. getRoomID() - working.
+
+2020, 03, 13 - 21:19:33 --- 
+
+2020, 03, 13 - 21:20:35 --- Working?! - addMemberToList() & pullUpMemberList() - to add a member and pull up all members in firebase
+
+2020, 03, 13 - 21:34:48 --- Chatroom building, adding messages, adding members, removing members (Not working). NEXT? profile and some GUI!!!

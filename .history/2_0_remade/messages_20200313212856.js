@@ -1,9 +1,3 @@
-//messaging functions
-//to pull all messages
-//to add a message
-
-//make sure to know your ROOMID
-
 async function addMessageToData(adminEmail, message, memberEmail, i){
     try{
 
@@ -61,7 +55,7 @@ async function pullMessages(adminEmail, i){
         try{
             getAll('chatrooms3/' + whereIds[i] + '/messagesData', ()=>{
                 console.log('getAllArr', getAllArr);
-                if(getAllArr.length==0){
+                if(!getAllArr){
                     console.log('NO MESSAGES YET');
                 }
             });

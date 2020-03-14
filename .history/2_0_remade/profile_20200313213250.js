@@ -69,7 +69,3 @@ function axx(docMe, data){
 
 
 //========================================
-
-function myProfile(myEmail){
-    
-}
