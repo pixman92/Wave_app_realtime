@@ -87,16 +87,6 @@ async function getting(main, docMe, callback){
     callback();
 
 }
-
-var getAllArr=[];
-async function getAll(root, callback){
-    await db.collection(root).get().then(async (snap)=>snap.forEach(async(doc)=>{
-        await getAllArr.push(doc.data());
-        console.log('getAllArr', getAllArr);
-    }));
-    callback();
-}
-
 //=============================================
 //where function stuff
 var whereIds=[];
@@ -120,7 +110,7 @@ function secsToDate(seconds) {
     //converts to a whole date String
     var newD = new Date(1970, 0, 1);
 
-    newD.setSeconds(seconds);
+    new newD.setSeconds(seconds);
 
     return newD;
 }

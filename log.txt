@@ -27,3 +27,5 @@
 2020, 03, 13 - 00:02:48 --- Trying to get Await order working...
 
 2020, 03, 13 - 16:24:36 --- pushing Message DOC and pulling - working! (still in beta)
+
+2020, 03, 13 - 19:06:40 ---     //function to pull all messages from firestore -> based on adminEmail

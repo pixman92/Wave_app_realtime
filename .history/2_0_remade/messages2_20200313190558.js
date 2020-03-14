@@ -27,17 +27,21 @@ async function addMessageToData(adminEmail, message, memberEmail){
         
 var tmpId=[];
 async function pullMessages(adminEmail){
-    //function to pull all messages from firestore -> based on adminEmail
     try{
         var one1 = await one(adminEmail);
         var two2 = await two(one1);
+        // var three3 = await three(two2);
+        // let d = await decide(two2);
+        // let four = await four(three3);
+
+
         return 'done!';
     }catch(e){
         console.log('error', e);
         throw e;
     }
     async function one(adminEmail){
-        // finds path to Message Data based on adminEmail
+        // finds path to 
         try{
             await whereMe('chatrooms3/', 'adminEmail', adminEmail,  ()=>{
                 console.log('1', whereIds);

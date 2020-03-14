@@ -27,7 +27,7 @@ async function addMessageToData(adminEmail, message, memberEmail){
         
 var tmpId=[];
 async function pullMessages(adminEmail){
-    //function to pull all messages from firestore -> based on adminEmail
+    //function to pull all messages from firestore -> based on ad
     try{
         var one1 = await one(adminEmail);
         var two2 = await two(one1);

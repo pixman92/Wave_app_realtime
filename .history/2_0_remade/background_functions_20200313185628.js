@@ -88,12 +88,10 @@ async function getting(main, docMe, callback){
 
 }
 
-var getAllArr=[];
 async function getAll(root, callback){
-    await db.collection(root).get().then(async (snap)=>snap.forEach(async(doc)=>{
-        await getAllArr.push(doc.data());
-        console.log('getAllArr', getAllArr);
-    }));
+    await db.collection(root).get().then(async (snap)=>{
+        await getAllArr.push(snap.data());
+    });
     callback();
 }
 
