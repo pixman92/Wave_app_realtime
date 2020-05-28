@@ -1,0 +1,41 @@
+ 
+
+2020, 03, 12 - 20:29:23 --- ======================
+
+2020, 03, 12 - 20:29:42 --- Getting <back> into this app!
+
+2020, 03, 12 - 20:29:49 --- What's the function flow???
+
+2020, 03, 12 - 20:32:33 --- Remaking the 2_0_remade !!
+
+2020, 03, 12 - 20:38:07 --- makeNewRoom('sck@gmail.com', 'students to contact') <- function for new Chatroom
+
+2020, 03, 12 - 20:38:23 --- whereMe('chatrooms3', 'adminEmail', 'sck@gmail.com') <- function for pulling up Chatroom. Produces <whereId(s)>
+
+2020, 03, 12 - 20:52:34 --- whereMe (to pull whereId) & getting (to pull all of doc) - why? to pull messages, then add to them, then push back
+
+2020, 03, 12 - 21:17:55 --- NEXT? adding('chatrooms3' + '/' + whereIds[0] + '/' + 'messagesData'
+
+2020, 03, 12 - 21:24:48 --- whereMe('chatrooms3/8pgRMYcUogeIPXy5YyzJ/messagesData/', 'memberEmail', 'student1', ()=>{})
+
+2020, 03, 12 - 21:24:56 --- Working!
+
+2020, 03, 12 - 21:33:51 --- Find messagesData - within COLLECTION within a DOC
+
+2020, 03, 12 - 21:39:50 --- adding('chatrooms3/8pgRMYcUogeIPXy5YyzJ/messagesData/', {memberEmail: 'student2', message: '2'}) <- to ADD  N E W messages to Collection!!!
+
+2020, 03, 13 - 00:02:48 --- Trying to get Await order working...
+
+2020, 03, 13 - 16:24:36 --- pushing Message DOC and pulling - working! (still in beta)
+
+2020, 03, 13 - 19:06:40 ---     //function to pull all messages from firestore -> based on adminEmail
+
+2020, 03, 13 - 19:08:14 --- NEXT? - tear into OLD files
+
+2020, 03, 13 - 19:22:08 --- addMessageToData() - working. pullMessages() - working. getRoomID() - working.
+
+2020, 03, 13 - 21:19:33 --- 
+
+2020, 03, 13 - 21:20:35 --- Working?! - addMemberToList() & pullUpMemberList() - to add a member and pull up all members in firebase
+
+2020, 03, 13 - 21:34:48 --- Chatroom building, adding messages, adding members, removing members (Not working). NEXT? profile and some GUI!!!
