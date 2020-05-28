@@ -1,4 +1,4 @@
-class Message{
+class message{
     constructor(date, sender, text){
         this.date = moment().format();
         this.sender = sender;
@@ -6,8 +6,6 @@ class Message{
     }
 
     printMe(){
-        console.log("Message from: ", this.sender);
-        console.log('message: ', this.text);
-        console.log('on date: ', this.date);
+        console.log(this.sender);
     }
 }
