@@ -46,7 +46,7 @@ class Room{
 
 
         async function one(){
-            await whereMe('chatrooms3', 'adminEmail', adminEmail, ()=>{
+            await whereMe('chatrooms3/', 'adminEmail', adminEmail, ()=>{
                 console.log('whereIds1', whereIds);
             }); 
 

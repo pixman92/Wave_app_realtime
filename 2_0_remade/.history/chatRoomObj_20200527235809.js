@@ -52,7 +52,7 @@ class Room{
 
         }
         async function two(){
-            await adding('chatrooms3/' +whereIds[0] + '/messagesData/', {memberEmail: memberEmail, message: messageText, date: moment().format()});
+            await adding('chatrooms3' +whereIds[0] + '/messagesData/', {memberEmail: memberEmail, message: messageText, date: moment().format()});
 
         }
 
