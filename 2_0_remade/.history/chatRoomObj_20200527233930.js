@@ -34,6 +34,8 @@ class Room{
         adding('chatrooms3/', {adminEmail: this.adminEmail, dateID: this.date, title: this.roomTitle});
     }
 
+
+    var  whereIds=[];
     async addMessagesToFirebase(adminEmail, memberEmail, messageText){
         try{
             var first = await one();
